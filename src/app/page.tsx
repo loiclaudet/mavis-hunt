@@ -1,16 +1,13 @@
-import { Suspense } from "react";
-import WinStreak from "../components/WinStreak";
+import AnimatedWine from "components/AnimatedWine";
+import Search from "components/Search";
 
-export default async function Home() {
-  const fakePromise = await new Promise((res) => {
-    return setTimeout(() => res("ok"), 0);
-  });
-  console.log(fakePromise);
+export default function Home() {
   return (
-    <>
-      <Suspense fallback={<p>loading...</p>}>
-        <WinStreak streak={6} />
-      </Suspense>
-    </>
+    <div className="mb-44 flex h-screen w-full flex-col items-center justify-center overflow-hidden sm:mb-0">
+      <Search />
+      <div className="relative max-h-[100vw] w-[350px] max-w-[100vw] sm:h-[600px] sm:w-[650px]">
+        <AnimatedWine />
+      </div>
+    </div>
   );
 }

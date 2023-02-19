@@ -2,6 +2,7 @@ import { Work_Sans } from "@next/font/google";
 import "styles/globals.css"; // These styles apply to every route in the application
 import Head from "app/head";
 import Switch from "components/Switch";
+import Social from "components/Social";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
@@ -21,6 +22,7 @@ export default function RootLayout({
         <main className="bg- flex h-screen w-full flex-col items-center justify-center bg-cover bg-center bg-no-repeat">
           <Switch />
           {children}
+          <Social />
         </main>
       </body>
     </html>
