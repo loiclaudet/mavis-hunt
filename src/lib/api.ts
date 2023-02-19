@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { LEADERBOARD_LIMIT, PROFILE_PLAYER_BATTLES } from "lib/consts";
 import fetcher from "lib/fetcher";
-import type { Battles, Leaderboard } from "lib/validators";
+import type { Battles, Items, Leaderboard } from "lib/validators";
 import { userIDValidator } from "lib/validators";
 
 // Leaderboard
@@ -47,4 +47,17 @@ export function useBattles({
       esport ? "-esport" : ""
     }/battle-history?type=${type}&client_id=${userID}&limit=${limit}&page=${page}`
   ) as Promise<Battles>;
+}
+
+// Charms
+export function useCharms(): Promise<Items> {
+  return fetcher(
+    "https://api-gateway.skymavis.com/origin/v2/community/charms"
+  ) as Promise<Items>;
+}
+// Runes
+export function useRunes(): Promise<Items> {
+  return fetcher(
+    "https://api-gateway.skymavis.com/origin/v2/community/runes"
+  ) as Promise<Items>;
 }
