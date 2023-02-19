@@ -154,7 +154,6 @@ const PlayerBattleDetails = memo(function PlayerBattleDetails({
         <Link
           href={`/profile/${userID}`}
           className="absolute top-1 right-1 z-10 h-5 w-5 transition-transform duration-100 hover:scale-125"
-          target="_blank"
           rel="noopener noreferrer"
           title="Visit profile"
         >
