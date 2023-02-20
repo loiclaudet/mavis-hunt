@@ -34,11 +34,10 @@ export function Axie({
 }: AxieProps) {
   if (isStarterAxie(axieType)) {
     return (
-      <li key={axieId} className="relative mb-10 -translate-y-[5px] sm:mb-0">
+      <li key={axieId} className="relative mb-10 sm:mb-0">
         <ImageWithFallback
           width={width}
           height={heigth * 0.58}
-          objectFit="contain"
           src={`/starters/${
             starterAxiesMap.get(axieId as StarterId) as StarterName
           }.png`}
@@ -46,8 +45,10 @@ export function Axie({
           priority
         />
         <div
-          className={`absolute left-2 -top-2 flex sm:left-3 sm:top-0 ${
-            battleContext ? "left-3 -top-2 sm:left-3 sm:-top-3" : ""
+          className={` absolute top-2 flex ${
+            battleContext
+              ? "left-3 top-1 sm:left-3 sm:top-2"
+              : "left-2 sm:left-3 sm:top-7"
           }`}
         >
           {runesImagesUrls.map((runeImageUrl, index) => {
@@ -62,10 +63,10 @@ export function Axie({
           })}
         </div>
         <div
-          className={`absolute left-1/2 flex -translate-x-1/2 flex-wrap sm:w-auto sm:flex-nowrap ${
+          className={`absolute left-1/2 flex -translate-x-1/2 flex-wrap items-end sm:w-auto sm:flex-nowrap ${
             battleContext
-              ? "-bottom-[52px] w-[72px] sm:-bottom-[18px]"
-              : "-bottom-[57px] w-[90px] sm:-bottom-[31px]"
+              ? "-bottom-[32px] w-[72px] sm:bottom-[11px]"
+              : "-bottom-[32px] w-[78px] sm:bottom-[6px]"
           }`}
         >
           {charmsImagesUrls.map((charmImageUrl, index) => {

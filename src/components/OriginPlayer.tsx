@@ -55,7 +55,7 @@ const OriginPlayer = memo(
             userId={player.userID}
           />
           <div
-            className={`mb-1 flex min-h-[157px] flex-col items-start justify-center rounded bg-[#2b1812eb] pl-2 sm:flex-row sm:items-center sm:pl-2`}
+            className={`mb-1 flex min-h-[157px] flex-col items-start justify-center rounded bg-[#2b1812eb] pl-2 sm:pl-2 lg:flex-row lg:items-center`}
           >
             <OriginPlayerDetails
               player={player}
