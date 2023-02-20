@@ -1,11 +1,6 @@
 import Bottleneck from "bottleneck";
 import type { Battle, Item, User } from "lib/validators";
-import {
-  useBattles as getPlayerBattles,
-  useLeaderBoard,
-  useCharms,
-  useRunes,
-} from "lib/api";
+import { getBattles, getLeaderBoard, getCharms, getRunes } from "lib/api";
 import type { Player } from "lib/getPlayer";
 import { getPlayer } from "lib/getPlayer";
 import {
@@ -29,9 +24,9 @@ export default async function OriginsLeaderboardPage({
 
   const [{ _items: users }, { _items: charms }, { _items: runes }] =
     await Promise.all([
-      useLeaderBoard({ offset, limit: LEADERBOARD_LIMIT }),
-      useCharms(),
-      useRunes(),
+      getLeaderBoard({ offset, limit: LEADERBOARD_LIMIT }),
+      getCharms(),
+      getRunes(),
     ]);
 
   const usersIDs = users.map((_user) => _user.userID);
@@ -41,10 +36,10 @@ export default async function OriginsLeaderboardPage({
     minTime: 1000 / X_RATE_LIMIT_PER_SEC,
     maxConcurrent: X_RATE_LIMIT_PER_SEC,
   });
-  const wrappedGetPlayerBattles = limiter.wrap(getPlayerBattles);
+  const wrappedGetBattles = limiter.wrap(getBattles);
 
   const usersBattlesPromises = usersIDs.map((userID) =>
-    wrappedGetPlayerBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
+    wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
   );
   const usersBattles = (await Promise.all(usersBattlesPromises)).map(
     (battles, index) => {

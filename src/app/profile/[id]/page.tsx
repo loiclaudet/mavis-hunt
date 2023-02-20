@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import type { UserID } from "lib/validators";
-import { useBattles, useLeaderBoard, useCharms, useRunes } from "lib/api";
+import { getBattles, getLeaderBoard, getCharms, getRunes } from "lib/api";
 import { getPlayer } from "lib/getPlayer";
 import { relativeTime } from "lib/relativeTime";
 import { MAX_DISPLAYED_PLAYER_BATTLES } from "lib/consts";
@@ -23,10 +23,10 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     { _items: charms },
     { _items: runes },
   ] = await Promise.all([
-    useLeaderBoard({ userID, limit: 1 }),
-    useBattles({ userID }),
-    useCharms(),
-    useRunes(),
+    getLeaderBoard({ userID, limit: 1 }),
+    getBattles({ userID }),
+    getCharms(),
+    getRunes(),
   ]);
   if (!players[0]) return <p>user not found</p>;
   const player = getPlayer({ battles, player: players[0] });

@@ -5,14 +5,14 @@ import type { Battles, Items, Leaderboard } from "lib/validators";
 import { userIDValidator } from "lib/validators";
 
 // Leaderboard
-const useLeaderBoardValidator = z.object({
+const getLeaderBoardValidator = z.object({
   userID: userIDValidator.optional(),
   offset: z.number().min(0).optional(),
   limit: z.number().min(0).max(LEADERBOARD_LIMIT).optional(),
 });
-type UseLeaderboardProps = z.infer<typeof useLeaderBoardValidator>;
+type UseLeaderboardProps = z.infer<typeof getLeaderBoardValidator>;
 
-export function useLeaderBoard({
+export function getLeaderBoard({
   userID,
   offset = 0,
   limit = LEADERBOARD_LIMIT,
@@ -25,7 +25,7 @@ export function useLeaderBoard({
 }
 
 // Battles
-const useBattlesValidator = z.object({
+const getBattlesValidator = z.object({
   userID: userIDValidator,
   esport: z.boolean().optional(),
   limit: z.number().min(5).max(100).optional(),
@@ -33,9 +33,9 @@ const useBattlesValidator = z.object({
   type: z.enum(["pvp", "pve"]).optional(),
 });
 
-type UseBattlesProps = z.infer<typeof useBattlesValidator>;
+type UseBattlesProps = z.infer<typeof getBattlesValidator>;
 
-export function useBattles({
+export function getBattles({
   userID,
   limit = PROFILE_PLAYER_BATTLES,
   page = 1, // the API will return the battles from the limit * (page - 1) to the limit * page
@@ -50,13 +50,13 @@ export function useBattles({
 }
 
 // Charms
-export function useCharms(): Promise<Items> {
+export function getCharms(): Promise<Items> {
   return fetcher(
     "https://api-gateway.skymavis.com/origin/v2/community/charms"
   ) as Promise<Items>;
 }
 // Runes
-export function useRunes(): Promise<Items> {
+export function getRunes(): Promise<Items> {
   return fetcher(
     "https://api-gateway.skymavis.com/origin/v2/community/runes"
   ) as Promise<Items>;
