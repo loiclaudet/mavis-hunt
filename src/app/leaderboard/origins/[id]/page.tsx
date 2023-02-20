@@ -10,6 +10,7 @@ import {
 } from "lib/consts";
 import OriginPlayer from "components/OriginPlayer";
 import { Suspense } from "react";
+import chunk from "lib/chunk";
 
 interface OriginsLeaderboardPageProps {
   params: {
@@ -60,15 +61,24 @@ export default async function OriginsLeaderboardPage({
   return (
     <div className="flex flex-col items-center">
       <PlayerList charms={charms} runes={runes} players={players} />
-      <Suspense fallback={<div>Loading...</div>}>
-        {/* @ts-expect-error Server Component */}
-        <DeferredPlayerList
-          charms={charms}
-          runes={runes}
-          userBattlesPromises={deferredUsersBattlesPromises}
-          users={deferredUsers}
-        />
-      </Suspense>
+      {chunk(deferredUsersBattlesPromises, X_RATE_LIMIT_PER_SEC).map(
+        (promises, index) => {
+          return (
+            <Suspense fallback={<div>Loading...</div>} key={index}>
+              {/* @ts-expect-error Server Component*/}
+              <DeferredPlayerList
+                charms={charms}
+                runes={runes}
+                userBattlesPromises={promises}
+                users={deferredUsers.slice(
+                  index * X_RATE_LIMIT_PER_SEC,
+                  (index + 1) * X_RATE_LIMIT_PER_SEC
+                )}
+              />
+            </Suspense>
+          );
+        }
+      )}
     </div>
   );
 }
