@@ -15,7 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { relativeTime } from "lib/relativeTime";
 import type { Fighters } from "lib/validators";
-import type { Player } from "lib/getPlayer";
+import type { Player } from "lib/createPlayer";
 
 interface OriginBattlesProps {
   player: Player;

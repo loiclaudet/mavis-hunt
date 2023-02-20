@@ -1,8 +1,8 @@
 import Bottleneck from "bottleneck";
 import type { Battle, Item, User } from "lib/validators";
 import { getBattles, getLeaderBoard, getCharms, getRunes } from "lib/api";
-import type { Player } from "lib/getPlayer";
-import { getPlayer } from "lib/getPlayer";
+import type { Player } from "lib/createPlayer";
+import { createPlayer } from "lib/createPlayer";
 import {
   LEADERBOARD_LIMIT,
   LEADERBOARD_PLAYER_BATTLES,
@@ -51,9 +51,9 @@ export default async function OriginsLeaderboardPage({
   );
 
   const players = usersIDs.map((_, index) => {
-    return getPlayer({
+    return createPlayer({
       battles: usersBattles[index] as Battle[],
-      player: users[index] as User,
+      user: users[index] as User,
     });
   });
 

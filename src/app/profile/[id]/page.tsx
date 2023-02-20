@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import type { UserID } from "lib/validators";
 import { getBattles, getLeaderBoard, getCharms, getRunes } from "lib/api";
-import { getPlayer } from "lib/getPlayer";
+import { createPlayer } from "lib/createPlayer";
 import { relativeTime } from "lib/relativeTime";
 import { MAX_DISPLAYED_PLAYER_BATTLES } from "lib/consts";
 import ArenaStarsChart from "components/ArenaStarsChart";
@@ -18,7 +18,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
   // TODO: refactor this page to follow the island pattern and display components skeletons
   // it will improve the performance of the page
   const [
-    { _items: players },
+    { _items: users },
     { battles: battles },
     { _items: charms },
     { _items: runes },
@@ -28,8 +28,8 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     getCharms(),
     getRunes(),
   ]);
-  if (!players[0]) return <p>user not found</p>;
-  const player = getPlayer({ battles, player: players[0] });
+  if (!users[0]) return <p>user not found</p>;
+  const player = createPlayer({ battles, user: users[0] });
 
   const chartData = player.battles
     .map((battle) => {

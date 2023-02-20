@@ -17,7 +17,7 @@ import { LEADERBOARD_PLAYER_BATTLES, PROFILE_PLAYER_BATTLES } from "lib/consts";
 import Link from "next/link";
 import { getRankEmoji } from "lib/rankEmoji";
 import TwitchDetails from "./TwitchDetails";
-import type { Player } from "lib/getPlayer";
+import type { Player } from "lib/createPlayer";
 interface OriginPlayerProps {
   player: Player;
   runes: Rune[];

@@ -15,12 +15,12 @@ import type {
 } from "./validators";
 
 // TODO: refactor Axie and Player components to follow the island pattern
-export function getPlayer({
+export function createPlayer({
   battles,
-  player,
+  user,
 }: {
   battles: Battle[];
-  player: User;
+  user: User;
 }) {
   const rankedPVPBattles: Battle[] = battles.filter(
     (battle) => battle.battle_type_string === "ranked_pvp"
@@ -29,14 +29,14 @@ export function getPlayer({
   const lastBattle = rankedPVPBattles[0];
   if (!lastBattle) {
     return {
-      ...player,
+      ...user,
       winRate: 0,
       winStreak: 0,
       battles: [],
       team: [],
     };
   }
-  const isLastGameFirstFighters = lastBattle.client_ids[0] === player.userID;
+  const isLastGameFirstFighters = lastBattle.client_ids[0] === user.userID;
   const axiesTeam: Fighters = isLastGameFirstFighters
     ? lastBattle.first_client_fighters
     : lastBattle.second_client_fighters;
@@ -82,7 +82,7 @@ export function getPlayer({
   let isStreakBroken = false;
 
   for (const battle of rankedPVPBattles) {
-    const isFirstFighters = battle.client_ids[0] === player.userID;
+    const isFirstFighters = battle.client_ids[0] === user.userID;
     const won = isFirstFighters ? battle.winner === 0 : battle.winner === 1;
     if (won) {
       totalWon += 1;
@@ -97,7 +97,7 @@ export function getPlayer({
 
   const winRate = totalWon / rankedPVPBattles.length;
   return {
-    ...player,
+    ...user,
     battles: rankedPVPBattles.slice(
       0,
       Math.min(PROFILE_PLAYER_BATTLES, rankedPVPBattles.length)
@@ -108,7 +108,7 @@ export function getPlayer({
   };
 }
 
-export type Player = ReturnType<typeof getPlayer> & {
+export type Player = ReturnType<typeof createPlayer> & {
   channel?: {
     live: boolean;
     name: string;

@@ -16,7 +16,7 @@ import { getCharmImagesFromCharmPartsAndCharmGameId } from "lib/charms";
 import useWindowSize from "hooks/windowSize";
 import TwitchDetails from "./TwitchDetails";
 import { PROFILE_PLAYER_BATTLES } from "lib/consts";
-import type { Player } from "lib/getPlayer";
+import type { Player } from "lib/createPlayer";
 interface OriginPlayerProps {
   player: Player;
   runes: Rune[];

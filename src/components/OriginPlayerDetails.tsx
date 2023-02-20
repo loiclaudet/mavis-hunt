@@ -2,7 +2,7 @@
 import Modal from "components/Modal";
 import WinStreak from "components/WinStreak";
 import type { Charm } from "lib/charms";
-import type { Player } from "lib/getPlayer";
+import type { Player } from "lib/createPlayer";
 import type { Rune } from "lib/runes";
 import Link from "next/link";
 import { memo, useState } from "react";
