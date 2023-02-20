@@ -1,7 +1,6 @@
 import Bottleneck from "bottleneck";
 import type { Battle, Battles, Item, User } from "lib/validators";
 import { getBattles, getLeaderBoard, getCharms, getRunes } from "lib/api";
-import type { Player } from "lib/createPlayer";
 import { createPlayer } from "lib/createPlayer";
 import {
   LEADERBOARD_LIMIT,
@@ -31,46 +30,29 @@ export default async function OriginsLeaderboardPage({
       getRunes(),
     ]);
 
-  const criticalUsers = users.slice(0, 10);
-  const deferredUsers = users.slice(10);
-
   // limit the number of requests to the API to 10 per second
   const limiter = new Bottleneck({
-    minTime: 1000 / X_RATE_LIMIT_PER_SEC,
+    minTime: 1000 / X_RATE_LIMIT_PER_SEC + 10 * X_RATE_LIMIT_PER_SEC, // add 10ms per request to safely avoid to reach rate limit
     maxConcurrent: X_RATE_LIMIT_PER_SEC,
   });
   const wrappedGetBattles = limiter.wrap(getBattles);
 
-  const criticalUsersBattlesPromises = criticalUsers.map(({ userID }) =>
-    wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
-  );
-  const criticalUsersBattles = (
-    await Promise.all(criticalUsersBattlesPromises)
-  ).map((battles) => battles?.battles ?? []);
-
-  const players = criticalUsers.map((user, index) => {
-    return createPlayer({
-      battles: criticalUsersBattles[index] as Battle[],
-      user,
-    });
-  });
-  const deferredUsersBattlesPromises = deferredUsers.map(({ userID }) =>
+  const usersBattlesPromises = users.map(({ userID }) =>
     wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
   );
 
   return (
     <div className="flex flex-col items-center">
-      <PlayerList charms={charms} runes={runes} players={players} />
-      {chunk(deferredUsersBattlesPromises, X_RATE_LIMIT_PER_SEC).map(
+      {chunk(usersBattlesPromises, X_RATE_LIMIT_PER_SEC).map(
         (promises, index) => {
           return (
             <Suspense fallback={<div>Loading...</div>} key={index}>
               {/* @ts-expect-error Server Component*/}
-              <DeferredPlayerList
+              <PlayerList
                 charms={charms}
                 runes={runes}
                 userBattlesPromises={promises}
-                users={deferredUsers.slice(
+                users={users.slice(
                   index * X_RATE_LIMIT_PER_SEC,
                   (index + 1) * X_RATE_LIMIT_PER_SEC
                 )}
@@ -83,19 +65,19 @@ export default async function OriginsLeaderboardPage({
   );
 }
 
-interface DeferredPlayerListProps {
+interface PlayerListProps {
   userBattlesPromises: Promise<Battles>[];
   users: User[];
   runes: Item[];
   charms: Item[];
 }
 
-async function DeferredPlayerList({
+async function PlayerList({
   userBattlesPromises,
   users,
   runes,
   charms,
-}: DeferredPlayerListProps) {
+}: PlayerListProps) {
   const userBattles = (await Promise.all(userBattlesPromises)).map(
     (battles) => battles?.battles ?? []
   );
@@ -106,27 +88,6 @@ async function DeferredPlayerList({
       user,
     });
   });
-  return (
-    <>
-      {players.map((_player) => (
-        <OriginPlayer
-          ref={null}
-          key={_player.userID}
-          player={_player}
-          runes={runes.map((rune) => rune.item)}
-          charms={charms.map((charm) => charm.item)}
-        />
-      ))}
-    </>
-  );
-}
-interface PlayerListProps {
-  players: Player[];
-  runes: Item[];
-  charms: Item[];
-}
-
-function PlayerList({ players, runes, charms }: PlayerListProps) {
   return (
     <>
       {players.map((_player) => (
