@@ -1,5 +1,5 @@
 import Bottleneck from "bottleneck";
-import type { Battle, Item, User } from "lib/validators";
+import type { Battle, Battles, Item, User } from "lib/validators";
 import { getBattles, getLeaderBoard, getCharms, getRunes } from "lib/api";
 import type { Player } from "lib/createPlayer";
 import { createPlayer } from "lib/createPlayer";
@@ -9,6 +9,7 @@ import {
   X_RATE_LIMIT_PER_SEC,
 } from "lib/consts";
 import OriginPlayer from "components/OriginPlayer";
+import { Suspense } from "react";
 
 interface OriginsLeaderboardPageProps {
   params: {
@@ -29,7 +30,8 @@ export default async function OriginsLeaderboardPage({
       getRunes(),
     ]);
 
-  const usersIDs = users.map((_user) => _user.userID);
+  const criticalUsers = users.slice(0, 10);
+  const deferredUsers = users.slice(10);
 
   // limit the number of requests to the API to 10 per second
   const limiter = new Bottleneck({
@@ -38,37 +40,64 @@ export default async function OriginsLeaderboardPage({
   });
   const wrappedGetBattles = limiter.wrap(getBattles);
 
-  const usersBattlesPromises = usersIDs.map((userID) =>
+  const criticalUsersBattlesPromises = criticalUsers.map(({ userID }) =>
     wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
   );
-  const usersBattles = (await Promise.all(usersBattlesPromises)).map(
-    (battles, index) => {
-      if (!battles) {
-        console.warn("no battles for player", usersIDs[index]);
-      }
-      return battles?.battles ?? [];
-    }
-  );
+  const criticalUsersBattles = (
+    await Promise.all(criticalUsersBattlesPromises)
+  ).map((battles) => battles?.battles ?? []);
 
-  const players = usersIDs.map((_, index) => {
+  const players = criticalUsers.map((user, index) => {
     return createPlayer({
-      battles: usersBattles[index] as Battle[],
-      user: users[index] as User,
+      battles: criticalUsersBattles[index] as Battle[],
+      user,
     });
   });
+  const deferredUsersBattlesPromises = deferredUsers.map(({ userID }) =>
+    wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
+  );
 
-  return <PlayerList charms={charms} runes={runes} players={players} />;
+  return (
+    <div className="flex flex-col items-center">
+      <PlayerList charms={charms} runes={runes} players={players} />
+      <Suspense fallback={<div>Loading...</div>}>
+        {/* @ts-expect-error Server Component */}
+        <DeferredPlayerList
+          charms={charms}
+          runes={runes}
+          userBattlesPromises={deferredUsersBattlesPromises}
+          users={deferredUsers}
+        />
+      </Suspense>
+    </div>
+  );
 }
 
-interface PlayerListProps {
-  players: Player[];
+interface DeferredPlayerListProps {
+  userBattlesPromises: Promise<Battles>[];
+  users: User[];
   runes: Item[];
   charms: Item[];
 }
 
-function PlayerList({ players, runes, charms }: PlayerListProps) {
+async function DeferredPlayerList({
+  userBattlesPromises,
+  users,
+  runes,
+  charms,
+}: DeferredPlayerListProps) {
+  const userBattles = (await Promise.all(userBattlesPromises)).map(
+    (battles) => battles?.battles ?? []
+  );
+
+  const players = users.map((user, index) => {
+    return createPlayer({
+      battles: userBattles[index] as Battle[],
+      user,
+    });
+  });
   return (
-    <div className="flex flex-col items-center">
+    <>
       {players.map((_player) => (
         <OriginPlayer
           ref={null}
@@ -78,6 +107,27 @@ function PlayerList({ players, runes, charms }: PlayerListProps) {
           charms={charms.map((charm) => charm.item)}
         />
       ))}
-    </div>
+    </>
+  );
+}
+interface PlayerListProps {
+  players: Player[];
+  runes: Item[];
+  charms: Item[];
+}
+
+function PlayerList({ players, runes, charms }: PlayerListProps) {
+  return (
+    <>
+      {players.map((_player) => (
+        <OriginPlayer
+          ref={null}
+          key={_player.userID}
+          player={_player}
+          runes={runes.map((rune) => rune.item)}
+          charms={charms.map((charm) => charm.item)}
+        />
+      ))}
+    </>
   );
 }
