@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en" className={`${workSans.variable}`}>
       <Head />
       <body>
-        <main className="bg- flex h-screen w-full flex-col items-center justify-center bg-cover bg-center bg-no-repeat">
+        <main className="bg- flex w-full flex-col items-center justify-center bg-cover bg-center bg-no-repeat">
           <Switch />
           {children}
           <Social />

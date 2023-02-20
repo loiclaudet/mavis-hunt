@@ -15,7 +15,8 @@ interface ProfilePageProps {
 
 export default async function ProfilePage({ params }: ProfilePageProps) {
   const userID = params.id;
-  // TODO: refactor this page to follow the island pattern
+  // TODO: refactor this page to follow the island pattern and display components skeletons
+  // it will improve the performance of the page
   const [
     { _items: players },
     { battles: battles },
@@ -41,7 +42,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     .reverse();
 
   return (
-    <div className="flex h-screen w-full animate-openModal flex-col items-center justify-center opacity-0">
+    <div className="flex h-screen w-full flex-col items-center justify-center">
       <Suspense fallback={<p>loading...</p>}>
         <OriginProfile
           ref={null}

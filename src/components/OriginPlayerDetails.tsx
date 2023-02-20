@@ -47,7 +47,7 @@ const PlayerDetails = memo(function PlayerDetailsComponent({
             </p>
           </div>
         </div>
-        <div className="flex items-baseline">
+        <div className="flex items-end">
           <button
             disabled={isBattlesButtonDisabled}
             onClick={() => {
@@ -84,7 +84,7 @@ interface UsernameProps {
 }
 function Username({ isProfile, name, userID }: UsernameProps) {
   return (
-    <h2 className="group text-[20px]" title={name}>
+    <h2 className="group inline text-[20px]" title={name}>
       {isProfile ? (
         <span>{name}</span>
       ) : (

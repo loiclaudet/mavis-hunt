@@ -179,7 +179,7 @@ const battleValidator = z.object({
 export type Battle = z.infer<typeof battleValidator>;
 
 const battleListValidator = z.object({
-  battles: z.array(battleValidator).min(5).max(100),
+  battles: z.array(battleValidator).min(0).max(100),
 });
 
 export type Battles = z.infer<typeof battleListValidator>;
