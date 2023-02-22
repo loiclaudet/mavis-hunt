@@ -36,7 +36,7 @@ const PlayerDetails = memo(function PlayerDetailsComponent({
           <div className="flex">
             <p className="mr-5">
               Rank:&nbsp;
-              <b>{topRank}</b>
+              <b>{topRank > 1_000_000 ? "-" : topRank}</b>
             </p>
             <p className="mr-5">
               Stars:&nbsp;<b>{vstar}</b>
