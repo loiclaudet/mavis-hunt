@@ -43,7 +43,11 @@ const OriginPlayer = memo(
         );
       }
       return (
-        <div ref={ref} key={player.userID} className="relative flex flex-col">
+        <div
+          ref={ref}
+          key={player.userID}
+          className="relative flex w-full flex-col"
+        >
           {rankEmoji && (
             <div className="absolute right-0 top-0 z-10 select-none text-4xl">
               {rankEmoji}
