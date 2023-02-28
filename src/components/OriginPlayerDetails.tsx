@@ -28,10 +28,10 @@ const PlayerDetails = memo(function PlayerDetailsComponent({
     <>
       <div
         className={`flex flex-col items-start py-2 pl-2 sm:pl-4 ${
-          isProfile ? "w-full" : "max-w-80 w-80"
+          isProfile ? "w-full" : "w-full max-w-[340px]"
         } `}
       >
-        <div className="w-[320px] max-w-full">
+        <div className="w-full">
           <Username name={name} userID={userID} isProfile={isProfile} />
           <div className="flex">
             <p className="mr-5">
@@ -84,7 +84,7 @@ interface UsernameProps {
 }
 function Username({ isProfile, name, userID }: UsernameProps) {
   return (
-    <h2 className="group inline-block truncate text-[20px]" title={name}>
+    <h2 className="group truncate text-[20px]" title={name}>
       {isProfile ? (
         <span>{name}</span>
       ) : (
