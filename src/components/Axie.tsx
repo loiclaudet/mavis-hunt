@@ -1,41 +1,28 @@
 import type { StarterId, StarterName } from "lib/starterAxies";
 import { isStarterAxie, starterAxiesMap } from "lib/starterAxies";
-import ImageWithFallback from "./ImageWithFallback";
-import RuneComponent from "./Rune";
-import CharmComponent from "./Charm";
+import ImageExtended from "./ImageExtended";
+// import RuneComponent from "./Rune";
+// import CharmComponent from "./Charm";
 import type { AxieType } from "lib/validators";
 
 interface AxieProps {
   axieId: number;
   axieType: AxieType;
-  axieRunesIds?: string[];
-  charmsImagesUrls?: (string | null)[];
-  runesImagesUrls?: (string | null)[];
   width: number;
   heigth: number;
   battleContext?: boolean;
-  displayRuneEffect: (runeImageUrl: string | null) => void;
-  displayCharmDetails: (args: DisplayCharmDetailsArgs) => void;
-}
-interface DisplayCharmDetailsArgs {
-  charmIndex: number;
-  charmImageUrl: string | null;
 }
 export function Axie({
   axieId,
   axieType,
   width,
   heigth,
-  charmsImagesUrls = [],
-  runesImagesUrls = [],
   battleContext,
-  displayRuneEffect,
-  displayCharmDetails,
 }: AxieProps) {
   if (isStarterAxie(axieType)) {
     return (
       <li key={axieId} className="relative mb-10 sm:mb-0">
-        <ImageWithFallback
+        <ImageExtended
           width={width}
           height={heigth * 0.58}
           src={`/starters/${
@@ -51,7 +38,7 @@ export function Axie({
               : "left-2 sm:left-3 sm:top-7"
           }`}
         >
-          {runesImagesUrls.map((runeImageUrl, index) => {
+          {/* {runesImagesUrls.map((runeImageUrl, index) => {
             return (
               <RuneComponent
                 key={index}
@@ -60,7 +47,7 @@ export function Axie({
                 displayRuneEffect={displayRuneEffect}
               />
             );
-          })}
+          })} */}
         </div>
         <div
           className={`absolute left-1/2 flex -translate-x-1/2 flex-wrap items-end sm:w-auto sm:flex-nowrap ${
@@ -69,7 +56,7 @@ export function Axie({
               : "-bottom-[32px] w-[78px] sm:bottom-[6px]"
           }`}
         >
-          {charmsImagesUrls.map((charmImageUrl, index) => {
+          {/* {charmsImagesUrls.map((charmImageUrl, index) => {
             return (
               <CharmComponent
                 key={index}
@@ -83,7 +70,7 @@ export function Axie({
                 }
               />
             );
-          })}
+          })} */}
         </div>
       </li>
     );
@@ -95,7 +82,7 @@ export function Axie({
         target="_blank"
         rel="noopener noreferrer"
       >
-        <ImageWithFallback
+        <ImageExtended
           width={width}
           height={heigth}
           src={`https://axiecdn.axieinfinity.com/axies/${axieId}/axie/axie-full-transparent.png`}
@@ -110,7 +97,7 @@ export function Axie({
             : "left-2 sm:left-3 sm:top-7"
         }`}
       >
-        {runesImagesUrls.map((runeImageUrl, index) => {
+        {/* {runesImagesUrls.map((runeImageUrl, index) => {
           return (
             <RuneComponent
               key={index}
@@ -119,7 +106,7 @@ export function Axie({
               displayRuneEffect={displayRuneEffect}
             />
           );
-        })}
+        })} */}
       </div>
       <div
         className={`absolute left-1/2 flex -translate-x-1/2 flex-wrap items-end sm:w-auto sm:flex-nowrap ${
@@ -128,7 +115,7 @@ export function Axie({
             : "-bottom-[32px] w-[78px] sm:bottom-[6px]"
         }`}
       >
-        {charmsImagesUrls.map((charmImageUrl, index) => {
+        {/* {charmsImagesUrls.map((charmImageUrl, index) => {
           return (
             <CharmComponent
               key={index}
@@ -142,7 +129,7 @@ export function Axie({
               }
             />
           );
-        })}
+        })} */}
       </div>
     </li>
   );

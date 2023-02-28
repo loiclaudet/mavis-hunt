@@ -1,29 +1,18 @@
-"use client";
-import Modal from "components/Modal";
 import WinStreak from "components/WinStreak";
-import type { Charm } from "lib/charms";
 import type { Player } from "lib/createPlayer";
-import type { Rune } from "lib/runes";
 import Link from "next/link";
-import { memo, useState } from "react";
-import OriginBattles from "./OriginBattles";
+import BattlesButton from "./BattlesButton";
 
 interface PlayerDetailsProps {
   player: Player;
-  runes?: Rune[];
-  charms?: Charm[];
   isProfile?: boolean;
 }
 
-const PlayerDetails = memo(function PlayerDetailsComponent({
+export default function PlayerDetails({
   player,
-  runes,
-  charms,
   isProfile,
 }: PlayerDetailsProps) {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { name, vstar, topRank, winStreak, winRate, userID } = player;
-  const isBattlesButtonDisabled = player.battles.length === 0;
   return (
     <>
       <div
@@ -48,34 +37,13 @@ const PlayerDetails = memo(function PlayerDetailsComponent({
           </div>
         </div>
         <div className="flex items-end">
-          <button
-            disabled={isBattlesButtonDisabled}
-            onClick={() => {
-              setIsModalOpen(true);
-            }}
-            className={`mt-4 mr-3 w-28 ${
-              isBattlesButtonDisabled
-                ? "cursor-not-allowed opacity-50"
-                : "transition-transform hover:scale-105"
-            }`}
-          >
-            View Battles
-          </button>
+          <BattlesButton player={player} />
           {winStreak >= 5 && <WinStreak streak={winStreak} />}
         </div>
       </div>
-      {isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(false)} buttonPosition="hidden">
-          <OriginBattles
-            player={player}
-            runes={runes as Rune[]}
-            charms={charms as Charm[]}
-          />
-        </Modal>
-      )}
     </>
   );
-});
+}
 
 interface UsernameProps {
   isProfile?: boolean;
@@ -98,4 +66,3 @@ function Username({ isProfile, name, userID }: UsernameProps) {
     </h2>
   );
 }
-export default PlayerDetails;

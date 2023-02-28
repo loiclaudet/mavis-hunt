@@ -1,15 +1,15 @@
 import Bottleneck from "bottleneck";
 import type { Battle, Battles, Leaderboard, User } from "lib/validators";
-import { getBattles, getLeaderBoard, getCharms, getRunes } from "lib/api";
+import { getBattles, getLeaderBoard } from "lib/api";
 import { createPlayer } from "lib/createPlayer";
 import {
   LEADERBOARD_PLAYER_BATTLES,
   ORIGIN_RATE_LIMIT_PER_SEC,
   X_RATE_LIMIT_PER_SEC,
 } from "lib/consts";
-import OriginPlayer from "components/OriginPlayer";
 import { Suspense } from "react";
 import { userIdToTwitchChannelMap } from "data/players";
+import OriginPlayer from "components/OriginPlayer";
 
 export default function OriginsLeaderboardPage() {
   const twitchUsersIDs = Array.from(userIdToTwitchChannelMap.keys()).slice(
@@ -61,16 +61,9 @@ async function PlayerList({
   leaderboardPromise,
   usersBattlesPromises,
 }: PlayerListProps) {
-  const [
-    usersResponse,
-    usersBattlesResponse,
-    { _items: charms },
-    { _items: runes },
-  ] = await Promise.all([
+  const [usersResponse, usersBattlesResponse] = await Promise.all([
     Promise.all(leaderboardPromise),
     Promise.all(usersBattlesPromises),
-    getCharms(),
-    getRunes(),
   ]);
 
   const userBattles = usersBattlesResponse.map((response) => {
@@ -90,13 +83,7 @@ async function PlayerList({
   return (
     <>
       {players.map((_player) => (
-        <OriginPlayer
-          ref={null}
-          key={_player.userID}
-          player={_player}
-          runes={runes.map((rune) => rune.item)}
-          charms={charms.map((charm) => charm.item)}
-        />
+        <OriginPlayer key={_player.userID} player={_player} />
       ))}
     </>
   );

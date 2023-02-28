@@ -156,12 +156,13 @@ export type Fighters = z.infer<typeof fightersValidator>;
 export type FighterWithParts = Fighter & { parts: AxieParts };
 
 // Battles
+export type winner = 0 | 1 | 2;
 const battleValidator = z.object({
   battle_uuid: z.string().uuid(),
   client_ids: z.tuple([userIDValidator, userIDValidator]),
   team_ids: z.tuple([z.number().min(1), z.number().min(1)]),
   created_at: z.number().min(0),
-  winner: z.number().min(0).max(1),
+  winner: z.number().min(0).max(2), // 0/1 win or lose depends on client position, 2: draw
   battle_type: z.number().min(0),
   battle_type_string: z.enum(["pve", "pvp", "ranked_pvp"]),
   chimera_party_id: z.string().optional(),
