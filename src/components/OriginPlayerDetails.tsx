@@ -17,7 +17,9 @@ export default function PlayerDetails({
     <>
       <div
         className={`flex flex-col items-start py-2 pl-2 sm:pl-4 ${
-          isProfile ? "w-full" : "w-full max-w-[340px]"
+          isProfile
+            ? "mb-12 w-full origin-top-left scale-150"
+            : "w-full max-w-[340px]"
         } `}
       >
         <div className="w-full">

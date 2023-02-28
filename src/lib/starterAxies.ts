@@ -1,5 +1,5 @@
 import type { PartType } from "agp-npm/dist/models/part";
-import type { AxieType, Fighter, FighterWithParts } from "lib/validators";
+import type { AxieType, FighterWithPartsAndItems } from "lib/validators";
 
 export type StarterName =
   | "olek"
@@ -43,7 +43,9 @@ export const partTypes = [
   "tail",
 ] as PartType[];
 
-export function setStarterFighterGenes(fighter: FighterWithParts): Fighter {
+export function setStarterFighterGenes(
+  fighter: FighterWithPartsAndItems
+): FighterWithPartsAndItems {
   const fighterName = starterAxiesMap.get(Number(fighter.axie_id) as StarterId);
   if (!fighterName) {
     throw new Error(`No starter axie found for id ${fighter.axie_id}`);

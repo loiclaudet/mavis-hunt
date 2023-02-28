@@ -163,8 +163,7 @@ const PlayerBattleDetails = memo(function PlayerBattleDetails({
               axieId={axie_id}
               axieType={axie_type}
               width={150}
-              heigth={112.5}
-              battleContext
+              heigth={112}
             />
           );
         })}

@@ -1,6 +1,8 @@
 import { AxieGene, HexType } from "agp-npm";
 import { getCards } from "data/cards";
+import type { Charm } from "./charms";
 import { PROFILE_PLAYER_BATTLES } from "./consts";
+import type { Rune } from "./runes";
 import {
   isStarterAxie,
   partTypes,
@@ -9,7 +11,7 @@ import {
 import type {
   Battle,
   Fighters,
-  FighterWithParts,
+  FighterWithPartsAndItems,
   AxieParts,
   User,
 } from "./validators";
@@ -18,9 +20,13 @@ import type {
 export function createPlayer({
   battles,
   user,
+  runes,
+  charms,
 }: {
   battles: Battle[];
   user: User;
+  runes: Rune[];
+  charms: Charm[];
 }) {
   const rankedPVPBattles: Battle[] = battles.filter(
     (battle) => battle.battle_type_string === "ranked_pvp"
@@ -42,13 +48,34 @@ export function createPlayer({
     : lastBattle.second_client_fighters;
 
   const axiesTeamsWithParts = axiesTeam.map((fighter) => {
-    const fighterWithParts: FighterWithParts = {
+    const fighterWithPartsAndItems: FighterWithPartsAndItems = {
       ...fighter,
       parts: {} as AxieParts,
+      runes: fighter.runes
+        .map((rune) => {
+          const runeData =
+            runes.find((runeData) => runeData.id === rune) ?? null;
+          if (!runeData) {
+            console.warn(
+              `Rune with id '${rune}' not found for axie with id '${fighter.axie_id}'`
+            );
+          }
+          return runeData;
+        })
+        .filter(Boolean) as Rune[],
+      charms: {
+        eyes: charms.find((charm) => charm.id === fighter.charms.eyes) ?? null,
+        mouth:
+          charms.find((charm) => charm.id === fighter.charms.mouth) ?? null,
+        ears: charms.find((charm) => charm.id === fighter.charms.ears) ?? null,
+        horn: charms.find((charm) => charm.id === fighter.charms.horn) ?? null,
+        back: charms.find((charm) => charm.id === fighter.charms.back) ?? null,
+        tail: charms.find((charm) => charm.id === fighter.charms.tail) ?? null,
+      },
     };
     // straters genes cannot be decoded
     if (isStarterAxie(fighter.axie_type)) {
-      return setStarterFighterParts(fighterWithParts);
+      return setStarterFighterParts(fighterWithPartsAndItems);
     }
     let axieGene!: AxieGene;
     try {
@@ -72,10 +99,10 @@ export function createPlayer({
           `Part ${partType} with partId '${partIdFromGene}' not found for axie ${fighter.axie_id}`
         );
       }
-      fighterWithParts.parts[partType] = card.partId;
+      fighterWithPartsAndItems.parts[partType] = card.partId;
     });
-    return fighterWithParts;
-  }) as FighterWithParts[];
+    return fighterWithPartsAndItems;
+  }) as FighterWithPartsAndItems[];
 
   let totalWon = 0;
   let winStreak = 0;

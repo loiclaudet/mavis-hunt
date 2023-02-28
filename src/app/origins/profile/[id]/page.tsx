@@ -29,7 +29,12 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     getRunes(),
   ]);
   if (!users[0]) return <p>user not found</p>;
-  const player = createPlayer({ battles, user: users[0] });
+  const player = createPlayer({
+    battles,
+    user: users[0],
+    runes: runes.map((rune) => rune.item),
+    charms: charms.map((charm) => charm.item),
+  });
 
   const chartData = player.battles
     .map((battle) => {
@@ -45,14 +50,10 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     <div className="flex h-screen w-full flex-col items-center justify-center">
       <Suspense fallback={<p>loading...</p>}>
         <OriginProfile
-          ref={null}
           player={{
             ...player,
             battles: player.battles.slice(0, MAX_DISPLAYED_PLAYER_BATTLES),
           }}
-          runes={runes.map((rune) => rune.item)}
-          charms={charms.map((charm) => charm.item)}
-          key={player.userID}
         />
       </Suspense>
       <ArenaStarsChart data={chartData} />

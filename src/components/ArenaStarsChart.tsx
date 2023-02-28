@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import useWindowSize from "../hooks/windowSize";
 
 import {
   Legend,
@@ -22,14 +21,11 @@ interface ArenaStarsChartProps {
 }
 
 export default function ArenaStarsChart({ data }: ArenaStarsChartProps) {
-  const windowSize = useWindowSize();
-  if (!data || !windowSize.height || !windowSize.width) return null;
+  if (!data) return null;
   return (
     <LineChart
-      width={windowSize.height < 1000 ? Math.min(windowSize.width, 727) : 948}
-      height={
-        windowSize.height < 1000 ? Math.min(windowSize.height / 2, 400) : 550
-      }
+      width={948}
+      height={500}
       data={data}
       className={`box-border rounded bg-[#2b1812eb]`}
       margin={{ top: 20, right: 40, left: 40, bottom: 40 }}

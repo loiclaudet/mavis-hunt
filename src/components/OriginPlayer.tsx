@@ -4,6 +4,7 @@ import { getRankEmoji } from "lib/rankEmoji";
 import TwitchDetails from "./TwitchDetails";
 import type { Player } from "lib/createPlayer";
 import { MissingBattles } from "./MissingBattles";
+import { RuneComponent } from "./Rune";
 interface OriginPlayerProps {
   player: Player;
   index?: number;
@@ -39,15 +40,22 @@ function OriginPlayer({ player, index }: OriginPlayerProps) {
           </ul>
         ) : (
           <ul className="relative flex flex-1 items-center">
-            {player.team.map(({ axie_id, axie_type }) => {
+            {player.team.map(({ axie_id, axie_type, runes }) => {
               return (
-                <Axie
-                  key={axie_id}
-                  axieId={axie_id}
-                  axieType={axie_type}
-                  width={200}
-                  heigth={150}
-                />
+                <li key={axie_id} className="relative mb-10 sm:mb-0">
+                  <div
+                    className={`absolute top-2 left-2 z-[1] flex sm:left-3 sm:top-7`}
+                  >
+                    <RuneComponent runes={runes} battleContext={false} />
+                  </div>
+                  <Axie
+                    key={axie_id}
+                    axieId={axie_id}
+                    axieType={axie_type}
+                    width={200}
+                    heigth={150}
+                  />
+                </li>
               );
             })}
           </ul>

@@ -1,6 +1,6 @@
 import Bottleneck from "bottleneck";
 import type { Battle, Battles, User } from "lib/validators";
-import { getBattles, getLeaderBoard } from "lib/api";
+import { getBattles, getCharms, getLeaderBoard, getRunes } from "lib/api";
 import { createPlayer } from "lib/createPlayer";
 import {
   LEADERBOARD_LIMIT,
@@ -11,6 +11,8 @@ import { Suspense } from "react";
 import chunk from "lib/chunk";
 import OriginPlayer from "components/OriginPlayer";
 import OriginPlayerSkeleton from "components/OriginPlayerSkeleton";
+import type { Rune } from "lib/runes";
+import type { Charm } from "lib/charms";
 
 interface OriginsLeaderboardPageProps {
   params: {
@@ -24,9 +26,12 @@ export default async function OriginsLeaderboardPage({
   const pageID = Number(params.id);
   const offset = pageID * LEADERBOARD_LIMIT - LEADERBOARD_LIMIT;
 
-  const [{ _items: users }] = await Promise.all([
-    getLeaderBoard({ offset, limit: LEADERBOARD_LIMIT }),
-  ]);
+  const [{ _items: runes }, { _items: charms }, { _items: users }] =
+    await Promise.all([
+      getRunes(),
+      getCharms(),
+      getLeaderBoard({ offset, limit: LEADERBOARD_LIMIT }),
+    ]);
 
   // limit the number of requests to the API to 10 per second
   const limiter = new Bottleneck({
@@ -57,6 +62,8 @@ export default async function OriginsLeaderboardPage({
                   index * X_RATE_LIMIT_PER_SEC,
                   (index + 1) * X_RATE_LIMIT_PER_SEC
                 )}
+                runes={runes.map((rune) => rune.item)}
+                charms={charms.map((charm) => charm.item)}
               />
             </Suspense>
           );
@@ -69,9 +76,16 @@ export default async function OriginsLeaderboardPage({
 interface PlayerListProps {
   userBattlesPromises: Promise<Battles>[];
   users: User[];
+  runes: Rune[];
+  charms: Charm[];
 }
 
-async function PlayerList({ userBattlesPromises, users }: PlayerListProps) {
+async function PlayerList({
+  userBattlesPromises,
+  users,
+  runes,
+  charms,
+}: PlayerListProps) {
   const userBattles = (await Promise.all(userBattlesPromises)).map(
     (battles) => battles?.battles ?? []
   );
@@ -80,6 +94,8 @@ async function PlayerList({ userBattlesPromises, users }: PlayerListProps) {
     return createPlayer({
       battles: userBattles[index] as Battle[],
       user,
+      runes,
+      charms,
     });
   });
   return (

@@ -1,4 +1,6 @@
 import { z } from "zod";
+import type { Charm } from "./charms";
+import type { Rune } from "./runes";
 // User ID
 export const userIDValidator = z.string().uuid();
 export type UserID = z.infer<typeof userIDValidator>;
@@ -21,7 +23,7 @@ export const AxieTypeEnum = z.enum(["starter", "0", "ronin", "1"]);
 export type AxieType = z.infer<typeof AxieTypeEnum>;
 
 // Parts
-export const AxiePartEnum = z.enum([
+export const AxiePartTypeEnum = z.enum([
   "Eyes",
   "Mouth",
   "Ears",
@@ -29,6 +31,17 @@ export const AxiePartEnum = z.enum([
   "Back",
   "Tail",
 ]);
+export type AxiePartType = z.infer<typeof AxiePartTypeEnum>;
+// Parts
+export const AxiePartEnum = z.enum([
+  "eyes",
+  "mouth",
+  "ears",
+  "horn",
+  "back",
+  "tail",
+]);
+
 export type AxiePart = z.infer<typeof AxiePartEnum>;
 
 const partsValidator = z.object({
@@ -50,7 +63,7 @@ const cardValidator = z.object({
   class: AxieClassEnum,
   partName: z.string().min(1),
   cardName: z.string().min(1),
-  partType: AxiePartEnum,
+  partType: AxiePartTypeEnum,
   cardImage: z.string().url(),
   specialGenes: z.union([
     z.literal("japan"),
@@ -153,7 +166,13 @@ const fightersValidator = z.tuple([
 ]);
 export type Fighter = z.infer<typeof fighterValidator>;
 export type Fighters = z.infer<typeof fightersValidator>;
-export type FighterWithParts = Fighter & { parts: AxieParts };
+export type FighterWithPartsAndItems = Omit<Fighter, "runes" | "charms"> & {
+  parts: AxieParts;
+  runes: Rune[];
+  charms: {
+    [key in AxiePart]: Charm | null;
+  };
+};
 
 // Battles
 export type winner = 0 | 1 | 2;

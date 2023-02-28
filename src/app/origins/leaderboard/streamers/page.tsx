@@ -1,6 +1,6 @@
 import Bottleneck from "bottleneck";
 import type { Battle, Battles, Leaderboard, User } from "lib/validators";
-import { getBattles, getLeaderBoard } from "lib/api";
+import { getBattles, getCharms, getLeaderBoard, getRunes } from "lib/api";
 import { createPlayer } from "lib/createPlayer";
 import {
   LEADERBOARD_PLAYER_BATTLES,
@@ -65,6 +65,11 @@ async function PlayerList({
     Promise.all(leaderboardPromise),
     Promise.all(usersBattlesPromises),
   ]);
+  // TODO: use parallel requests
+  const [{ _items: runes }, { _items: charms }] = await Promise.all([
+    getRunes(),
+    getCharms(),
+  ]);
 
   const userBattles = usersBattlesResponse.map((response) => {
     return response?.battles ?? [];
@@ -77,6 +82,8 @@ async function PlayerList({
       return createPlayer({
         battles: userBattles[index] as Battle[],
         user,
+        runes: runes.map((rune) => rune.item),
+        charms: charms.map((charm) => charm.item),
       });
     })
     .sort((a, b) => a.topRank - b.topRank);
