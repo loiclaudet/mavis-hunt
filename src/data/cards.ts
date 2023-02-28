@@ -8,7 +8,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Back",
       cardName: "Anemone",
-      cardImage: "aquatic-back-10.png",
+      cardImage: "aquatic-back-10-00.png",
       specialGenes: null,
     },
     {
@@ -17,7 +17,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Horn",
       cardName: "Anemone",
-      cardImage: "aquatic-horn-08.png",
+      cardImage: "aquatic-horn-08-00.png",
       specialGenes: null,
     },
     {
@@ -26,7 +26,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Eyes",
       cardName: "Baby",
-      cardImage: "aquatic-eyes-01.png",
+      cardImage: "aquatic-eyes-01-00.png",
       specialGenes: null,
     },
     {
@@ -35,7 +35,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Horn",
       cardName: "Babylonia",
-      cardImage: "aquatic-horn-02.png",
+      cardImage: "aquatic-horn-02-00.png",
       specialGenes: null,
     },
     {
@@ -44,7 +44,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Back",
       cardName: "Blue Moon",
-      cardImage: "aquatic-back-04.png",
+      cardImage: "aquatic-back-04-00.png",
       specialGenes: null,
     },
     {
@@ -53,7 +53,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Ears",
       cardName: "Bubblemaker",
-      cardImage: "aquatic-ears-06.png",
+      cardImage: "aquatic-ears-06-00.png",
       specialGenes: null,
     },
     {
@@ -62,7 +62,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Mouth",
       cardName: "Catfish",
-      cardImage: "aquatic-mouth-04.png",
+      cardImage: "aquatic-mouth-04-00.png",
       specialGenes: null,
     },
     {
@@ -71,7 +71,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Horn",
       cardName: "Clamshell",
-      cardImage: "aquatic-horn-06.png",
+      cardImage: "aquatic-horn-06-00.png",
       specialGenes: null,
     },
     {
@@ -80,7 +80,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Eyes",
       cardName: "Clear",
-      cardImage: "aquatic-eyes-04.png",
+      cardImage: "aquatic-eyes-04-00.png",
       specialGenes: null,
     },
     {
@@ -89,7 +89,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Eyes",
       cardName: "Gero",
-      cardImage: "aquatic-eyes-08.png",
+      cardImage: "aquatic-eyes-08-00.png",
       specialGenes: null,
     },
     {
@@ -98,7 +98,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Ears",
       cardName: "Gill",
-      cardImage: "aquatic-ears-10.png",
+      cardImage: "aquatic-ears-10-00.png",
       specialGenes: null,
     },
     {
@@ -107,7 +107,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Back",
       cardName: "Goldfish",
-      cardImage: "aquatic-back-06.png",
+      cardImage: "aquatic-back-06-00.png",
       specialGenes: null,
     },
     {
@@ -116,7 +116,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Back",
       cardName: "Hermit",
-      cardImage: "aquatic-back-02.png",
+      cardImage: "aquatic-back-02-00.png",
       specialGenes: null,
     },
     {
@@ -125,7 +125,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Ears",
       cardName: "Inkling",
-      cardImage: "aquatic-ears-08.png",
+      cardImage: "aquatic-ears-08-00.png",
       specialGenes: null,
     },
     {
@@ -134,7 +134,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Horn",
       cardName: "Jellytacle",
-      cardImage: "aquatic-horn-01.png",
+      cardImage: "aquatic-horn-01-00.png",
       specialGenes: null,
     },
     {
@@ -143,7 +143,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Tail",
       cardName: "Koi",
-      cardImage: "aquatic-tail-02.png",
+      cardImage: "aquatic-tail-02-00.png",
       specialGenes: null,
     },
     {
@@ -152,7 +152,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Mouth",
       cardName: "Lam",
-      cardImage: "aquatic-mouth-02.png",
+      cardImage: "aquatic-mouth-02-00.png",
       specialGenes: null,
     },
     {
@@ -161,7 +161,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Ears",
       cardName: "Little Crab",
-      cardImage: "aquatic-ears-01.png",
+      cardImage: "aquatic-ears-01-00.png",
       specialGenes: null,
     },
     {
@@ -170,7 +170,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Tail",
       cardName: "Navaga",
-      cardImage: "aquatic-tail-10.png",
+      cardImage: "aquatic-tail-10-00.png",
       specialGenes: null,
     },
     {
@@ -179,7 +179,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Tail",
       cardName: "Nimo",
-      cardImage: "aquatic-tail-04.png",
+      cardImage: "aquatic-tail-04-00.png",
       specialGenes: null,
     },
     {
@@ -188,7 +188,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Ears",
       cardName: "Nimo",
-      cardImage: "aquatic-ears-02.png",
+      cardImage: "aquatic-ears-02-00.png",
       specialGenes: null,
     },
     {
@@ -197,7 +197,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Horn",
       cardName: "Oranda",
-      cardImage: "aquatic-horn-10.png",
+      cardImage: "aquatic-horn-10-00.png",
       specialGenes: null,
     },
     {
@@ -206,7 +206,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Back",
       cardName: "Perch",
-      cardImage: "aquatic-back-12.png",
+      cardImage: "aquatic-back-12-00.png",
       specialGenes: null,
     },
     {
@@ -215,7 +215,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Mouth",
       cardName: "Piranha",
-      cardImage: "aquatic-mouth-10.png",
+      cardImage: "aquatic-mouth-10-00.png",
       specialGenes: null,
     },
     {
@@ -224,7 +224,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Tail",
       cardName: "Puff",
-      cardImage: "aquatic-tail-01.png",
+      cardImage: "aquatic-tail-01-00.png",
       specialGenes: null,
     },
     {
@@ -233,7 +233,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Tail",
       cardName: "Ranchu",
-      cardImage: "aquatic-tail-08.png",
+      cardImage: "aquatic-tail-08-00.png",
       specialGenes: null,
     },
     {
@@ -242,7 +242,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Mouth",
       cardName: "Risky Fish",
-      cardImage: "aquatic-mouth-08.png",
+      cardImage: "aquatic-mouth-08-00.png",
       specialGenes: null,
     },
     {
@@ -251,7 +251,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Ears",
       cardName: "Seaslug",
-      cardImage: "aquatic-ears-12.png",
+      cardImage: "aquatic-ears-12-00.png",
       specialGenes: null,
     },
     {
@@ -260,7 +260,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Horn",
       cardName: "Shoal Star",
-      cardImage: "aquatic-horn-12.png",
+      cardImage: "aquatic-horn-12-00.png",
       specialGenes: null,
     },
     {
@@ -269,7 +269,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Tail",
       cardName: "Shrimp",
-      cardImage: "aquatic-tail-12.png",
+      cardImage: "aquatic-tail-12-00.png",
       specialGenes: null,
     },
     {
@@ -278,7 +278,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Eyes",
       cardName: "Sleepless",
-      cardImage: "aquatic-eyes-02.png",
+      cardImage: "aquatic-eyes-02-00.png",
       specialGenes: null,
     },
     {
@@ -287,7 +287,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Back",
       cardName: "Sponge",
-      cardImage: "aquatic-back-08.png",
+      cardImage: "aquatic-back-08-00.png",
       specialGenes: null,
     },
     {
@@ -296,7 +296,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Tail",
       cardName: "Tadpole",
-      cardImage: "aquatic-tail-06.png",
+      cardImage: "aquatic-tail-06-00.png",
       specialGenes: null,
     },
     {
@@ -305,7 +305,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Horn",
       cardName: "Teal Shell",
-      cardImage: "aquatic-horn-04.png",
+      cardImage: "aquatic-horn-04-00.png",
       specialGenes: null,
     },
     {
@@ -314,7 +314,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Eyes",
       cardName: "Telescope",
-      cardImage: "aquatic-eyes-10.png",
+      cardImage: "aquatic-eyes-10-00.png",
       specialGenes: null,
     },
     {
@@ -323,7 +323,7 @@ const cards: Cards = {
       class: "Aquatic",
       partType: "Ears",
       cardName: "Tiny Fan",
-      cardImage: "aquatic-ears-04.png",
+      cardImage: "aquatic-ears-04-00.png",
       specialGenes: null,
     },
     {
@@ -332,7 +332,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Horn",
       cardName: "Arco",
-      cardImage: "beast-horn-12.png",
+      cardImage: "beast-horn-12-00.png",
       specialGenes: null,
     },
     {
@@ -341,7 +341,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Mouth",
       cardName: "Axie Kiss",
-      cardImage: "beast-mouth-08.png",
+      cardImage: "beast-mouth-08-00.png",
       specialGenes: null,
     },
     {
@@ -350,7 +350,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Ears",
       cardName: "Belieber",
-      cardImage: "beast-ears-12.png",
+      cardImage: "beast-ears-12-00.png",
       specialGenes: null,
     },
     {
@@ -359,7 +359,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Tail",
       cardName: "Buba Brush",
-      cardImage: "beast-tail-03.png",
+      cardImage: "beast-tail-03-00.png",
       specialGenes: null,
     },
     {
@@ -368,7 +368,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Eyes",
       cardName: "Chubby",
-      cardImage: "beast-eyes-10.png",
+      cardImage: "beast-eyes-10-00.png",
       specialGenes: null,
     },
     {
@@ -377,7 +377,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Mouth",
       cardName: "Confident",
-      cardImage: "beast-mouth-10.png",
+      cardImage: "beast-mouth-10-00.png",
       specialGenes: null,
     },
     {
@@ -386,7 +386,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Tail",
       cardName: "Cottontail",
-      cardImage: "beast-tail-02.png",
+      cardImage: "beast-tail-02-00.png",
       specialGenes: null,
     },
     {
@@ -395,7 +395,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Mouth",
       cardName: "Cub",
-      cardImage: "beast-mouth-05.png",
+      cardImage: "beast-mouth-05-00.png",
       specialGenes: null,
     },
     {
@@ -404,7 +404,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Horn",
       cardName: "Dual Blade",
-      cardImage: "beast-horn-10.png",
+      cardImage: "beast-horn-10-00.png",
       specialGenes: null,
     },
     {
@@ -413,7 +413,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Ears",
       cardName: "Foxy",
-      cardImage: "beast-ears-03.png",
+      cardImage: "beast-ears-03-00.png",
       specialGenes: null,
     },
     {
@@ -422,7 +422,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Mouth",
       cardName: "Foxy",
-      cardImage: "beast-mouth-01.png",
+      cardImage: "beast-mouth-01-00.png",
       specialGenes: null,
     },
     {
@@ -431,7 +431,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Back",
       cardName: "Furball",
-      cardImage: "beast-back-12.png",
+      cardImage: "beast-back-12-00.png",
       specialGenes: null,
     },
     {
@@ -440,7 +440,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Tail",
       cardName: "Gerbil",
-      cardImage: "beast-tail-12.png",
+      cardImage: "beast-tail-12-00.png",
       specialGenes: null,
     },
     {
@@ -449,7 +449,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Mouth",
       cardName: "Goda",
-      cardImage: "beast-mouth-04.png",
+      cardImage: "beast-mouth-04-00.png",
       specialGenes: null,
     },
     {
@@ -458,7 +458,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Tail",
       cardName: "Hare",
-      cardImage: "beast-tail-08.png",
+      cardImage: "beast-tail-08-00.png",
       specialGenes: null,
     },
     {
@@ -467,7 +467,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Back",
       cardName: "Hero",
-      cardImage: "beast-back-04.png",
+      cardImage: "beast-back-04-00.png",
       specialGenes: null,
     },
     {
@@ -476,7 +476,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Horn",
       cardName: "Imp",
-      cardImage: "beast-horn-04.png",
+      cardImage: "beast-horn-04-00.png",
       specialGenes: null,
     },
     {
@@ -485,7 +485,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Ears",
       cardName: "Innocent Lamb",
-      cardImage: "beast-ears-06.png",
+      cardImage: "beast-ears-06-00.png",
       specialGenes: null,
     },
     {
@@ -494,7 +494,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Back",
       cardName: "Jaguar",
-      cardImage: "beast-back-06.png",
+      cardImage: "beast-back-06-00.png",
       specialGenes: null,
     },
     {
@@ -503,7 +503,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Horn",
       cardName: "Little Branch",
-      cardImage: "beast-horn-02.png",
+      cardImage: "beast-horn-02-00.png",
       specialGenes: null,
     },
     {
@@ -512,7 +512,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Eyes",
       cardName: "Little Peas",
-      cardImage: "beast-eyes-04.png",
+      cardImage: "beast-eyes-04-00.png",
       specialGenes: null,
     },
     {
@@ -521,7 +521,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Horn",
       cardName: "Merry",
-      cardImage: "beast-horn-06.png",
+      cardImage: "beast-horn-06-00.png",
       specialGenes: null,
     },
     {
@@ -530,7 +530,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Mouth",
       cardName: "Nut Cracker",
-      cardImage: "beast-mouth-02.png",
+      cardImage: "beast-mouth-02-00.png",
       specialGenes: null,
     },
     {
@@ -539,7 +539,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Tail",
       cardName: "Nut Cracker",
-      cardImage: "beast-tail-10.png",
+      cardImage: "beast-tail-10-00.png",
       specialGenes: null,
     },
     {
@@ -548,7 +548,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Ears",
       cardName: "Nut Cracker",
-      cardImage: "beast-ears-04.png",
+      cardImage: "beast-ears-04-00.png",
       specialGenes: null,
     },
     {
@@ -557,7 +557,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Ears",
       cardName: "Nyan",
-      cardImage: "beast-ears-02.png",
+      cardImage: "beast-ears-02-00.png",
       specialGenes: null,
     },
     {
@@ -566,7 +566,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Horn",
       cardName: "Pocky",
-      cardImage: "beast-horn-08.png",
+      cardImage: "beast-horn-08-00.png",
       specialGenes: null,
     },
     {
@@ -575,7 +575,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Mouth",
       cardName: "Puff",
-      cardImage: "beast-mouth-03.png",
+      cardImage: "beast-mouth-03-00.png",
       specialGenes: null,
     },
     {
@@ -584,7 +584,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Ears",
       cardName: "Puppy",
-      cardImage: "beast-ears-10.png",
+      cardImage: "beast-ears-10-00.png",
       specialGenes: null,
     },
     {
@@ -593,7 +593,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Eyes",
       cardName: "Puppy",
-      cardImage: "beast-eyes-08.png",
+      cardImage: "beast-eyes-08-00.png",
       specialGenes: null,
     },
     {
@@ -602,7 +602,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Tail",
       cardName: "Rice",
-      cardImage: "beast-tail-04.png",
+      cardImage: "beast-tail-04-00.png",
       specialGenes: null,
     },
     {
@@ -611,7 +611,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Back",
       cardName: "Risky Beast",
-      cardImage: "beast-back-08.png",
+      cardImage: "beast-back-08-00.png",
       specialGenes: null,
     },
     {
@@ -620,7 +620,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Back",
       cardName: "Ronin",
-      cardImage: "beast-back-02.png",
+      cardImage: "beast-back-02-00.png",
       specialGenes: null,
     },
     {
@@ -629,7 +629,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Tail",
       cardName: "Shiba",
-      cardImage: "beast-tail-06.png",
+      cardImage: "beast-tail-06-00.png",
       specialGenes: null,
     },
     {
@@ -638,7 +638,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Eyes",
       cardName: "Sparky",
-      cardImage: "beast-eyes-03.png",
+      cardImage: "beast-eyes-03-00.png",
       specialGenes: null,
     },
     {
@@ -647,7 +647,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Back",
       cardName: "Timber",
-      cardImage: "beast-back-10.png",
+      cardImage: "beast-back-10-00.png",
       specialGenes: null,
     },
     {
@@ -656,7 +656,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Eyes",
       cardName: "Zeal",
-      cardImage: "beast-eyes-02.png",
+      cardImage: "beast-eyes-02-00.png",
       specialGenes: null,
     },
     {
@@ -665,7 +665,7 @@ const cards: Cards = {
       class: "Beast",
       partType: "Ears",
       cardName: "Zen",
-      cardImage: "beast-ears-08.png",
+      cardImage: "beast-ears-08-00.png",
       specialGenes: null,
     },
     {
@@ -674,7 +674,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Back",
       cardName: "Balloon",
-      cardImage: "bird-back-02.png",
+      cardImage: "bird-back-02-00.png",
       specialGenes: null,
     },
     {
@@ -683,7 +683,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Tail",
       cardName: "Cloud",
-      cardImage: "bird-tail-08.png",
+      cardImage: "bird-tail-08-00.png",
       specialGenes: null,
     },
     {
@@ -692,7 +692,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Horn",
       cardName: "Cuckoo",
-      cardImage: "bird-horn-04.png",
+      cardImage: "bird-horn-04-00.png",
       specialGenes: null,
     },
     {
@@ -701,7 +701,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Back",
       cardName: "Cupid",
-      cardImage: "bird-back-04.png",
+      cardImage: "bird-back-04-00.png",
       specialGenes: null,
     },
     {
@@ -710,7 +710,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Ears",
       cardName: "Curly",
-      cardImage: "bird-ears-10.png",
+      cardImage: "bird-ears-10-00.png",
       specialGenes: null,
     },
     {
@@ -719,7 +719,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Mouth",
       cardName: "Doubletalk",
-      cardImage: "bird-mouth-02.png",
+      cardImage: "bird-mouth-02-00.png",
       specialGenes: null,
     },
     {
@@ -728,7 +728,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Ears",
       cardName: "Early Bird",
-      cardImage: "bird-ears-04.png",
+      cardImage: "bird-ears-04-00.png",
       specialGenes: null,
     },
     {
@@ -737,7 +737,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Horn",
       cardName: "Eggshell",
-      cardImage: "bird-horn-02.png",
+      cardImage: "bird-horn-02-00.png",
       specialGenes: null,
     },
     {
@@ -746,7 +746,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Tail",
       cardName: "Feather Fan",
-      cardImage: "bird-tail-04.png",
+      cardImage: "bird-tail-04-00.png",
       specialGenes: null,
     },
     {
@@ -755,7 +755,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Horn",
       cardName: "Feather Spear",
-      cardImage: "bird-horn-12.png",
+      cardImage: "bird-horn-12-00.png",
       specialGenes: null,
     },
     {
@@ -764,7 +764,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Tail",
       cardName: "Granma's Fan",
-      cardImage: "bird-tail-10.png",
+      cardImage: "bird-tail-10-00.png",
       specialGenes: null,
     },
     {
@@ -773,7 +773,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Mouth",
       cardName: "Hungry Bird",
-      cardImage: "bird-mouth-08.png",
+      cardImage: "bird-mouth-08-00.png",
       specialGenes: null,
     },
     {
@@ -782,7 +782,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Horn",
       cardName: "Kestrel",
-      cardImage: "bird-horn-08.png",
+      cardImage: "bird-horn-08-00.png",
       specialGenes: null,
     },
     {
@@ -791,7 +791,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Back",
       cardName: "Kingfisher",
-      cardImage: "bird-back-10.png",
+      cardImage: "bird-back-10-00.png",
       specialGenes: null,
     },
     {
@@ -800,7 +800,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Mouth",
       cardName: "Little Owl",
-      cardImage: "bird-mouth-10.png",
+      cardImage: "bird-mouth-10-00.png",
       specialGenes: null,
     },
     {
@@ -809,7 +809,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Eyes",
       cardName: "Little Owl",
-      cardImage: "bird-eyes-08.png",
+      cardImage: "bird-eyes-08-00.png",
       specialGenes: null,
     },
     {
@@ -818,7 +818,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Eyes",
       cardName: "Lucas",
-      cardImage: "bird-eyes-04.png",
+      cardImage: "bird-eyes-04-00.png",
       specialGenes: null,
     },
     {
@@ -827,7 +827,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Eyes",
       cardName: "Mavis",
-      cardImage: "bird-eyes-02.png",
+      cardImage: "bird-eyes-02-00.png",
       specialGenes: null,
     },
     {
@@ -836,7 +836,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Ears",
       cardName: "Little Owl",
-      cardImage: "bird-ears-06.png",
+      cardImage: "bird-ears-06-00.png",
       specialGenes: null,
     },
     {
@@ -845,7 +845,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Mouth",
       cardName: "Peace Maker",
-      cardImage: "bird-mouth-04.png",
+      cardImage: "bird-mouth-04-00.png",
       specialGenes: null,
     },
     {
@@ -854,7 +854,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Ears",
       cardName: "Peace Maker",
-      cardImage: "bird-ears-08.png",
+      cardImage: "bird-ears-08-00.png",
       specialGenes: null,
     },
     {
@@ -863,7 +863,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Back",
       cardName: "Pigeon Post",
-      cardImage: "bird-back-08.png",
+      cardImage: "bird-back-08-00.png",
       specialGenes: null,
     },
     {
@@ -872,7 +872,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Ears",
       cardName: "Pink Cheek",
-      cardImage: "bird-ears-02.png",
+      cardImage: "bird-ears-02-00.png",
       specialGenes: null,
     },
     {
@@ -881,7 +881,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Tail",
       cardName: "Post Fight",
-      cardImage: "bird-tail-12.png",
+      cardImage: "bird-tail-12-00.png",
       specialGenes: null,
     },
     {
@@ -890,7 +890,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Back",
       cardName: "Raven",
-      cardImage: "bird-back-06.png",
+      cardImage: "bird-back-06-00.png",
       specialGenes: null,
     },
     {
@@ -899,7 +899,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Ears",
       cardName: "Risky Bird",
-      cardImage: "bird-ears-12.png",
+      cardImage: "bird-ears-12-00.png",
       specialGenes: null,
     },
     {
@@ -908,7 +908,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Eyes",
       cardName: "Robin",
-      cardImage: "bird-eyes-10.png",
+      cardImage: "bird-eyes-10-00.png",
       specialGenes: null,
     },
     {
@@ -917,7 +917,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Tail",
       cardName: "Swallow",
-      cardImage: "bird-tail-02.png",
+      cardImage: "bird-tail-02-00.png",
       specialGenes: null,
     },
     {
@@ -926,7 +926,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Tail",
       cardName: "The Last One",
-      cardImage: "bird-tail-06.png",
+      cardImage: "bird-tail-06-00.png",
       specialGenes: null,
     },
     {
@@ -935,7 +935,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Back",
       cardName: "Tri Feather",
-      cardImage: "bird-back-12.png",
+      cardImage: "bird-back-12-00.png",
       specialGenes: null,
     },
     {
@@ -944,7 +944,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Horn",
       cardName: "Trump",
-      cardImage: "bird-horn-06.png",
+      cardImage: "bird-horn-06-00.png",
       specialGenes: null,
     },
     {
@@ -953,7 +953,7 @@ const cards: Cards = {
       class: "Bird",
       partType: "Horn",
       cardName: "Wing Horn",
-      cardImage: "bird-horn-10.png",
+      cardImage: "bird-horn-10-00.png",
       specialGenes: null,
     },
     {
@@ -962,7 +962,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Tail",
       cardName: "Ant",
-      cardImage: "bug-tail-02.png",
+      cardImage: "bug-tail-02-00.png",
       specialGenes: null,
     },
     {
@@ -971,7 +971,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Horn",
       cardName: "Antenna",
-      cardImage: "bug-horn-04.png",
+      cardImage: "bug-horn-04-00.png",
       specialGenes: null,
     },
     {
@@ -980,7 +980,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Ears",
       cardName: "Beetle Spike",
-      cardImage: "bug-ears-04.png",
+      cardImage: "bug-ears-04-00.png",
       specialGenes: null,
     },
     {
@@ -989,7 +989,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Eyes",
       cardName: "Bookworm",
-      cardImage: "bug-eyes-02.png",
+      cardImage: "bug-eyes-02-00.png",
       specialGenes: null,
     },
     {
@@ -998,7 +998,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Back",
       cardName: "Buzz Buzz",
-      cardImage: "bug-back-06.png",
+      cardImage: "bug-back-06-00.png",
       specialGenes: null,
     },
     {
@@ -1007,7 +1007,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Horn",
       cardName: "Caterpillars",
-      cardImage: "bug-horn-06.png",
+      cardImage: "bug-horn-06-00.png",
       specialGenes: null,
     },
     {
@@ -1016,7 +1016,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Mouth",
       cardName: "Cute Bunny",
-      cardImage: "bug-mouth-08.png",
+      cardImage: "bug-mouth-08-00.png",
       specialGenes: null,
     },
     {
@@ -1025,7 +1025,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Ears",
       cardName: "Ear Breathing",
-      cardImage: "bug-ears-06.png",
+      cardImage: "bug-ears-06-00.png",
       specialGenes: null,
     },
     {
@@ -1034,7 +1034,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Ears",
       cardName: "Earwing",
-      cardImage: "bug-ears-12.png",
+      cardImage: "bug-ears-12-00.png",
       specialGenes: null,
     },
     {
@@ -1043,7 +1043,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Tail",
       cardName: "Fish Snack",
-      cardImage: "bug-tail-06.png",
+      cardImage: "bug-tail-06-00.png",
       specialGenes: null,
     },
     {
@@ -1052,7 +1052,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Back",
       cardName: "Garish Worm",
-      cardImage: "bug-back-04.png",
+      cardImage: "bug-back-04-00.png",
       specialGenes: null,
     },
     {
@@ -1061,7 +1061,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Tail",
       cardName: "Gravel Ant",
-      cardImage: "bug-tail-08.png",
+      cardImage: "bug-tail-08-00.png",
       specialGenes: null,
     },
     {
@@ -1070,7 +1070,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Eyes",
       cardName: "Kotaro",
-      cardImage: "bug-eyes-10.png",
+      cardImage: "bug-eyes-10-00.png",
       specialGenes: null,
     },
     {
@@ -1079,7 +1079,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Horn",
       cardName: "Lagging",
-      cardImage: "bug-horn-02.png",
+      cardImage: "bug-horn-02-00.png",
       specialGenes: null,
     },
     {
@@ -1088,7 +1088,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Ears",
       cardName: "Larva",
-      cardImage: "bug-ears-02.png",
+      cardImage: "bug-ears-02-00.png",
       specialGenes: null,
     },
     {
@@ -1097,7 +1097,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Horn",
       cardName: "Leaf Bug",
-      cardImage: "bug-horn-12.png",
+      cardImage: "bug-horn-12-00.png",
       specialGenes: null,
     },
     {
@@ -1106,7 +1106,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Ears",
       cardName: "Leaf Bug",
-      cardImage: "bug-ears-08.png",
+      cardImage: "bug-ears-08-00.png",
       specialGenes: null,
     },
     {
@@ -1115,7 +1115,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Mouth",
       cardName: "Mosquito",
-      cardImage: "bug-mouth-02.png",
+      cardImage: "bug-mouth-02-00.png",
       specialGenes: null,
     },
     {
@@ -1124,7 +1124,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Eyes",
       cardName: "Neo",
-      cardImage: "bug-eyes-04.png",
+      cardImage: "bug-eyes-04-00.png",
       specialGenes: null,
     },
     {
@@ -1133,7 +1133,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Eyes",
       cardName: "Nerdy",
-      cardImage: "bug-eyes-08.png",
+      cardImage: "bug-eyes-08-00.png",
       specialGenes: null,
     },
     {
@@ -1142,7 +1142,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Horn",
       cardName: "Parasite",
-      cardImage: "bug-horn-10.png",
+      cardImage: "bug-horn-10-00.png",
       specialGenes: null,
     },
     {
@@ -1151,7 +1151,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Mouth",
       cardName: "Pincer",
-      cardImage: "bug-mouth-04.png",
+      cardImage: "bug-mouth-04-00.png",
       specialGenes: null,
     },
     {
@@ -1160,7 +1160,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Horn",
       cardName: "Pliers",
-      cardImage: "bug-horn-08.png",
+      cardImage: "bug-horn-08-00.png",
       specialGenes: null,
     },
     {
@@ -1169,7 +1169,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Tail",
       cardName: "Pupae",
-      cardImage: "bug-tail-10.png",
+      cardImage: "bug-tail-10-00.png",
       specialGenes: null,
     },
     {
@@ -1178,7 +1178,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Back",
       cardName: "Sandal",
-      cardImage: "bug-back-08.png",
+      cardImage: "bug-back-08-00.png",
       specialGenes: null,
     },
     {
@@ -1187,7 +1187,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Back",
       cardName: "Scarab",
-      cardImage: "bug-back-10.png",
+      cardImage: "bug-back-10-00.png",
       specialGenes: null,
     },
     {
@@ -1196,7 +1196,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Back",
       cardName: "Snail Shell",
-      cardImage: "bug-back-02.png",
+      cardImage: "bug-back-02-00.png",
       specialGenes: null,
     },
     {
@@ -1205,7 +1205,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Back",
       cardName: "Spiky Wing",
-      cardImage: "bug-back-12.png",
+      cardImage: "bug-back-12-00.png",
       specialGenes: null,
     },
     {
@@ -1214,7 +1214,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Mouth",
       cardName: "Square Teeth",
-      cardImage: "bug-mouth-10.png",
+      cardImage: "bug-mouth-10-00.png",
       specialGenes: null,
     },
     {
@@ -1223,7 +1223,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Ears",
       cardName: "Tassels",
-      cardImage: "bug-ears-10.png",
+      cardImage: "bug-ears-10-00.png",
       specialGenes: null,
     },
     {
@@ -1232,7 +1232,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Tail",
       cardName: "Thorny Caterpillar",
-      cardImage: "bug-tail-12.png",
+      cardImage: "bug-tail-12-00.png",
       specialGenes: null,
     },
     {
@@ -1241,7 +1241,7 @@ const cards: Cards = {
       class: "Bug",
       partType: "Tail",
       cardName: "Twin Tail",
-      cardImage: "bug-tail-04.png",
+      cardImage: "bug-tail-04-00.png",
       specialGenes: null,
     },
     {
@@ -1250,7 +1250,7 @@ const cards: Cards = {
       class: "Dawn",
       partType: "Tail",
       cardName: "Aegis Talisman",
-      cardImage: "dawn-tail-03.png",
+      cardImage: "dawn-tail-03-00.png",
       specialGenes: null,
     },
     {
@@ -1259,7 +1259,7 @@ const cards: Cards = {
       class: "Dawn",
       partType: "Back",
       cardName: "Magic Sack",
-      cardImage: "dawn-back-03.png",
+      cardImage: "dawn-back-03-00.png",
       specialGenes: null,
     },
     {
@@ -1268,7 +1268,7 @@ const cards: Cards = {
       class: "Mech",
       partType: "Horn",
       cardName: "Rusty Helm",
-      cardImage: "mech-horn-03.png",
+      cardImage: "mech-horn-03-00.png",
       specialGenes: null,
     },
     {
@@ -1277,7 +1277,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Horn",
       cardName: "Bamboo Shoot",
-      cardImage: "plant-horn-02.png",
+      cardImage: "plant-horn-02-00.png",
       specialGenes: null,
     },
     {
@@ -1286,7 +1286,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Horn",
       cardName: "Beech",
-      cardImage: "plant-horn-04.png",
+      cardImage: "plant-horn-04-00.png",
       specialGenes: null,
     },
     {
@@ -1295,7 +1295,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Mouth",
       cardName: "Beetroot",
-      cardImage: "plant-mouth-01.png",
+      cardImage: "plant-mouth-01-00.png",
       specialGenes: null,
     },
     {
@@ -1304,7 +1304,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Back",
       cardName: "Bidens",
-      cardImage: "plant-back-06.png",
+      cardImage: "plant-back-06-00.png",
       specialGenes: null,
     },
     {
@@ -1313,7 +1313,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Eyes",
       cardName: "Blossom",
-      cardImage: "plant-eyes-10.png",
+      cardImage: "plant-eyes-10-00.png",
       specialGenes: null,
     },
     {
@@ -1322,7 +1322,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Horn",
       cardName: "Cactus",
-      cardImage: "plant-horn-10.png",
+      cardImage: "plant-horn-10-00.png",
       specialGenes: null,
     },
     {
@@ -1331,7 +1331,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Tail",
       cardName: "Carrot",
-      cardImage: "plant-tail-02.png",
+      cardImage: "plant-tail-02-00.png",
       specialGenes: null,
     },
     {
@@ -1340,7 +1340,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Tail",
       cardName: "Cattail",
-      cardImage: "plant-tail-04.png",
+      cardImage: "plant-tail-04-00.png",
       specialGenes: null,
     },
     {
@@ -1349,7 +1349,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Ears",
       cardName: "Clover",
-      cardImage: "plant-ears-04.png",
+      cardImage: "plant-ears-04-00.png",
       specialGenes: null,
     },
     {
@@ -1358,7 +1358,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Eyes",
       cardName: "Confusion",
-      cardImage: "plant-eyes-04.png",
+      cardImage: "plant-eyes-04-00.png",
       specialGenes: null,
     },
     {
@@ -1367,7 +1367,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Eyes",
       cardName: "Cucumber Slice",
-      cardImage: "plant-eyes-08.png",
+      cardImage: "plant-eyes-08-00.png",
       specialGenes: null,
     },
     {
@@ -1376,7 +1376,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Back",
       cardName: "Forest Hero",
-      cardImage: "plant-back-03.png",
+      cardImage: "plant-back-03-00.png",
       specialGenes: null,
     },
     {
@@ -1385,7 +1385,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Tail",
       cardName: "Hatsune",
-      cardImage: "plant-tail-06.png",
+      cardImage: "plant-tail-06-00.png",
       specialGenes: null,
     },
     {
@@ -1394,7 +1394,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Mouth",
       cardName: "Herbivore",
-      cardImage: "plant-mouth-08.png",
+      cardImage: "plant-mouth-08-00.png",
       specialGenes: null,
     },
     {
@@ -1403,7 +1403,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Ears",
       cardName: "Hollow",
-      cardImage: "plant-ears-10.png",
+      cardImage: "plant-ears-10-00.png",
       specialGenes: null,
     },
     {
@@ -1412,7 +1412,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Tail",
       cardName: "Hot Butt",
-      cardImage: "plant-tail-12.png",
+      cardImage: "plant-tail-12-00.png",
       specialGenes: null,
     },
     {
@@ -1421,7 +1421,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Ears",
       cardName: "Leafy",
-      cardImage: "plant-ears-02.png",
+      cardImage: "plant-ears-02-00.png",
       specialGenes: null,
     },
     {
@@ -1430,7 +1430,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Ears",
       cardName: "Lotus",
-      cardImage: "plant-ears-12.png",
+      cardImage: "plant-ears-12-00.png",
       specialGenes: null,
     },
     {
@@ -1439,7 +1439,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Horn",
       cardName: "Mandarine",
-      cardImage: "plant-horn-03.png",
+      cardImage: "plant-horn-03-00.png",
       specialGenes: null,
     },
     {
@@ -1448,7 +1448,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Back",
       cardName: "Mint",
-      cardImage: "plant-back-10.png",
+      cardImage: "plant-back-10-00.png",
       specialGenes: null,
     },
     {
@@ -1457,7 +1457,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Eyes",
       cardName: "Papi",
-      cardImage: "plant-eyes-02.png",
+      cardImage: "plant-eyes-02-00.png",
       specialGenes: null,
     },
     {
@@ -1466,7 +1466,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Horn",
       cardName: "Persimmon",
-      cardImage: "plant-horn-01.png",
+      cardImage: "plant-horn-01-00.png",
       specialGenes: null,
     },
     {
@@ -1475,7 +1475,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Tail",
       cardName: "Potato Leaf",
-      cardImage: "plant-tail-10.png",
+      cardImage: "plant-tail-10-00.png",
       specialGenes: null,
     },
     {
@@ -1484,7 +1484,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Back",
       cardName: "Pumpkin",
-      cardImage: "plant-back-12.png",
+      cardImage: "plant-back-12-00.png",
       specialGenes: null,
     },
     {
@@ -1493,7 +1493,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Eyes",
       cardName: "Risky Trunk",
-      cardImage: "plant-eyes-01.png",
+      cardImage: "plant-eyes-01-00.png",
       specialGenes: null,
     },
     {
@@ -1502,7 +1502,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Ears",
       cardName: "Rosa",
-      cardImage: "plant-ears-06.png",
+      cardImage: "plant-ears-06-00.png",
       specialGenes: null,
     },
     {
@@ -1511,7 +1511,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Horn",
       cardName: "Rose Bud",
-      cardImage: "plant-horn-06.png",
+      cardImage: "plant-horn-06-00.png",
       specialGenes: null,
     },
     {
@@ -1520,7 +1520,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Ears",
       cardName: "Sakura",
-      cardImage: "plant-ears-08.png",
+      cardImage: "plant-ears-08-00.png",
       specialGenes: null,
     },
     {
@@ -1529,7 +1529,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Mouth",
       cardName: "Serious",
-      cardImage: "plant-mouth-02.png",
+      cardImage: "plant-mouth-02-00.png",
       specialGenes: null,
     },
     {
@@ -1538,7 +1538,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Back",
       cardName: "Shiitake",
-      cardImage: "plant-back-04.png",
+      cardImage: "plant-back-04-00.png",
       specialGenes: null,
     },
     {
@@ -1547,7 +1547,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Mouth",
       cardName: "Silence Whisper",
-      cardImage: "plant-mouth-10.png",
+      cardImage: "plant-mouth-10-00.png",
       specialGenes: null,
     },
     {
@@ -1556,7 +1556,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Tail",
       cardName: "Sprout",
-      cardImage: "plant-tail-01.png",
+      cardImage: "plant-tail-01-00.png",
       specialGenes: null,
     },
     {
@@ -1565,7 +1565,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Horn",
       cardName: "Strawberry Shortcake",
-      cardImage: "plant-horn-08.png",
+      cardImage: "plant-horn-08-00.png",
       specialGenes: null,
     },
     {
@@ -1574,7 +1574,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Back",
       cardName: "Succulent",
-      cardImage: "plant-back-01.png",
+      cardImage: "plant-back-01-00.png",
       specialGenes: null,
     },
     {
@@ -1583,7 +1583,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Back",
       cardName: "Turnip",
-      cardImage: "plant-back-02.png",
+      cardImage: "plant-back-02-00.png",
       specialGenes: null,
     },
     {
@@ -1592,7 +1592,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Back",
       cardName: "Watering Can",
-      cardImage: "plant-back-08.png",
+      cardImage: "plant-back-08-00.png",
       specialGenes: null,
     },
     {
@@ -1601,7 +1601,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Horn",
       cardName: "Watermelon",
-      cardImage: "plant-horn-12.png",
+      cardImage: "plant-horn-12-00.png",
       specialGenes: null,
     },
     {
@@ -1610,7 +1610,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Tail",
       cardName: "Yam",
-      cardImage: "plant-tail-08.png",
+      cardImage: "plant-tail-08-00.png",
       specialGenes: null,
     },
     {
@@ -1619,7 +1619,7 @@ const cards: Cards = {
       class: "Plant",
       partType: "Mouth",
       cardName: "Zigzag",
-      cardImage: "plant-mouth-04.png",
+      cardImage: "plant-mouth-04-00.png",
       specialGenes: null,
     },
     {
@@ -1628,7 +1628,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Back",
       cardName: "Bone Sail",
-      cardImage: "reptile-back-02.png",
+      cardImage: "reptile-back-02-00.png",
       specialGenes: null,
     },
     {
@@ -1637,7 +1637,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Horn",
       cardName: "Bumpy",
-      cardImage: "reptile-horn-12.png",
+      cardImage: "reptile-horn-12-00.png",
       specialGenes: null,
     },
     {
@@ -1646,7 +1646,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Horn",
       cardName: "Cerastes",
-      cardImage: "reptile-horn-06.png",
+      cardImage: "reptile-horn-06-00.png",
       specialGenes: null,
     },
     {
@@ -1655,7 +1655,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Back",
       cardName: "Croc",
-      cardImage: "reptile-back-12.png",
+      cardImage: "reptile-back-12-00.png",
       specialGenes: null,
     },
     {
@@ -1664,7 +1664,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Ears",
       cardName: "Curved Spine",
-      cardImage: "reptile-ears-06.png",
+      cardImage: "reptile-ears-06-00.png",
       specialGenes: null,
     },
     {
@@ -1673,7 +1673,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Ears",
       cardName: "Friezard",
-      cardImage: "reptile-ears-04.png",
+      cardImage: "reptile-ears-04-00.png",
       specialGenes: null,
     },
     {
@@ -1682,7 +1682,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Eyes",
       cardName: "Gecko",
-      cardImage: "reptile-eyes-02.png",
+      cardImage: "reptile-eyes-02-00.png",
       specialGenes: null,
     },
     {
@@ -1691,7 +1691,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Tail",
       cardName: "Gila",
-      cardImage: "reptile-tail-10.png",
+      cardImage: "reptile-tail-10-00.png",
       specialGenes: null,
     },
     {
@@ -1700,7 +1700,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Tail",
       cardName: "Grass Snake",
-      cardImage: "reptile-tail-12.png",
+      cardImage: "reptile-tail-12-00.png",
       specialGenes: null,
     },
     {
@@ -1709,7 +1709,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Back",
       cardName: "Green Thorns",
-      cardImage: "reptile-back-06.png",
+      cardImage: "reptile-back-06-00.png",
       specialGenes: null,
     },
     {
@@ -1718,7 +1718,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Ears",
       cardName: "Hidden Ears",
-      cardImage: "reptile-ears-03.png",
+      cardImage: "reptile-ears-03-00.png",
       specialGenes: null,
     },
     {
@@ -1727,7 +1727,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Tail",
       cardName: "Iguana",
-      cardImage: "reptile-tail-04.png",
+      cardImage: "reptile-tail-04-00.png",
       specialGenes: null,
     },
     {
@@ -1736,7 +1736,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Horn",
       cardName: "Incisor",
-      cardImage: "reptile-horn-10.png",
+      cardImage: "reptile-horn-10-00.png",
       specialGenes: null,
     },
     {
@@ -1745,7 +1745,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Back",
       cardName: "Indian Star",
-      cardImage: "reptile-back-08.png",
+      cardImage: "reptile-back-08-00.png",
       specialGenes: null,
     },
     {
@@ -1754,7 +1754,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Mouth",
       cardName: "Kotaro",
-      cardImage: "reptile-mouth-04.png",
+      cardImage: "reptile-mouth-04-00.png",
       specialGenes: null,
     },
     {
@@ -1763,7 +1763,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Ears",
       cardName: "Pogona",
-      cardImage: "reptile-ears-02.png",
+      cardImage: "reptile-ears-02-00.png",
       specialGenes: null,
     },
     {
@@ -1772,7 +1772,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Mouth",
       cardName: "Razor Bite",
-      cardImage: "reptile-mouth-08.png",
+      cardImage: "reptile-mouth-08-00.png",
       specialGenes: null,
     },
     {
@@ -1781,7 +1781,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Back",
       cardName: "Red Ear",
-      cardImage: "reptile-back-10.png",
+      cardImage: "reptile-back-10-00.png",
       specialGenes: null,
     },
     {
@@ -1790,7 +1790,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Horn",
       cardName: "Scaly Spear",
-      cardImage: "reptile-horn-04.png",
+      cardImage: "reptile-horn-04-00.png",
       specialGenes: null,
     },
     {
@@ -1799,7 +1799,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Horn",
       cardName: "Scaly Spoon",
-      cardImage: "reptile-horn-08.png",
+      cardImage: "reptile-horn-08-00.png",
       specialGenes: null,
     },
     {
@@ -1808,7 +1808,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Eyes",
       cardName: "Scar",
-      cardImage: "reptile-eyes-08.png",
+      cardImage: "reptile-eyes-08-00.png",
       specialGenes: null,
     },
     {
@@ -1817,7 +1817,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Ears",
       cardName: "Sidebarb",
-      cardImage: "reptile-ears-12.png",
+      cardImage: "reptile-ears-12-00.png",
       specialGenes: null,
     },
     {
@@ -1826,7 +1826,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Ears",
       cardName: "Small Frill",
-      cardImage: "reptile-ears-08.png",
+      cardImage: "reptile-ears-08-00.png",
       specialGenes: null,
     },
     {
@@ -1835,7 +1835,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Tail",
       cardName: "Snake Jar",
-      cardImage: "reptile-tail-08.png",
+      cardImage: "reptile-tail-08-00.png",
       specialGenes: null,
     },
     {
@@ -1844,7 +1844,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Ears",
       cardName: "Swirl",
-      cardImage: "reptile-ears-10.png",
+      cardImage: "reptile-ears-10-00.png",
       specialGenes: null,
     },
     {
@@ -1853,7 +1853,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Tail",
       cardName: "Tiny Dino",
-      cardImage: "reptile-tail-06.png",
+      cardImage: "reptile-tail-06-00.png",
       specialGenes: null,
     },
     {
@@ -1862,7 +1862,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Back",
       cardName: "Tiny Dino",
-      cardImage: "reptile-back-03.png",
+      cardImage: "reptile-back-03-00.png",
       specialGenes: null,
     },
     {
@@ -1871,7 +1871,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Mouth",
       cardName: "Tiny Turtle",
-      cardImage: "reptile-mouth-10.png",
+      cardImage: "reptile-mouth-10-00.png",
       specialGenes: null,
     },
     {
@@ -1880,7 +1880,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Mouth",
       cardName: "Toothless Bite",
-      cardImage: "reptile-mouth-02.png",
+      cardImage: "reptile-mouth-02-00.png",
       specialGenes: null,
     },
     {
@@ -1889,7 +1889,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Eyes",
       cardName: "Topaz",
-      cardImage: "reptile-eyes-10.png",
+      cardImage: "reptile-eyes-10-00.png",
       specialGenes: null,
     },
     {
@@ -1898,7 +1898,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Back",
       cardName: "Tri Spikes",
-      cardImage: "reptile-back-04.png",
+      cardImage: "reptile-back-04-00.png",
       specialGenes: null,
     },
     {
@@ -1907,7 +1907,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Eyes",
       cardName: "Tricky",
-      cardImage: "reptile-eyes-04.png",
+      cardImage: "reptile-eyes-04-00.png",
       specialGenes: null,
     },
     {
@@ -1916,7 +1916,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Horn",
       cardName: "Unko",
-      cardImage: "reptile-horn-02.png",
+      cardImage: "reptile-horn-02-00.png",
       specialGenes: null,
     },
     {
@@ -1925,7 +1925,7 @@ const cards: Cards = {
       class: "Reptile",
       partType: "Tail",
       cardName: "Wall Gecko",
-      cardImage: "reptile-tail-02.png",
+      cardImage: "reptile-tail-02-00.png",
       specialGenes: null,
     },
   ],
@@ -1937,7 +1937,7 @@ const cards: Cards = {
       partType: "Eyes",
       partName: "Yen",
       cardName: "Sleepless",
-      cardImage: "aquatic-eyes-02.png",
+      cardImage: "aquatic-eyes-02-00.png",
     },
     {
       partId: "mouth-kawaii",
@@ -1946,7 +1946,7 @@ const cards: Cards = {
       partType: "Mouth",
       partName: "Kawaii",
       cardName: "Cute Bunny",
-      cardImage: "bug-mouth-08.png",
+      cardImage: "bug-mouth-08-00.png",
     },
     {
       partId: "eyes-dokuganryu",
@@ -1955,7 +1955,7 @@ const cards: Cards = {
       partType: "Eyes",
       partName: "Dokuganryu",
       cardName: "Scar",
-      cardImage: "reptile-eyes-08.png",
+      cardImage: "reptile-eyes-08-00.png",
     },
     {
       partId: "mouth-dango",
@@ -1964,7 +1964,7 @@ const cards: Cards = {
       partType: "Mouth",
       partName: "Dango",
       cardName: "Tiny Turtle",
-      cardImage: "reptile-mouth-10.png",
+      cardImage: "reptile-mouth-10-00.png",
     },
     {
       partId: "horn-kendama",
@@ -1973,7 +1973,7 @@ const cards: Cards = {
       partType: "Horn",
       partName: "Kendama",
       cardName: "Imp",
-      cardImage: "beast-horn-04.png",
+      cardImage: "beast-horn-04-00.png",
     },
     {
       partId: "tail-maki",
@@ -1982,7 +1982,7 @@ const cards: Cards = {
       partType: "Tail",
       partName: "Maki",
       cardName: "Fish Snack",
-      cardImage: "bug-tail-06.png",
+      cardImage: "bug-tail-06-00.png",
     },
     {
       partId: "ears-mon",
@@ -1991,7 +1991,7 @@ const cards: Cards = {
       partType: "Ears",
       partName: "Mon",
       cardName: "Earwing",
-      cardImage: "bug-ears-12.png",
+      cardImage: "bug-ears-12-00.png",
     },
     {
       partId: "horn-umaibo",
@@ -2000,7 +2000,7 @@ const cards: Cards = {
       partType: "Horn",
       partName: "Umaibo",
       cardName: "Pocky",
-      cardImage: "beast-horn-08.png",
+      cardImage: "beast-horn-08-00.png",
     },
     {
       partId: "horn-yorishiro",
@@ -2009,7 +2009,7 @@ const cards: Cards = {
       partType: "Horn",
       partName: "Yorishiro",
       cardName: "Beech",
-      cardImage: "plant-horn-04.png",
+      cardImage: "plant-horn-04-00.png",
     },
     {
       partId: "tail-koinobori",
@@ -2018,7 +2018,7 @@ const cards: Cards = {
       partType: "Tail",
       partName: "Koinobori",
       cardName: "Koi",
-      cardImage: "aquatic-tail-02.png",
+      cardImage: "aquatic-tail-02-00.png",
     },
     {
       partId: "back-origami",
@@ -2027,7 +2027,7 @@ const cards: Cards = {
       partType: "Back",
       partName: "Origami",
       cardName: "Cupid",
-      cardImage: "bird-back-04.png",
+      cardImage: "bird-back-04-00.png",
     },
     {
       partId: "ears-maiko",
@@ -2036,7 +2036,7 @@ const cards: Cards = {
       partType: "Ears",
       partName: "Maiko",
       cardName: "Sakura",
-      cardImage: "plant-ears-08.png",
+      cardImage: "plant-ears-08-00.png",
     },
     {
       partId: "ears-karimata",
@@ -2045,7 +2045,7 @@ const cards: Cards = {
       partType: "Ears",
       partName: "Karimata",
       cardName: "Risky Bird",
-      cardImage: "bird-ears-12.png",
+      cardImage: "bird-ears-12-00.png",
     },
     {
       partId: "eyes-kabuki",
@@ -2054,7 +2054,7 @@ const cards: Cards = {
       partType: "Eyes",
       partName: "Kabuki",
       cardName: "Topaz",
-      cardImage: "reptile-eyes-10.png",
+      cardImage: "reptile-eyes-10-00.png",
     },
     {
       partId: "back-yakitori",
@@ -2063,7 +2063,7 @@ const cards: Cards = {
       partType: "Back",
       partName: "Yakitori",
       cardName: "Shiitake",
-      cardImage: "plant-back-04.png",
+      cardImage: "plant-back-04-00.png",
     },
     {
       partId: "back-hamaya",
@@ -2072,7 +2072,7 @@ const cards: Cards = {
       partType: "Back",
       partName: "Hamaya",
       cardName: "Risky Beast",
-      cardImage: "beast-back-08.png",
+      cardImage: "beast-back-08-00.png",
     },
     {
       partId: "mouth-geisha",
@@ -2081,7 +2081,7 @@ const cards: Cards = {
       partType: "Mouth",
       partName: "Geisha",
       cardName: "Piranha",
-      cardImage: "aquatic-mouth-10.png",
+      cardImage: "aquatic-mouth-10-00.png",
     },
     {
       partId: "tail-omatsuri",
@@ -2090,7 +2090,7 @@ const cards: Cards = {
       partType: "Tail",
       partName: "Omatsuri",
       cardName: "Granma's Fan",
-      cardImage: "bird-tail-10.png",
+      cardImage: "bird-tail-10-00.png",
     },
   ],
   mystic: [
@@ -2101,7 +2101,7 @@ const cards: Cards = {
       partType: "Tail",
       partName: "Namek Carrot",
       cardName: "Carrot",
-      cardImage: "plant-tail-02.png",
+      cardImage: "plant-tail-02-00.png",
     },
     {
       partId: "eyes-calico-zeal",
@@ -2110,7 +2110,7 @@ const cards: Cards = {
       partType: "Eyes",
       partName: "Calico Zeal",
       cardName: "Zeal",
-      cardImage: "beast-eyes-02.png",
+      cardImage: "beast-eyes-02-00.png",
     },
   ],
   "summer-2022": [
@@ -2121,7 +2121,7 @@ const cards: Cards = {
       cardName: "FurBall",
       specialGenes: "summer-2022",
       partType: "Back",
-      cardImage: "beast-back-12.png",
+      cardImage: "beast-back-12-00.png",
     },
     {
       partId: "back-beach-ball-shiny",
@@ -2130,7 +2130,7 @@ const cards: Cards = {
       cardName: "FurBall",
       specialGenes: "summer-2022",
       partType: "Back",
-      cardImage: "beast-back-12.png",
+      cardImage: "beast-back-12-00.png",
     },
     {
       partId: "back-turtle-buoy",
@@ -2139,7 +2139,7 @@ const cards: Cards = {
       cardName: "Red Ear",
       specialGenes: "summer-2022",
       partType: "Back",
-      cardImage: "reptile-back-10.png",
+      cardImage: "reptile-back-10-00.png",
     },
     {
       partId: "back-turtle-buoy-shiny",
@@ -2148,7 +2148,7 @@ const cards: Cards = {
       cardName: "Red Ear",
       specialGenes: "summer-2022",
       partType: "Back",
-      cardImage: "reptile-back-10.png",
+      cardImage: "reptile-back-10-00.png",
     },
     {
       partId: "ears-coca",
@@ -2157,7 +2157,7 @@ const cards: Cards = {
       cardName: "Nyan",
       specialGenes: "summer-2022",
       partType: "Ears",
-      cardImage: "beast-ears-02.png",
+      cardImage: "beast-ears-02-00.png",
     },
     {
       partId: "ears-coca-shiny",
@@ -2166,7 +2166,7 @@ const cards: Cards = {
       cardName: "Nyan",
       specialGenes: "summer-2022",
       partType: "Ears",
-      cardImage: "beast-ears-02.png",
+      cardImage: "beast-ears-02-00.png",
     },
     {
       partId: "eyes-flower-sunglasses",
@@ -2175,7 +2175,7 @@ const cards: Cards = {
       cardName: "Neo",
       specialGenes: "summer-2022",
       partType: "Eyes",
-      cardImage: "bug-eyes-04.png",
+      cardImage: "bug-eyes-04-00.png",
     },
     {
       partId: "eyes-flower-sunglasses-shiny",
@@ -2184,7 +2184,7 @@ const cards: Cards = {
       cardName: "Neo",
       specialGenes: "summer-2022",
       partType: "Eyes",
-      cardImage: "bug-eyes-04.png",
+      cardImage: "bug-eyes-04-00.png",
     },
     {
       partId: "horn-strawberry-ice-cream",
@@ -2193,7 +2193,7 @@ const cards: Cards = {
       cardName: "Unko",
       specialGenes: "summer-2022",
       partType: "Horn",
-      cardImage: "reptile-horn-02.png",
+      cardImage: "reptile-horn-02-00.png",
     },
     {
       partId: "horn-strawberry-ice-cream-shiny",
@@ -2202,7 +2202,7 @@ const cards: Cards = {
       cardName: "Unko",
       specialGenes: "summer-2022",
       partType: "Horn",
-      cardImage: "reptile-horn-02.png",
+      cardImage: "reptile-horn-02-00.png",
     },
     {
       partId: "horn-watermelon-ice-cream",
@@ -2211,7 +2211,7 @@ const cards: Cards = {
       cardName: "Unko",
       specialGenes: "summer-2022",
       partType: "Horn",
-      cardImage: "reptile-horn-02.png",
+      cardImage: "reptile-horn-02-00.png",
     },
     {
       partId: "horn-watermelon-ice-cream-shiny",
@@ -2220,7 +2220,7 @@ const cards: Cards = {
       cardName: "Unko",
       specialGenes: "summer-2022",
       partType: "Horn",
-      cardImage: "reptile-horn-02.png",
+      cardImage: "reptile-horn-02-00.png",
     },
     {
       partId: "horn-vanilla-ice-cream",
@@ -2229,7 +2229,7 @@ const cards: Cards = {
       cardName: "Unko",
       specialGenes: "summer-2022",
       partType: "Horn",
-      cardImage: "reptile-horn-02.png",
+      cardImage: "reptile-horn-02-00.png",
     },
     {
       partId: "horn-vanilla-ice-cream-shiny",
@@ -2238,7 +2238,7 @@ const cards: Cards = {
       cardName: "Unko",
       specialGenes: "summer-2022",
       partType: "Horn",
-      cardImage: "reptile-horn-02.png",
+      cardImage: "reptile-horn-02-00.png",
     },
     {
       partId: "mouth-bubble-fish",
@@ -2247,7 +2247,7 @@ const cards: Cards = {
       cardName: "Risky Fish",
       specialGenes: "summer-2022",
       partType: "Mouth",
-      cardImage: "aquatic-mouth-08.png",
+      cardImage: "aquatic-mouth-08-00.png",
     },
     {
       partId: "mouth-bubble-fish-shiny",
@@ -2256,7 +2256,7 @@ const cards: Cards = {
       cardName: "Risky Fish",
       specialGenes: "summer-2022",
       partType: "Mouth",
-      cardImage: "aquatic-mouth-08.png",
+      cardImage: "aquatic-mouth-08-00.png",
     },
     {
       partId: "tail-cotton-candy",
@@ -2265,7 +2265,7 @@ const cards: Cards = {
       cardName: "Cottontail",
       specialGenes: "summer-2022",
       partType: "Tail",
-      cardImage: "beast-tail-02.png",
+      cardImage: "beast-tail-02-00.png",
     },
     {
       partId: "tail-cotton-candy-shiny",
@@ -2274,7 +2274,7 @@ const cards: Cards = {
       cardName: "Cottontail",
       specialGenes: "summer-2022",
       partType: "Tail",
-      cardImage: "beast-tail-02.png",
+      cardImage: "beast-tail-02-00.png",
     },
   ],
 };

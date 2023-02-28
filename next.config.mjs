@@ -13,7 +13,11 @@ const config = {
     appDir: true,
   },
   images: {
-    domains: ["axiecdn.axieinfinity.com", "assets.axieinfinity.com"],
+    domains: [
+      "axiecdn.axieinfinity.com",
+      "assets.axieinfinity.com",
+      "cdn.axieinfinity.com",
+    ],
   },
 
   /**

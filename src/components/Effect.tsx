@@ -25,16 +25,14 @@ export default function Effect({
     >
       {axieCardName && axieCardImage && !battleContext && (
         <div className="relative mr-2 box-border h-20 w-20 shrink-0">
-          <div className="relative h-full w-full">
-            <Image
-              className="rounded-[2px]"
-              src={`/cards/${axieCardImage.replace(".png", "")}.jpeg`}
-              alt={axieCardName}
-              loading="lazy"
-              fill={true}
-              unoptimized
-            />
-          </div>
+          <div
+            className="relative h-full w-full overflow-hidden"
+            style={{
+              backgroundImage: `url(https://cdn.axieinfinity.com/game/origin-cards/base/origin-cards-20230222/${axieCardImage})`,
+              backgroundPosition: "64% 30%",
+              backgroundSize: "160% auto",
+            }}
+          ></div>
           <h4 className="absolute bottom-0 left-1/2 z-10 min-w-full -translate-x-1/2 bg-black/50 p-1 text-center text-sm">
             {axieCardName}
           </h4>
