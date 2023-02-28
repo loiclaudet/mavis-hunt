@@ -152,7 +152,7 @@ const PlayerBattleDetails = memo(function PlayerBattleDetails({
     <div className="relative flex w-[75%] flex-col items-center justify-around bg-[rgba(255,255,255,0.1)] sm:w-auto">
       {userID && (
         <Link
-          href={`/profile/${userID}`}
+          href={`origins/profile/${userID}`}
           className="absolute top-1 right-1 z-10 h-5 w-5 transition-transform duration-100 hover:scale-125"
           rel="noopener noreferrer"
           title="Visit profile"

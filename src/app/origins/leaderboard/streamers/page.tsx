@@ -12,7 +12,10 @@ import { Suspense } from "react";
 import { userIdToTwitchChannelMap } from "data/players";
 
 export default function OriginsLeaderboardPage() {
-  const twitchUsersIDs = Array.from(userIdToTwitchChannelMap.keys());
+  const twitchUsersIDs = Array.from(userIdToTwitchChannelMap.keys()).slice(
+    0,
+    5
+  );
 
   // limit the number of requests to the origin API to 10 per second
   const originAPILimiter = new Bottleneck({

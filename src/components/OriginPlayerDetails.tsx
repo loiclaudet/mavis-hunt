@@ -88,7 +88,10 @@ function Username({ isProfile, name, userID }: UsernameProps) {
       {isProfile ? (
         <span>{name}</span>
       ) : (
-        <Link className="group-hover:underline" href={`/profile/${userID}`}>
+        <Link
+          className="group-hover:underline"
+          href={`origins/profile/${userID}`}
+        >
           <span>{name}</span>
         </Link>
       )}
