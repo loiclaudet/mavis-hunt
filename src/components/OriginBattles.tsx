@@ -3,14 +3,21 @@ import { Axie } from "./Axie";
 import Image from "next/image";
 import Link from "next/link";
 import { relativeTime } from "lib/relativeTime";
-import type { Fighters } from "lib/validators";
+import type { AxieParts, FighterWithPartsAndItems } from "lib/validators";
 import type { Player } from "lib/createPlayer";
+import { parseFighterItems } from "lib/createPlayer";
+import CharmComponent from "./Charm";
+import { RuneComponent } from "./Rune";
+import type { Rune } from "lib/runes";
+import type { Charm } from "lib/charms";
 
 interface OriginBattlesProps {
   player: Player;
+  runes: Rune[];
+  charms: Charm[];
 }
 
-export default function Battles({ player }: OriginBattlesProps) {
+export default function Battles({ player, runes, charms }: OriginBattlesProps) {
   if (!player) {
     return (
       <p className="w-full text-center font-semibold">
@@ -37,12 +44,24 @@ export default function Battles({ player }: OriginBattlesProps) {
             const won = isFirstTeam ? winner === 0 : winner === 1;
             const draw = winner === 2;
             const firstTeamDetails = {
-              team: first_client_fighters,
+              team: first_client_fighters.map((fighter) => {
+                return parseFighterItems({ fighter, runes, charms });
+              }) as [
+                FighterWithPartsAndItems,
+                FighterWithPartsAndItems,
+                FighterWithPartsAndItems
+              ],
               oldStars: rewards?.[0]?.old_vstar ?? 0,
               newStars: rewards?.[0]?.new_vstar ?? 0,
             };
             const secondTeamDetails = {
-              team: second_client_fighters,
+              team: second_client_fighters.map((fighter) => {
+                return parseFighterItems({ fighter, runes, charms });
+              }) as [
+                FighterWithPartsAndItems,
+                FighterWithPartsAndItems,
+                FighterWithPartsAndItems
+              ],
               oldStars: rewards?.[1]?.old_vstar ?? 0,
               newStars: rewards?.[1]?.new_vstar ?? 0,
             };
@@ -119,7 +138,11 @@ export default function Battles({ player }: OriginBattlesProps) {
 }
 
 interface OriginBattleDetails {
-  team: Fighters;
+  team: [
+    FighterWithPartsAndItems,
+    FighterWithPartsAndItems,
+    FighterWithPartsAndItems
+  ];
   oldStars: number;
   newStars: number;
   won: boolean;
@@ -156,15 +179,37 @@ const PlayerBattleDetails = memo(function PlayerBattleDetails({
         </Link>
       )}
       <ul className={`mb-5 flex items-center justify-between`}>
-        {team.map(({ axie_id, axie_type }) => {
+        {team.map(({ axie_id, axie_type, runes, charms }) => {
           return (
-            <Axie
-              key={axie_id}
-              axieId={axie_id}
-              axieType={axie_type}
-              width={150}
-              heigth={112}
-            />
+            <li key={axie_id} className="relative mb-10 sm:mb-0">
+              <div
+                className={`absolute top-2 left-2 z-[1] flex sm:left-3 sm:top-3`}
+              >
+                <RuneComponent runes={runes} battleContext />
+              </div>
+              <Axie
+                key={axie_id}
+                axieId={axie_id}
+                axieType={axie_type}
+                width={200}
+                heigth={150}
+              />
+              <div
+                className={`absolute bottom-2 left-1/2 z-[1] grid -translate-x-1/2 grid-cols-3 items-baseline sm:flex`}
+              >
+                {(Object.keys(charms) as (keyof AxieParts)[]).map(
+                  (part, index) => {
+                    return (
+                      <CharmComponent
+                        key={index}
+                        charm={charms[part]}
+                        battleContext
+                      />
+                    );
+                  }
+                )}
+              </div>
+            </li>
           );
         })}
       </ul>

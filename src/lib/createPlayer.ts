@@ -1,8 +1,10 @@
 import { AxieGene, HexType } from "agp-npm";
 import { getCards } from "data/cards";
 import type { Charm } from "./charms";
+import { getCharmDataFromCharmGameID } from "./charms";
 import { PROFILE_PLAYER_BATTLES } from "./consts";
 import type { Rune } from "./runes";
+import { getRuneDataFromRuneID } from "./runes";
 import {
   isStarterAxie,
   partTypes,
@@ -14,9 +16,9 @@ import type {
   FighterWithPartsAndItems,
   AxieParts,
   User,
+  Fighter,
 } from "./validators";
 
-// TODO: refactor Axie and Player components to follow the island pattern
 export function createPlayer({
   battles,
   user,
@@ -49,29 +51,7 @@ export function createPlayer({
 
   const axiesTeamsWithParts = axiesTeam.map((fighter) => {
     const fighterWithPartsAndItems: FighterWithPartsAndItems = {
-      ...fighter,
-      parts: {} as AxieParts,
-      runes: fighter.runes
-        .map((rune) => {
-          const runeData =
-            runes.find((runeData) => runeData.id === rune) ?? null;
-          if (!runeData) {
-            console.warn(
-              `Rune with id '${rune}' not found for axie with id '${fighter.axie_id}'`
-            );
-          }
-          return runeData;
-        })
-        .filter(Boolean) as Rune[],
-      charms: {
-        eyes: charms.find((charm) => charm.id === fighter.charms.eyes) ?? null,
-        mouth:
-          charms.find((charm) => charm.id === fighter.charms.mouth) ?? null,
-        ears: charms.find((charm) => charm.id === fighter.charms.ears) ?? null,
-        horn: charms.find((charm) => charm.id === fighter.charms.horn) ?? null,
-        back: charms.find((charm) => charm.id === fighter.charms.back) ?? null,
-        tail: charms.find((charm) => charm.id === fighter.charms.tail) ?? null,
-      },
+      ...parseFighterItems({ fighter, runes, charms }),
     };
     // straters genes cannot be decoded
     if (isStarterAxie(fighter.axie_type)) {
@@ -102,7 +82,7 @@ export function createPlayer({
       fighterWithPartsAndItems.parts[partType] = card.partId;
     });
     return fighterWithPartsAndItems;
-  }) as FighterWithPartsAndItems[];
+  });
 
   let totalWon = 0;
   let winStreak = 0;
@@ -142,3 +122,37 @@ export type Player = ReturnType<typeof createPlayer> & {
     title: string;
   };
 };
+
+export function parseFighterItems({
+  fighter,
+  runes,
+  charms,
+}: {
+  fighter: Fighter;
+  runes: Rune[];
+  charms: Charm[];
+}): FighterWithPartsAndItems {
+  return {
+    ...fighter,
+    parts: {} as AxieParts,
+    runes: fighter.runes
+      .map((runeID) => {
+        const runeData = getRuneDataFromRuneID(runeID, runes) ?? null;
+        if (!runeData) {
+          console.warn(
+            `Rune with id '${runeID}' not found for axie with id '${fighter.axie_id}'`
+          );
+        }
+        return runeData;
+      })
+      .filter(Boolean) as Rune[],
+    charms: {
+      eyes: getCharmDataFromCharmGameID(fighter.charms.eyes, charms),
+      mouth: getCharmDataFromCharmGameID(fighter.charms.mouth, charms),
+      ears: getCharmDataFromCharmGameID(fighter.charms.ears, charms),
+      horn: getCharmDataFromCharmGameID(fighter.charms.horn, charms),
+      back: getCharmDataFromCharmGameID(fighter.charms.back, charms),
+      tail: getCharmDataFromCharmGameID(fighter.charms.tail, charms),
+    },
+  };
+}

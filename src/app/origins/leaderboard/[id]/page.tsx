@@ -45,7 +45,7 @@ export default async function OriginsLeaderboardPage({
   );
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex max-w-full flex-col items-center overflow-hidden">
       {chunk(usersBattlesPromises, X_RATE_LIMIT_PER_SEC).map(
         (promises, index) => {
           return (
@@ -101,7 +101,12 @@ async function PlayerList({
   return (
     <>
       {players.map((_player) => (
-        <OriginPlayer key={_player.userID} player={_player} />
+        <OriginPlayer
+          key={_player.userID}
+          player={_player}
+          runes={runes}
+          charms={charms}
+        />
       ))}
     </>
   );

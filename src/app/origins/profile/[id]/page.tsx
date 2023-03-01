@@ -54,6 +54,8 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
             ...player,
             battles: player.battles.slice(0, MAX_DISPLAYED_PLAYER_BATTLES),
           }}
+          runes={runes.map((rune) => rune.item)}
+          charms={charms.map((charm) => charm.item)}
         />
       </Suspense>
       <ArenaStarsChart data={chartData} />

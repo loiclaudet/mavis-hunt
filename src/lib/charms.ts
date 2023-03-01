@@ -4,7 +4,7 @@ export type Charm = Item["item"];
 export type CharmGameId = string;
 export type ImageName = string;
 
-export function getCharmDataFromCharmGameId(
+export function getCharmDataFromCharmGameID(
   charmGameId: CharmGameId,
   charms: Charm[]
 ): Charm | null {
@@ -31,7 +31,7 @@ export function getCharmImagesFromCharmPartsAndCharmGameId(
   charms: Charm[]
 ): (string | null)[] {
   const charmImageUrl = Object.values(partsAndCharms).map((part) => {
-    const charm = getCharmDataFromCharmGameId(part, charms);
+    const charm = getCharmDataFromCharmGameID(part, charms);
     if (charm) {
       return charm.imageUrl;
     }

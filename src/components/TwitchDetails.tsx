@@ -19,7 +19,7 @@ export default function TwitchDetails({
   }
 
   return (
-    <div className="absolute left-auto right-0 top-1 z-10 flex items-center sm:left-2 sm:right-auto">
+    <div className="absolute left-auto right-0 top-2 z-10 flex items-center sm:left-2 sm:right-auto">
       <Link
         href={`https://www.twitch.tv/${twitchChannel}`}
         target="_blank"

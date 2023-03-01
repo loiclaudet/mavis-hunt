@@ -1,15 +1,21 @@
 import WinStreak from "components/WinStreak";
+import type { Charm } from "lib/charms";
 import type { Player } from "lib/createPlayer";
+import type { Rune } from "lib/runes";
 import Link from "next/link";
 import BattlesButton from "./BattlesButton";
 
 interface PlayerDetailsProps {
   player: Player;
+  runes: Rune[];
+  charms: Charm[];
   isProfile?: boolean;
 }
 
 export default function PlayerDetails({
   player,
+  runes,
+  charms,
   isProfile,
 }: PlayerDetailsProps) {
   const { name, vstar, topRank, winStreak, winRate, userID } = player;
@@ -18,7 +24,7 @@ export default function PlayerDetails({
       <div
         className={`flex flex-col items-start py-2 pl-2 sm:pl-4 ${
           isProfile
-            ? "mb-12 w-full origin-top-left scale-150"
+            ? "mb-12 w-full sm:origin-top-left sm:scale-150"
             : "w-full max-w-[340px]"
         } `}
       >
@@ -39,7 +45,7 @@ export default function PlayerDetails({
           </div>
         </div>
         <div className="flex items-end">
-          <BattlesButton player={player} />
+          <BattlesButton player={player} runes={runes} charms={charms} />
           {winStreak >= 5 && <WinStreak streak={winStreak} />}
         </div>
       </div>

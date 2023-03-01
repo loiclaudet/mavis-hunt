@@ -4,7 +4,7 @@ export type Rune = Item["item"];
 export type RuneId = string;
 export type ImageName = string;
 
-export function getRuneDataFromRuneId(
+export function getRuneDataFromRuneID(
   runeId: RuneId,
   runes: Rune[]
 ): Rune | null {
@@ -24,7 +24,7 @@ export function getRunesImagesFromRunesGameIds(
   runes: Rune[]
 ): (string | null)[] {
   return runeIds.map((runeId) => {
-    const rune = getRuneDataFromRuneId(runeId, runes);
+    const rune = getRuneDataFromRuneID(runeId, runes);
     if (rune) {
       return rune.imageUrl;
     }

@@ -29,6 +29,9 @@ export default function ArenaStarsChart({ data }: ArenaStarsChartProps) {
       data={data}
       className={`box-border rounded bg-[#2b1812eb]`}
       margin={{ top: 20, right: 40, left: 40, bottom: 40 }}
+      style={{
+        maxWidth: "100%",
+      }}
     >
       <Legend
         align="center"
@@ -38,7 +41,7 @@ export default function ArenaStarsChart({ data }: ArenaStarsChartProps) {
         formatter={() => {
           return (
             <span>
-              <span className="text-2xl font-semibold text-white">
+              <span className="font-semibold text-white sm:text-2xl">
                 {`Arena Stars`}
               </span>
               <img

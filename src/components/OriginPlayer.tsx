@@ -5,14 +5,19 @@ import TwitchDetails from "./TwitchDetails";
 import type { Player } from "lib/createPlayer";
 import { MissingBattles } from "./MissingBattles";
 import { RuneComponent } from "./Rune";
+import type { AxieParts } from "lib/validators";
+import CharmComponent from "./Charm";
+import type { Rune } from "lib/runes";
+import type { Charm } from "lib/charms";
 interface OriginPlayerProps {
   player: Player;
   index?: number;
+  runes: Rune[];
+  charms: Charm[];
 }
-function OriginPlayer({ player, index }: OriginPlayerProps) {
+function OriginPlayer({ player, runes, charms, index }: OriginPlayerProps) {
   const { topRank } = player;
   const rankEmoji = getRankEmoji(topRank);
-
   if (!player) {
     return (
       <p className="w-full text-center font-semibold">Missing player data 🫠</p>
@@ -33,14 +38,14 @@ function OriginPlayer({ player, index }: OriginPlayerProps) {
       <div
         className={`mb-1 flex min-h-[157px] flex-col items-start justify-center rounded bg-[#2b1812eb] pl-2 sm:pl-2 lg:flex-row lg:items-center`}
       >
-        <OriginPlayerDetails player={player} />
+        <OriginPlayerDetails player={player} runes={runes} charms={charms} />
         {player.battles.length === 0 ? (
           <ul className="relative flex flex-1 items-center">
             <MissingBattles userID={player.userID} />
           </ul>
         ) : (
           <ul className="relative flex flex-1 items-center">
-            {player.team.map(({ axie_id, axie_type, runes }) => {
+            {player.team.map(({ axie_id, axie_type, runes, charms }) => {
               return (
                 <li key={axie_id} className="relative mb-10 sm:mb-0">
                   <div
@@ -55,6 +60,17 @@ function OriginPlayer({ player, index }: OriginPlayerProps) {
                     width={200}
                     heigth={150}
                   />
+                  <div
+                    className={`absolute -bottom-4 left-1/2 z-[1] grid -translate-x-1/2 grid-cols-3 items-baseline gap-2 sm:bottom-2 sm:flex sm:gap-0`}
+                  >
+                    {(Object.keys(charms) as (keyof AxieParts)[]).map(
+                      (part, index) => {
+                        return (
+                          <CharmComponent key={index} charm={charms[part]} />
+                        );
+                      }
+                    )}
+                  </div>
                 </li>
               );
             })}

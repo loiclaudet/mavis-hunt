@@ -4,10 +4,16 @@ import TwitchDetails from "./TwitchDetails";
 import { PROFILE_PLAYER_BATTLES } from "lib/consts";
 import type { Player } from "lib/createPlayer";
 import { RuneComponent } from "./Rune";
+import type { AxieParts } from "lib/validators";
+import CharmComponent from "./Charm";
+import type { Rune } from "lib/runes";
+import type { Charm } from "lib/charms";
 interface OriginPlayerProps {
   player: Player;
+  runes: Rune[];
+  charms: Charm[];
 }
-export function OriginProfile({ player }: OriginPlayerProps) {
+export function OriginProfile({ player, runes, charms }: OriginPlayerProps) {
   if (!player) {
     return (
       <p
@@ -26,7 +32,12 @@ export function OriginProfile({ player }: OriginPlayerProps) {
           live={Boolean(player?.channel?.live)}
           userId={player.userID}
         />
-        <OriginPlayerDetails player={player} isProfile />
+        <OriginPlayerDetails
+          player={player}
+          runes={runes}
+          charms={charms}
+          isProfile
+        />
         <ul className="relative flex flex-1 items-center">
           {player.battles.length === 0 && (
             <div>
@@ -36,7 +47,7 @@ export function OriginProfile({ player }: OriginPlayerProps) {
               <p className="w-full pl-4 text-[10px]">{`Last ${PROFILE_PLAYER_BATTLES} battles are not arena PVP battles.`}</p>
             </div>
           )}
-          {player.team.map(({ axie_id, axie_type, runes }, index) => {
+          {player.team.map(({ axie_id, axie_type, runes, charms }, index) => {
             if (player.battles.length === 0) {
               return (
                 <div key={index}>
@@ -50,7 +61,7 @@ export function OriginProfile({ player }: OriginPlayerProps) {
             return (
               <li key={axie_id} className="relative mb-10 sm:mb-0">
                 <div
-                  className={`absolute top-2 left-2 z-[1] flex translate-x-4 scale-150 sm:left-3 sm:top-7`}
+                  className={`absolute top-2 left-2 z-[1] flex translate-x-4 sm:left-3 sm:top-7 sm:scale-150`}
                 >
                   <RuneComponent runes={runes} battleContext={false} />
                 </div>
@@ -61,6 +72,17 @@ export function OriginProfile({ player }: OriginPlayerProps) {
                   width={300}
                   heigth={225}
                 />
+                <div
+                  className={`absolute bottom-2 left-1/2 z-[1] grid -translate-x-1/2 grid-cols-3 items-baseline gap-2 sm:flex sm:scale-150 sm:gap-0`}
+                >
+                  {(Object.keys(charms) as (keyof AxieParts)[]).map(
+                    (part, index) => {
+                      return (
+                        <CharmComponent key={index} charm={charms[part]} />
+                      );
+                    }
+                  )}
+                </div>
               </li>
             );
           })}
