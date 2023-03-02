@@ -10,9 +10,9 @@ import {
 import { Suspense } from "react";
 import chunk from "lib/chunk";
 import OriginPlayer from "components/OriginPlayer";
-import OriginPlayerSkeleton from "components/OriginPlayerSkeleton";
 import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
+import { PlayerListSkeleton } from "components/PlayerListSkeleton";
 
 interface OriginsLeaderboardPageProps {
   params: {
@@ -39,7 +39,7 @@ export default async function OriginsLeaderboardPage({
     maxConcurrent: X_RATE_LIMIT_PER_SEC,
   });
   const wrappedGetBattles = limiter.wrap(getBattles);
-
+  runes;
   const usersBattlesPromises = users.map(({ userID }) =>
     wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
   );
@@ -108,19 +108,6 @@ async function PlayerList({
           charms={charms}
         />
       ))}
-    </>
-  );
-}
-
-interface PlayerListSkeletonProps {
-  playersQuantity: number;
-}
-function PlayerListSkeleton({ playersQuantity }: PlayerListSkeletonProps) {
-  return (
-    <>
-      {new Array(playersQuantity).fill(null).map((_, index) => {
-        return <OriginPlayerSkeleton key={index} />;
-      })}
     </>
   );
 }

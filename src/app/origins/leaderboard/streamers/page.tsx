@@ -10,12 +10,13 @@ import {
 import { Suspense } from "react";
 import { userIdToTwitchChannelMap } from "data/players";
 import OriginPlayer from "components/OriginPlayer";
+import { PlayerListSkeleton } from "components/PlayerListSkeleton";
+import chunk from "lib/chunk";
+import type { Rune } from "lib/runes";
+import type { Charm } from "lib/charms";
 
-export default function OriginsLeaderboardPage() {
-  const twitchUsersIDs = Array.from(userIdToTwitchChannelMap.keys()).slice(
-    0,
-    5
-  );
+export default async function OriginsLeaderboardPage() {
+  const twitchUsersIDs = Array.from(userIdToTwitchChannelMap.keys());
 
   // limit the number of requests to the origin API to 10 per second
   const originAPILimiter = new Bottleneck({
@@ -39,6 +40,48 @@ export default function OriginsLeaderboardPage() {
     wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
   );
 
+  // TODO: use parallel requests
+  const [runesResponse, charmsResponse] = await Promise.all([
+    getRunes(),
+    getCharms(),
+  ]);
+
+  const runes = runesResponse._items.map((el) => el.item);
+  const charms = charmsResponse._items.map((el) => el.item);
+  // leaderboard API limit is reached earlier than battles, so we need to
+  // chunk the requests based on ORIGIN_RATE_LIMIT_PER_SEC rate limit
+  const usersBattlesPromisesChunked = chunk(
+    usersBattlesPromises,
+    ORIGIN_RATE_LIMIT_PER_SEC
+  );
+
+  return (
+    <div className="flex max-w-full flex-col items-center overflow-hidden">
+      {chunk(leaderboardPromise, ORIGIN_RATE_LIMIT_PER_SEC).map(
+        (promises, index) => {
+          return (
+            <Suspense
+              fallback={
+                <PlayerListSkeleton playersQuantity={promises.length} />
+              }
+              key={index}
+            >
+              {/* @ts-expect-error Server Component*/}
+              <PlayerList
+                usersBattlesPromises={
+                  usersBattlesPromisesChunked[index] as Promise<Battles>[]
+                }
+                leaderboardPromise={promises}
+                runes={runes}
+                charms={charms}
+              />
+            </Suspense>
+          );
+        }
+      )}
+    </div>
+  );
+
   return (
     <div className="flex flex-col items-center">
       <Suspense fallback={<div>Loading...</div>}>
@@ -55,20 +98,19 @@ export default function OriginsLeaderboardPage() {
 interface PlayerListProps {
   leaderboardPromise: Promise<Leaderboard>[];
   usersBattlesPromises: Promise<Battles>[];
+  runes: Rune[];
+  charms: Charm[];
 }
 
 async function PlayerList({
   leaderboardPromise,
   usersBattlesPromises,
+  runes,
+  charms,
 }: PlayerListProps) {
   const [usersResponse, usersBattlesResponse] = await Promise.all([
     Promise.all(leaderboardPromise),
     Promise.all(usersBattlesPromises),
-  ]);
-  // TODO: use parallel requests
-  const [{ _items: runes }, { _items: charms }] = await Promise.all([
-    getRunes(),
-    getCharms(),
   ]);
 
   const userBattles = usersBattlesResponse.map((response) => {
@@ -82,15 +124,20 @@ async function PlayerList({
       return createPlayer({
         battles: userBattles[index] as Battle[],
         user,
-        runes: runes.map((rune) => rune.item),
-        charms: charms.map((charm) => charm.item),
+        runes,
+        charms,
       });
     })
     .sort((a, b) => a.topRank - b.topRank);
   return (
     <>
       {players.map((_player) => (
-        <OriginPlayer key={_player.userID} player={_player} />
+        <OriginPlayer
+          key={_player.userID}
+          player={_player}
+          runes={runes}
+          charms={charms}
+        />
       ))}
     </>
   );
