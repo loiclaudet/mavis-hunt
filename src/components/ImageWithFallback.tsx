@@ -1,21 +1,29 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
-interface ImageExtendedProps {
+interface ImageWithFallbackProps {
   src: string;
+  fallbackSrc: string;
   priority?: boolean;
   [key: string]: unknown;
 }
-export default function ImageExtended({
+export default function ImageWithFallback({
   src,
+  fallbackSrc,
   priority,
   ...rest
-}: ImageExtendedProps) {
+}: ImageWithFallbackProps) {
+  const [imageSrc, setImageSrc] = useState<string>(src);
   return (
     <Image
       style={{ objectFit: "contain" }}
       {...rest}
-      src={src}
+      src={imageSrc}
       alt={"axie"}
+      onErrorCapture={() => {
+        setImageSrc(fallbackSrc);
+      }}
       className="overflow-hidden whitespace-nowrap indent-[100%] transition-transform hover:scale-105"
       unoptimized
       {...(priority ? {} : { loading: "lazy" })}
