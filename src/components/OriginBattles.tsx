@@ -54,6 +54,7 @@ export default function Battles({ player, runes, charms }: OriginBattlesProps) {
               ],
               oldStars: rewards?.[0]?.old_vstar ?? 0,
               newStars: rewards?.[0]?.new_vstar ?? 0,
+              userID: client_ids[0],
             };
             const secondTeamDetails = {
               team: second_client_fighters.map((fighter) => {
@@ -65,6 +66,7 @@ export default function Battles({ player, runes, charms }: OriginBattlesProps) {
               ],
               oldStars: rewards?.[1]?.old_vstar ?? 0,
               newStars: rewards?.[1]?.new_vstar ?? 0,
+              userID: client_ids[1],
             };
 
             return (
@@ -76,6 +78,7 @@ export default function Battles({ player, runes, charms }: OriginBattlesProps) {
                   {...(isFirstTeam ? firstTeamDetails : secondTeamDetails)}
                   won={won}
                   draw={draw}
+                  userID={undefined}
                 />
                 <div className="absolute top-0 right-0 flex h-full w-[25%] flex-grow flex-col items-center justify-center bg-[rgba(255,255,255,0.1)] sm:static sm:h-auto sm:w-auto">
                   <div className="mb-2 flex items-center">
@@ -127,7 +130,6 @@ export default function Battles({ player, runes, charms }: OriginBattlesProps) {
                   {...(isFirstTeam ? secondTeamDetails : firstTeamDetails)}
                   won={!won}
                   draw={draw}
-                  userID={isFirstTeam ? client_ids[1] : client_ids[0]}
                 />
               </li>
             );
@@ -186,7 +188,7 @@ const PlayerBattleDetails = memo(function PlayerBattleDetails({
               <div
                 className={`absolute top-2 left-2 z-[1] flex sm:left-3 sm:top-3`}
               >
-                <RuneComponent runes={runes} battleContext />
+                <RuneComponent runes={runes} battleContext playerID={userID} />
               </div>
               <Axie
                 key={axie_id}
@@ -205,6 +207,7 @@ const PlayerBattleDetails = memo(function PlayerBattleDetails({
                         key={index}
                         charm={charms[part]}
                         axiePart={parts[part]}
+                        playerID={userID}
                         battleContext
                       />
                     );
@@ -226,7 +229,7 @@ const PlayerBattleDetails = memo(function PlayerBattleDetails({
           <p className="text-sm font-bold sm:text-base">{newStars}</p>
         </div>
       </div>
-      <Effect battleContext />
+      <Effect playerID={userID} battleContext />
     </div>
   );
 });

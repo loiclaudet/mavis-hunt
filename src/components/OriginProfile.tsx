@@ -65,7 +65,11 @@ export function OriginProfile({ player, runes, charms }: OriginPlayerProps) {
                   <div
                     className={`absolute top-2 left-2 z-[1] flex translate-x-4 sm:left-3 sm:top-7 sm:scale-150`}
                   >
-                    <RuneComponent runes={runes} battleContext={false} />
+                    <RuneComponent
+                      runes={runes}
+                      battleContext={false}
+                      playerID={player.userID}
+                    />
                   </div>
                   <Axie
                     key={axie_id}
@@ -84,6 +88,7 @@ export function OriginProfile({ player, runes, charms }: OriginPlayerProps) {
                             key={index}
                             charm={charms[part]}
                             axiePart={parts[part]}
+                            playerID={player.userID}
                           />
                         );
                       }
@@ -95,7 +100,7 @@ export function OriginProfile({ player, runes, charms }: OriginPlayerProps) {
           )}
         </ul>
       </div>
-      <Effect isProfile />
+      <Effect isProfile playerID={player.userID} />
     </div>
   );
 }

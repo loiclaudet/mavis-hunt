@@ -5,20 +5,23 @@ import { useAtom } from "jotai";
 import type { Charm } from "lib/charms";
 import Image from "next/image";
 import { useMemo } from "react";
-import { cardAtom, itemAtom } from "./Effect";
+import { cardAtom, itemAtom, userIDAtom } from "./Effect";
 
 interface CharmProps {
   charm: Charm | null;
   axiePart: string;
   battleContext?: boolean;
+  playerID?: string;
 }
 export default function CharmComponent({
   charm,
   battleContext,
   axiePart,
+  playerID,
 }: CharmProps) {
   const [, setItem] = useAtom(itemAtom);
   const [, setCard] = useAtom(cardAtom);
+  const [, setUserID] = useAtom(userIDAtom);
   const cards = useMemo(() => getCards(), []);
   const battleStyle = battleContext
     ? "h-[13px] max-h-[13px] w-[12px] max-w-[12px] rounded-[2px] sm:h-[12px] sm:max-h-[12px] sm:w-[10px] sm:max-w-[10px]"
@@ -27,6 +30,10 @@ export default function CharmComponent({
   return (
     <div
       onMouseEnter={() => {
+        if (!playerID) {
+          return;
+        }
+        setUserID(playerID);
         setItem(charm);
         const card =
           cards.find((card) => {
@@ -35,6 +42,7 @@ export default function CharmComponent({
         setCard(card);
       }}
       onMouseLeave={() => {
+        setUserID(null);
         setItem(null);
         setCard(null);
       }}

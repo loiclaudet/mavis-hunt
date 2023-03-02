@@ -6,14 +6,21 @@ import Image from "next/image";
 interface EffectProps {
   battleContext?: boolean;
   isProfile?: boolean;
+  playerID?: string;
 }
 export const itemAtom = atom<Item["item"] | null>(null);
 export const cardAtom = atom<Card | null>(null);
-export default function Effect({ battleContext, isProfile }: EffectProps) {
+export const userIDAtom = atom<string | null>(null);
+export default function Effect({
+  playerID,
+  battleContext,
+  isProfile,
+}: EffectProps) {
   const [item] = useAtom<Item["item"] | null>(itemAtom);
   const [card] = useAtom<Card | null>(cardAtom);
+  const [userID] = useAtom<string | null>(userIDAtom);
 
-  if (!item) return null;
+  if (!item || !playerID || userID !== playerID) return null;
 
   return (
     <div

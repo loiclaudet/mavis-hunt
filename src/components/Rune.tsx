@@ -3,25 +3,32 @@ import { useAtom } from "jotai";
 
 import type { Rune } from "lib/runes";
 import Image from "next/image";
-import { cardAtom, itemAtom } from "./Effect";
+import { cardAtom, itemAtom, userIDAtom } from "./Effect";
 
 interface RuneProps {
   battleContext?: boolean;
   runes: Rune[];
+  playerID?: string;
 }
-export function RuneComponent({ battleContext, runes }: RuneProps) {
+export function RuneComponent({ battleContext, runes, playerID }: RuneProps) {
   const [, setItem] = useAtom(itemAtom);
   const [, setCard] = useAtom(cardAtom);
+  const [, setUserID] = useAtom(userIDAtom);
   return (
     <>
       {runes.map((rune, index) => {
         return (
           <div
             onMouseEnter={() => {
+              if (!playerID) {
+                return;
+              }
+              setUserID(playerID);
               setItem(rune);
               setCard(null);
             }}
             onMouseLeave={() => {
+              setUserID(null);
               setItem(null);
               setCard(null);
             }}
