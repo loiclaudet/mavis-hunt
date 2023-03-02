@@ -23,11 +23,17 @@ export function createPlayer({
   user,
   runes,
   charms,
+  channel,
 }: {
   battles: Battle[];
   user: User;
   runes: Rune[];
   charms: Charm[];
+  channel?: {
+    live: boolean;
+    name: string;
+    title?: string;
+  };
 }) {
   const rankedPVPBattles: Battle[] = battles.filter(
     (battle) => battle.battle_type_string === "ranked_pvp"
@@ -41,6 +47,7 @@ export function createPlayer({
       winStreak: 0,
       battles: [],
       team: [],
+      ...(channel ? { channel } : {}),
     };
   }
   const isLastGameFirstFighters = lastBattle.client_ids[0] === user.userID;
@@ -80,6 +87,7 @@ export function createPlayer({
     team: axiesTeamsWithPartsAndItems,
     winStreak,
     winRate,
+    ...(channel ? { channel } : {}),
   };
 }
 
@@ -87,7 +95,7 @@ export type Player = ReturnType<typeof createPlayer> & {
   channel?: {
     live: boolean;
     name: string;
-    title: string;
+    title?: string;
   };
 };
 

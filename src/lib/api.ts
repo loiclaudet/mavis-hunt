@@ -61,3 +61,52 @@ export function getRunes(): Promise<Items> {
     "https://api-gateway.skymavis.com/origin/v2/community/runes"
   ) as Promise<Items>;
 }
+
+export interface StreamerChannel {
+  name: string;
+  live: boolean;
+  title?: string;
+}
+
+interface StreamerChannelResponse {
+  data: StreamerChannel[];
+}
+
+export async function getStreamerChannel(
+  channel: string
+): Promise<StreamerChannel> {
+  try {
+    const response = await fetch(
+      `https://api.twitch.tv/helix/streams?user_login=${channel}`,
+      {
+        headers: {
+          "Client-ID": process.env.TWITCH_CLIENT_ID as string,
+          Authorization: `Bearer ${process.env.TWITCH_ACCESS_TOKEN as string}`,
+        },
+      }
+    );
+    const streamerChannelResponse =
+      (await response.json()) as StreamerChannelResponse;
+    if (
+      !streamerChannelResponse?.data ||
+      streamerChannelResponse?.data?.length === 0
+    ) {
+      return {
+        name: channel,
+        live: false,
+      };
+    }
+
+    return {
+      name: channel,
+      live: true,
+      title: streamerChannelResponse.data?.[0]?.title,
+    };
+  } catch (e) {
+    console.error(e);
+    return {
+      name: channel,
+      live: false,
+    };
+  }
+}

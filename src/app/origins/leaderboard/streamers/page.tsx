@@ -1,6 +1,13 @@
 import Bottleneck from "bottleneck";
 import type { Battle, Battles, Leaderboard, User } from "lib/validators";
-import { getBattles, getCharms, getLeaderBoard, getRunes } from "lib/api";
+import type { StreamerChannel } from "lib/api";
+import {
+  getBattles,
+  getCharms,
+  getLeaderBoard,
+  getRunes,
+  getStreamerChannel,
+} from "lib/api";
 import { createPlayer } from "lib/createPlayer";
 import {
   LEADERBOARD_PLAYER_BATTLES,
@@ -17,6 +24,10 @@ import type { Charm } from "lib/charms";
 
 export default async function OriginsLeaderboardPage() {
   const twitchUsersIDs = Array.from(userIdToTwitchChannelMap.keys());
+  const usersChannelNames = Array.from(userIdToTwitchChannelMap.values());
+  const streamersChannelsPromises = usersChannelNames.map((channel) =>
+    getStreamerChannel(channel)
+  );
 
   // limit the number of requests to the origin API to 10 per second
   const originAPILimiter = new Bottleneck({
@@ -55,6 +66,11 @@ export default async function OriginsLeaderboardPage() {
     ORIGIN_RATE_LIMIT_PER_SEC
   );
 
+  const streamersChannelsPromisesChunked = chunk(
+    streamersChannelsPromises,
+    ORIGIN_RATE_LIMIT_PER_SEC
+  );
+
   return (
     <div className="flex max-w-full flex-col items-center overflow-hidden">
       {chunk(leaderboardPromise, ORIGIN_RATE_LIMIT_PER_SEC).map(
@@ -71,6 +87,11 @@ export default async function OriginsLeaderboardPage() {
                 usersBattlesPromises={
                   usersBattlesPromisesChunked[index] as Promise<Battles>[]
                 }
+                streamersChannelsPromises={
+                  streamersChannelsPromisesChunked[
+                    index
+                  ] as Promise<StreamerChannel>[]
+                }
                 leaderboardPromise={promises}
                 runes={runes}
                 charms={charms}
@@ -81,23 +102,12 @@ export default async function OriginsLeaderboardPage() {
       )}
     </div>
   );
-
-  return (
-    <div className="flex flex-col items-center">
-      <Suspense fallback={<div>Loading...</div>}>
-        {/* @ts-expect-error Server Component*/}
-        <PlayerList
-          usersBattlesPromises={usersBattlesPromises}
-          leaderboardPromise={leaderboardPromise}
-        />
-      </Suspense>
-    </div>
-  );
 }
 
 interface PlayerListProps {
   leaderboardPromise: Promise<Leaderboard>[];
   usersBattlesPromises: Promise<Battles>[];
+  streamersChannelsPromises: Promise<StreamerChannel>[];
   runes: Rune[];
   charms: Charm[];
 }
@@ -105,13 +115,16 @@ interface PlayerListProps {
 async function PlayerList({
   leaderboardPromise,
   usersBattlesPromises,
+  streamersChannelsPromises,
   runes,
   charms,
 }: PlayerListProps) {
-  const [usersResponse, usersBattlesResponse] = await Promise.all([
-    Promise.all(leaderboardPromise),
-    Promise.all(usersBattlesPromises),
-  ]);
+  const [usersResponse, usersBattlesResponse, streamersChannelsResponse] =
+    await Promise.all([
+      Promise.all(leaderboardPromise),
+      Promise.all(usersBattlesPromises),
+      Promise.all(streamersChannelsPromises),
+    ]);
 
   const userBattles = usersBattlesResponse.map((response) => {
     return response?.battles ?? [];
@@ -126,6 +139,9 @@ async function PlayerList({
         user,
         runes,
         charms,
+        ...(streamersChannelsResponse[index]
+          ? { channel: streamersChannelsResponse[index] }
+          : {}),
       });
     })
     .sort((a, b) => a.topRank - b.topRank);
