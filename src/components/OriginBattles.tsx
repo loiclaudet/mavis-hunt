@@ -5,11 +5,12 @@ import Link from "next/link";
 import { relativeTime } from "lib/relativeTime";
 import type { AxieParts, FighterWithPartsAndItems } from "lib/validators";
 import type { Player } from "lib/createPlayer";
-import { parseFighterItems } from "lib/createPlayer";
+import { setPartsAndItems } from "lib/createPlayer";
 import CharmComponent from "./Charm";
 import { RuneComponent } from "./Rune";
 import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
+import Effect from "./Effect";
 
 interface OriginBattlesProps {
   player: Player;
@@ -45,7 +46,7 @@ export default function Battles({ player, runes, charms }: OriginBattlesProps) {
             const draw = winner === 2;
             const firstTeamDetails = {
               team: first_client_fighters.map((fighter) => {
-                return parseFighterItems({ fighter, runes, charms });
+                return setPartsAndItems({ fighter, runes, charms });
               }) as [
                 FighterWithPartsAndItems,
                 FighterWithPartsAndItems,
@@ -56,7 +57,7 @@ export default function Battles({ player, runes, charms }: OriginBattlesProps) {
             };
             const secondTeamDetails = {
               team: second_client_fighters.map((fighter) => {
-                return parseFighterItems({ fighter, runes, charms });
+                return setPartsAndItems({ fighter, runes, charms });
               }) as [
                 FighterWithPartsAndItems,
                 FighterWithPartsAndItems,
@@ -179,7 +180,7 @@ const PlayerBattleDetails = memo(function PlayerBattleDetails({
         </Link>
       )}
       <ul className={`mb-5 flex items-center justify-between`}>
-        {team.map(({ axie_id, axie_type, runes, charms }) => {
+        {team.map(({ axie_id, axie_type, runes, charms, parts }) => {
           return (
             <li key={axie_id} className="relative mb-10 sm:mb-0">
               <div
@@ -203,6 +204,7 @@ const PlayerBattleDetails = memo(function PlayerBattleDetails({
                       <CharmComponent
                         key={index}
                         charm={charms[part]}
+                        axiePart={parts[part]}
                         battleContext
                       />
                     );
@@ -224,16 +226,7 @@ const PlayerBattleDetails = memo(function PlayerBattleDetails({
           <p className="text-sm font-bold sm:text-base">{newStars}</p>
         </div>
       </div>
-      {/*TODO: move state into Effect component*/}
-      {/* {effect && (
-        <Effect
-          battleContext
-          effect={effect}
-          axieCardImage={null}
-          axieCardName={null}
-          charmImage={null}
-        />
-      )} */}
+      <Effect battleContext />
     </div>
   );
 });

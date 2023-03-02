@@ -1,5 +1,9 @@
 import type { PartType } from "agp-npm/dist/models/part";
-import type { AxieType, FighterWithPartsAndItems } from "lib/validators";
+import type {
+  AxieType,
+  Fighter,
+  FighterWithPartsAndItems,
+} from "lib/validators";
 
 export type StarterName =
   | "olek"
@@ -44,54 +48,72 @@ export const partTypes = [
 ] as PartType[];
 
 export function setStarterFighterGenes(
-  fighter: FighterWithPartsAndItems
-): FighterWithPartsAndItems {
+  fighter: Fighter | Omit<FighterWithPartsAndItems, "parts">
+):
+  | FighterWithPartsAndItems
+  | Omit<FighterWithPartsAndItems, "runes" | "charms"> {
   const fighterName = starterAxiesMap.get(Number(fighter.axie_id) as StarterId);
   if (!fighterName) {
     throw new Error(`No starter axie found for id ${fighter.axie_id}`);
   }
 
+  (
+    fighter as
+      | FighterWithPartsAndItems
+      | Omit<FighterWithPartsAndItems, "runes" | "charms">
+  ).parts = {
+    back: "",
+    ears: "",
+    eyes: "",
+    horn: "",
+    mouth: "",
+    tail: "",
+  };
+  const starterFighter = fighter as
+    | FighterWithPartsAndItems
+    | Omit<FighterWithPartsAndItems, "runes" | "charms">;
+
   switch (fighterName) {
     case "buba":
-      fighter.parts.back = "back-forest-hero";
-      fighter.parts.ears = "ears-foxy";
-      fighter.parts.eyes = "eyes-sparky";
-      fighter.parts.horn = "horn-persimmon";
-      fighter.parts.mouth = "mouth-foxy";
-      fighter.parts.tail = "tail-buba-brush";
+      starterFighter.parts.back = "back-forest-hero";
+      starterFighter.parts.ears = "ears-foxy";
+      starterFighter.parts.eyes = "eyes-sparky";
+      starterFighter.parts.horn = "horn-persimmon";
+      starterFighter.parts.mouth = "mouth-foxy";
+      starterFighter.parts.tail = "tail-buba-brush";
       break;
     case "olek":
-      fighter.parts.back = "back-succulent";
-      fighter.parts.ears = "ears-hidden-ears";
-      fighter.parts.eyes = "eyes-risky-trunk";
-      fighter.parts.horn = "horn-rusty-helm";
-      fighter.parts.mouth = "mouth-beetroot";
-      fighter.parts.tail = "tail-sprout";
+      starterFighter.parts.back = "back-succulent";
+      starterFighter.parts.ears = "ears-hidden-ears";
+      starterFighter.parts.eyes = "eyes-risky-trunk";
+      starterFighter.parts.horn = "horn-rusty-helm";
+      starterFighter.parts.mouth = "mouth-beetroot";
+      starterFighter.parts.tail = "tail-sprout";
       break;
     case "puffy":
-      fighter.parts.back = "back-tiny-dino";
-      fighter.parts.ears = "ears-little-crab";
-      fighter.parts.eyes = "eyes-baby";
-      fighter.parts.horn = "horn-jellytacle";
-      fighter.parts.mouth = "mouth-puff";
-      fighter.parts.tail = "tail-puff";
+      starterFighter.parts.back = "back-tiny-dino";
+      starterFighter.parts.ears = "ears-little-crab";
+      starterFighter.parts.eyes = "eyes-baby";
+      starterFighter.parts.horn = "horn-jellytacle";
+      starterFighter.parts.mouth = "mouth-puff";
+      starterFighter.parts.tail = "tail-puff";
       break;
     case "ena":
-      fighter.parts.back = "back-magic-sack";
-      fighter.parts.ears = "ears-sakura";
-      fighter.parts.eyes = "eyes-papi";
-      fighter.parts.horn = "horn-mandarine";
-      fighter.parts.mouth = "mouth-cub";
-      fighter.parts.tail = "tail-aegis-talisman";
+      starterFighter.parts.back = "back-magic-sack";
+      starterFighter.parts.ears = "ears-sakura";
+      starterFighter.parts.eyes = "eyes-papi";
+      starterFighter.parts.horn = "horn-mandarine";
+      starterFighter.parts.mouth = "mouth-cub";
+      starterFighter.parts.tail = "tail-aegis-talisman";
       break;
     case "tripp":
-      fighter.parts.back = "back-goldfish";
-      fighter.parts.ears = "ears-nut-cracker";
-      fighter.parts.eyes = "eyes-zeal";
-      fighter.parts.horn = "horn-cactus";
-      fighter.parts.mouth = "mouth-nut-cracker";
-      fighter.parts.tail = "tail-nut-cracker";
+      starterFighter.parts.back = "back-goldfish";
+      starterFighter.parts.ears = "ears-nut-cracker";
+      starterFighter.parts.eyes = "eyes-zeal";
+      starterFighter.parts.horn = "horn-cactus";
+      starterFighter.parts.mouth = "mouth-nut-cracker";
+      starterFighter.parts.tail = "tail-nut-cracker";
       break;
   }
-  return fighter;
+  return starterFighter;
 }

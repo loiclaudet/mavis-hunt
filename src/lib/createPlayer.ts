@@ -14,7 +14,6 @@ import type {
   Battle,
   Fighters,
   FighterWithPartsAndItems,
-  AxieParts,
   User,
   Fighter,
 } from "./validators";
@@ -49,39 +48,8 @@ export function createPlayer({
     ? lastBattle.first_client_fighters
     : lastBattle.second_client_fighters;
 
-  const axiesTeamsWithParts = axiesTeam.map((fighter) => {
-    const fighterWithPartsAndItems: FighterWithPartsAndItems = {
-      ...parseFighterItems({ fighter, runes, charms }),
-    };
-    // straters genes cannot be decoded
-    if (isStarterAxie(fighter.axie_type)) {
-      return setStarterFighterParts(fighterWithPartsAndItems);
-    }
-    let axieGene!: AxieGene;
-    try {
-      axieGene = new AxieGene(fighter.gene, HexType.Bit512);
-    } catch (error) {
-      console.error(error);
-      throw new Error(
-        `Axie gene ${fighter.gene} cannot be decoded for axie with id '${fighter.axie_id}',with type '${fighter.axie_type}'`
-      );
-    }
-    if (!axieGene) {
-      throw new Error(
-        `Axie gene ${fighter.gene} cannot be decoded for axie with id '${fighter.axie_id}',with type '${fighter.axie_type}'`
-      );
-    }
-    partTypes.forEach((partType) => {
-      const partIdFromGene = axieGene[partType]?.d?.partId;
-      const card = getCards().find((card) => card.partId === partIdFromGene);
-      if (!card?.partId) {
-        throw Error(
-          `Part ${partType} with partId '${partIdFromGene}' not found for axie ${fighter.axie_id}`
-        );
-      }
-      fighterWithPartsAndItems.parts[partType] = card.partId;
-    });
-    return fighterWithPartsAndItems;
+  const axiesTeamsWithPartsAndItems = axiesTeam.map((fighter) => {
+    return setPartsAndItems({ fighter, runes, charms });
   });
 
   let totalWon = 0;
@@ -109,7 +77,7 @@ export function createPlayer({
       0,
       Math.min(PROFILE_PLAYER_BATTLES, rankedPVPBattles.length)
     ),
-    team: axiesTeamsWithParts,
+    team: axiesTeamsWithPartsAndItems,
     winStreak,
     winRate,
   };
@@ -123,7 +91,7 @@ export type Player = ReturnType<typeof createPlayer> & {
   };
 };
 
-export function parseFighterItems({
+export function setPartsAndItems({
   fighter,
   runes,
   charms,
@@ -132,9 +100,78 @@ export function parseFighterItems({
   runes: Rune[];
   charms: Charm[];
 }): FighterWithPartsAndItems {
+  const fighterWithItems: Omit<FighterWithPartsAndItems, "parts"> =
+    parseFighterItems({ fighter, runes, charms });
+  const fighterWithPartsAndItems = parseFighterParts({
+    fighter: fighterWithItems,
+  });
+  return fighterWithPartsAndItems as FighterWithPartsAndItems;
+}
+
+export function parseFighterParts({
+  fighter,
+}: {
+  fighter: Fighter | Omit<FighterWithPartsAndItems, "parts">;
+}):
+  | FighterWithPartsAndItems
+  | Omit<FighterWithPartsAndItems, "runes" | "charms"> {
+  // straters genes cannot be decoded
+  if (isStarterAxie(fighter.axie_type)) {
+    return setStarterFighterParts(fighter);
+  }
+  let axieGene!: AxieGene;
+  try {
+    axieGene = new AxieGene(fighter.gene, HexType.Bit512);
+  } catch (error) {
+    console.error(error);
+    throw new Error(
+      `Axie gene ${fighter.gene} cannot be decoded for axie with id '${fighter.axie_id}',with type '${fighter.axie_type}'`
+    );
+  }
+  if (!axieGene) {
+    throw new Error(
+      `Axie gene ${fighter.gene} cannot be decoded for axie with id '${fighter.axie_id}',with type '${fighter.axie_type}'`
+    );
+  }
+  (
+    fighter as
+      | FighterWithPartsAndItems
+      | Omit<FighterWithPartsAndItems, "runes" | "charms">
+  ).parts = {
+    back: "",
+    ears: "",
+    eyes: "",
+    horn: "",
+    mouth: "",
+    tail: "",
+  };
+  const roninFighter = fighter as
+    | FighterWithPartsAndItems
+    | Omit<FighterWithPartsAndItems, "runes" | "charms">;
+  partTypes.forEach((partType) => {
+    const partIdFromGene = axieGene[partType]?.d?.partId;
+    const card = getCards().find((card) => card.partId === partIdFromGene);
+    if (!card?.partId) {
+      throw Error(
+        `Part ${partType} with partId '${partIdFromGene}' not found for axie ${fighter.axie_id}`
+      );
+    }
+    roninFighter.parts[partType] = card.partId;
+  });
+  return roninFighter;
+}
+
+export function parseFighterItems({
+  fighter,
+  runes,
+  charms,
+}: {
+  fighter: Fighter;
+  runes: Rune[];
+  charms: Charm[];
+}): Omit<FighterWithPartsAndItems, "parts"> {
   return {
     ...fighter,
-    parts: {} as AxieParts,
     runes: fighter.runes
       .map((runeID) => {
         const runeData = getRuneDataFromRuneID(runeID, runes) ?? null;

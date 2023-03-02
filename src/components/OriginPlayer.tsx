@@ -9,6 +9,7 @@ import type { AxieParts } from "lib/validators";
 import CharmComponent from "./Charm";
 import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
+import Effect from "./Effect";
 interface OriginPlayerProps {
   player: Player;
   index?: number;
@@ -45,7 +46,7 @@ function OriginPlayer({ player, runes, charms, index }: OriginPlayerProps) {
           </ul>
         ) : (
           <ul className="relative flex flex-1 items-center">
-            {player.team.map(({ axie_id, axie_type, runes, charms }) => {
+            {player.team.map(({ axie_id, axie_type, runes, charms, parts }) => {
               return (
                 <li key={axie_id} className="relative mb-10 sm:mb-0">
                   <div
@@ -66,7 +67,11 @@ function OriginPlayer({ player, runes, charms, index }: OriginPlayerProps) {
                     {(Object.keys(charms) as (keyof AxieParts)[]).map(
                       (part, index) => {
                         return (
-                          <CharmComponent key={index} charm={charms[part]} />
+                          <CharmComponent
+                            key={index}
+                            charm={charms[part]}
+                            axiePart={parts[part]}
+                          />
                         );
                       }
                     )}
@@ -77,6 +82,7 @@ function OriginPlayer({ player, runes, charms, index }: OriginPlayerProps) {
           </ul>
         )}
       </div>
+      <Effect />
     </div>
   );
 }
