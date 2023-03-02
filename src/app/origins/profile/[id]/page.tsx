@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import type { UserID } from "lib/validators";
 import { getBattles, getLeaderBoard, getCharms, getRunes } from "lib/api";
 import { createPlayer } from "lib/createPlayer";
-import { relativeTime } from "lib/relativeTime";
 import { MAX_DISPLAYED_PLAYER_BATTLES } from "lib/consts";
 import ArenaStarsChart from "components/ArenaStarsChart";
 import OriginProfile from "components/OriginProfile";
@@ -36,16 +35,6 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     charms: charms.map((charm) => charm.item),
   });
 
-  const chartData = player.battles
-    .map((battle) => {
-      const reward = battle.rewards.find((reward) => reward.user_id === userID);
-      return {
-        startedAt: relativeTime(battle.created_at, "long"),
-        stars: reward?.new_vstar,
-      };
-    })
-    .reverse();
-
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center">
       <Suspense fallback={<p>loading...</p>}>
@@ -58,7 +47,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
           charms={charms.map((charm) => charm.item)}
         />
       </Suspense>
-      <ArenaStarsChart data={chartData} />
+      <ArenaStarsChart battles={player.battles} userID={userID} />
     </div>
   );
 }

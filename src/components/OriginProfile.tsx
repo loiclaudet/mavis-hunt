@@ -27,7 +27,7 @@ export function OriginProfile({ player, runes, charms }: OriginPlayerProps) {
   return (
     <div className="relative flex flex-col">
       <div
-        className={`$ mx-auto flex origin-bottom flex-col items-start justify-center rounded bg-[#2b1812eb] p-4 sm:w-[948px]`}
+        className={`mx-auto flex origin-bottom flex-col items-start justify-center rounded bg-[#2b1812eb] px-4 sm:w-[948px]`}
       >
         <TwitchDetails
           live={Boolean(player?.channel?.live)}
@@ -63,7 +63,7 @@ export function OriginProfile({ player, runes, charms }: OriginPlayerProps) {
               return (
                 <li key={axie_id} className="relative mb-10 sm:mb-0">
                   <div
-                    className={`absolute top-2 left-2 z-[1] flex translate-x-4 sm:left-3 sm:top-7 sm:scale-150`}
+                    className={`absolute top-0 left-2 z-[1] flex sm:left-3 sm:top-7 sm:translate-x-4 sm:scale-150`}
                   >
                     <RuneComponent
                       runes={runes}
@@ -79,7 +79,7 @@ export function OriginProfile({ player, runes, charms }: OriginPlayerProps) {
                     heigth={225}
                   />
                   <div
-                    className={`absolute bottom-2 left-1/2 z-[1] grid -translate-x-1/2 grid-cols-3 items-baseline gap-2 sm:flex sm:scale-150 sm:gap-0`}
+                    className={`absolute -bottom-4 left-1/2 z-[1] grid -translate-x-1/2 grid-cols-3 items-baseline gap-x-6 gap-y-2 sm:bottom-2 sm:flex sm:scale-150 sm:gap-0`}
                   >
                     {(Object.keys(charms) as (keyof AxieParts)[]).map(
                       (part, index) => {

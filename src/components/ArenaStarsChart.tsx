@@ -1,6 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import useWindowSize from "hooks/windowSize";
+import { relativeTime } from "lib/relativeTime";
+import type { Battle } from "lib/validators";
+import { useMemo } from "react";
 import {
   Legend,
   Line,
@@ -11,22 +15,47 @@ import {
   YAxis,
 } from "recharts";
 
-interface ArenaStarsChartData {
-  startedAt: string;
-  stars: number | undefined;
-}
-
 interface ArenaStarsChartProps {
-  data: ArenaStarsChartData[];
+  userID: string;
+  battles: Battle[];
 }
 
-export default function ArenaStarsChart({ data }: ArenaStarsChartProps) {
-  if (!data) return null;
+export default function ArenaStarsChart({
+  userID,
+  battles,
+}: ArenaStarsChartProps) {
+  const windowSize = useWindowSize();
+  const chartData = useMemo(
+    () =>
+      battles
+        .map((battle) => {
+          const reward = battle.rewards.find(
+            (reward) => reward.user_id === userID
+          );
+          return {
+            startedAt: relativeTime(battle.created_at, "long"),
+            stars: reward?.new_vstar,
+          };
+        })
+        .reverse(),
+    [battles, userID]
+  );
+
+  if (
+    battles.length === 0 ||
+    windowSize.height === undefined ||
+    windowSize.width === undefined
+  ) {
+    return null;
+  }
+
   return (
     <LineChart
-      width={948}
-      height={500}
-      data={data}
+      width={windowSize.height < 1000 ? Math.min(windowSize.width, 727) : 948}
+      height={
+        windowSize.height < 1000 ? Math.min(windowSize.height / 2, 400) : 550
+      }
+      data={chartData}
       className={`box-border rounded bg-[#2b1812eb]`}
       margin={{ top: 20, right: 40, left: 40, bottom: 40 }}
       style={{
@@ -55,7 +84,7 @@ export default function ArenaStarsChart({ data }: ArenaStarsChartProps) {
                   display: "inline-block",
                 }}
               />
-              <div className="text-sm font-[300] text-white">{`evolution on last ${data.length} battles`}</div>
+              <div className="text-sm font-[300] text-white">{`evolution on last ${chartData.length} battles`}</div>
             </span>
           );
         }}
@@ -82,7 +111,7 @@ export default function ArenaStarsChart({ data }: ArenaStarsChartProps) {
         strokeWidth={3}
       />
       <ReferenceLine
-        y={data[data.length - 1]?.stars}
+        y={chartData[chartData.length - 1]?.stars}
         strokeDasharray="8 6"
         strokeWidth={1}
         stroke="#fff"
