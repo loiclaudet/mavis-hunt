@@ -3,6 +3,7 @@ import "styles/globals.css"; // These styles apply to every route in the applica
 import Head from "app/head";
 import Switch from "components/Switch";
 import Social from "components/Social";
+import Menu from "components/Menu";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
@@ -20,6 +21,7 @@ export default function RootLayout({
       <Head />
       <body>
         <main className="flex w-full flex-col items-center justify-center bg-cover bg-center bg-no-repeat">
+          <Menu />
           <Switch />
           {children}
           <Social />
