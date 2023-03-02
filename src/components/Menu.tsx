@@ -22,10 +22,10 @@ export default function Menu() {
     >
       <button
         onClick={() => setDisplayMenu(!displayMenu)}
-        className={`absolute rounded-none bg-none text-lg sm:hidden ${
+        className={`absolute rounded-none bg-none text-2xl sm:hidden ${
           displayMenu
             ? "bottom-1 right-1 shadow-none"
-            : "bottom-0 right-0 translate-x-full rounded-tr-md bg-[#2b1812eb]"
+            : "bottom-0 right-0 h-12 w-12 translate-x-full rounded-tr-md bg-[#2b1812eb]"
         }`}
       >
         {displayMenu ? "✕" : "☰"}
