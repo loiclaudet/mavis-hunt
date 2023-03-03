@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AxieLoader } from "./Loader";
 
 interface AxieProps {
   width: number;
@@ -7,12 +8,15 @@ interface AxieProps {
 }
 export function AxieSkeleton({ width, heigth }: AxieProps) {
   return (
-    <Image
-      width={width}
-      height={heigth * 0.58}
-      src={`/placeholder.png`}
-      alt={"axie"}
-      unoptimized
-    />
+    <>
+      <AxieLoader />
+      <Image
+        width={width}
+        height={heigth * 0.58}
+        src={`/placeholder.png`}
+        alt={"axie"}
+        unoptimized
+      />
+    </>
   );
 }

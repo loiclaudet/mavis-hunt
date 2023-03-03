@@ -1,10 +1,7 @@
 import { Suspense } from "react";
 import type { UserID } from "lib/validators";
-import { getBattles, getLeaderBoard, getCharms, getRunes } from "lib/api";
-import { createPlayer } from "lib/createPlayer";
-import { MAX_DISPLAYED_PLAYER_BATTLES } from "lib/consts";
-import ArenaStarsChart from "components/ArenaStarsChart";
 import OriginProfile from "components/OriginProfile";
+import { OriginProfileSkeleton } from "components/OriginProfileSkeleton";
 
 interface ProfilePageProps {
   params: {
@@ -12,42 +9,15 @@ interface ProfilePageProps {
   };
 }
 
-export default async function ProfilePage({ params }: ProfilePageProps) {
+export default function ProfilePage({ params }: ProfilePageProps) {
   const userID = params.id;
-  // TODO: refactor this page to follow the island pattern and display components skeletons
-  // it will improve the performance of the page
-  const [
-    { _items: users },
-    { battles: battles },
-    { _items: charms },
-    { _items: runes },
-  ] = await Promise.all([
-    getLeaderBoard({ userID, limit: 1 }),
-    getBattles({ userID }),
-    getCharms(),
-    getRunes(),
-  ]);
-  if (!users[0]) return <p>user not found</p>;
-  const player = createPlayer({
-    battles,
-    user: users[0],
-    runes: runes.map((rune) => rune.item),
-    charms: charms.map((charm) => charm.item),
-  });
 
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center">
-      <Suspense fallback={<p>loading...</p>}>
-        <OriginProfile
-          player={{
-            ...player,
-            battles: player.battles.slice(0, MAX_DISPLAYED_PLAYER_BATTLES),
-          }}
-          runes={runes.map((rune) => rune.item)}
-          charms={charms.map((charm) => charm.item)}
-        />
+      <Suspense fallback={<OriginProfileSkeleton />}>
+        {/* @ts-expect-error Server Component*/}
+        <OriginProfile userID={userID} />
       </Suspense>
-      <ArenaStarsChart battles={player.battles} userID={userID} />
     </div>
   );
 }

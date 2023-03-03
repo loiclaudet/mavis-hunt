@@ -8,7 +8,6 @@ export default function OriginPlayerSkeleton() {
         className={`mb-1 flex min-h-[157px] flex-col items-start justify-center rounded bg-[#2b1812eb] pl-2 sm:pl-2 lg:flex-row lg:items-center`}
       >
         <PlayerDetailsSkeleton />
-
         <ul className="relative flex flex-1 items-center">
           {new Array(3).fill(null).map(
             // 3 fighters

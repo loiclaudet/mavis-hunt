@@ -11,6 +11,7 @@ import { RuneComponent } from "./Rune";
 import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
 import Effect from "./Effect";
+import { LEADERBOARD_PLAYER_BATTLES } from "lib/consts";
 
 interface OriginBattlesProps {
   player: Player;
@@ -27,11 +28,15 @@ export default function Battles({ player, runes, charms }: OriginBattlesProps) {
     );
   }
   const { battles, userID } = player;
+  const displayedBattles = battles.slice(
+    0,
+    Math.min(battles.length, LEADERBOARD_PLAYER_BATTLES)
+  );
 
   return (
     <div className="w-[960px] max-w-full animate-openModal overflow-auto bg-[rgba(43,24,18,1)] opacity-0">
       <ul>
-        {battles.map(
+        {displayedBattles.map(
           ({
             battle_uuid,
             client_ids,

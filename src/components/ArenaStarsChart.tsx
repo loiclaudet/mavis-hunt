@@ -14,6 +14,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { ArenaStarsChartSkeleton } from "./ArenaStarsChartSkeleton";
 
 interface ArenaStarsChartProps {
   userID: string;
@@ -46,7 +47,7 @@ export default function ArenaStarsChart({
     windowSize.height === undefined ||
     windowSize.width === undefined
   ) {
-    return null;
+    return <ArenaStarsChartSkeleton />;
   }
 
   return (

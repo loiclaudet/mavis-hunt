@@ -11,7 +11,7 @@ export function PlayerDetailsSkeleton({
     <>
       <div
         className={`py-2 pl-2 sm:pl-4 ${
-          isProfile ? "w-full" : "w-full max-w-[340px]"
+          isProfile ? "w-full origin-top-left scale-50" : "w-full max-w-[340px]"
         } `}
       >
         <PlayerDetailsLoader />
