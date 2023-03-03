@@ -49,9 +49,9 @@ export function ArenaStarsChart({ userID, battles }: ArenaStarsChartProps) {
 
   return (
     <LineChart
-      width={windowSize.height < 1000 ? Math.min(windowSize.width, 727) : 948}
+      width={windowSize.height < 1000 ? Math.min(windowSize.width, 948) : 948}
       height={
-        windowSize.height < 1000 ? Math.min(windowSize.height / 2, 400) : 550
+        windowSize.height < 1000 ? Math.min(windowSize.height / 2, 420) : 550
       }
       data={chartData}
       className={`box-border rounded bg-[#2b1812eb]`}
