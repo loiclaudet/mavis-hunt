@@ -13,7 +13,7 @@ interface CharmProps {
   battleContext?: boolean;
   playerID?: string;
 }
-export default function CharmComponent({
+export function CharmComponent({
   charm,
   battleContext,
   axiePart,

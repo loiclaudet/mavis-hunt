@@ -1,8 +1,6 @@
 import type { StarterId, StarterName } from "lib/starterAxies";
 import { isStarterAxie, starterAxiesMap } from "lib/starterAxies";
 import ImageWithFallback from "./ImageWithFallback";
-// import RuneComponent from "./Rune";
-// import CharmComponent from "./Charm";
 import type { AxieType } from "lib/validators";
 
 interface AxieProps {

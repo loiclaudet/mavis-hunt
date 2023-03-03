@@ -21,10 +21,7 @@ interface ArenaStarsChartProps {
   battles: Battle[];
 }
 
-export default function ArenaStarsChart({
-  userID,
-  battles,
-}: ArenaStarsChartProps) {
+export function ArenaStarsChart({ userID, battles }: ArenaStarsChartProps) {
   const windowSize = useWindowSize();
   const chartData = useMemo(
     () =>

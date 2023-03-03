@@ -4,13 +4,13 @@ import TwitchDetails from "./TwitchDetails";
 import { PROFILE_PLAYER_BATTLES } from "lib/consts";
 import { RuneComponent } from "./Rune";
 import type { AxieParts, Battle, User } from "lib/validators";
-import CharmComponent from "./Charm";
+import { CharmComponent } from "./Charm";
 import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
-import Effect from "./Effect";
+import { Effect } from "./Effect";
 import { getBattles, getCharms, getLeaderBoard, getRunes } from "lib/api";
 import { createPlayer } from "lib/createPlayer";
-import ArenaStarsChart from "components/ArenaStarsChart";
+import { ArenaStarsChart } from "components/ArenaStarsChart";
 
 interface OriginProfileProps {
   userID: string;

@@ -6,10 +6,10 @@ import type { Player } from "lib/createPlayer";
 import { MissingBattles } from "./MissingBattles";
 import { RuneComponent } from "./Rune";
 import type { AxieParts } from "lib/validators";
-import CharmComponent from "./Charm";
+import { CharmComponent } from "./Charm";
 import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
-import Effect from "./Effect";
+import { Effect } from "./Effect";
 interface OriginPlayerProps {
   player: Player;
   index?: number;

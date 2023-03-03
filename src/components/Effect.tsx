@@ -11,11 +11,7 @@ interface EffectProps {
 export const itemAtom = atom<Item["item"] | null>(null);
 export const cardAtom = atom<Card | null>(null);
 export const userIDAtom = atom<string | null>(null);
-export default function Effect({
-  playerID,
-  battleContext,
-  isProfile,
-}: EffectProps) {
+export function Effect({ playerID, battleContext, isProfile }: EffectProps) {
   const [item] = useAtom<Item["item"] | null>(itemAtom);
   const [card] = useAtom<Card | null>(cardAtom);
   const [userID] = useAtom<string | null>(userIDAtom);
@@ -43,7 +39,7 @@ export default function Effect({
           <h4 className="absolute bottom-0 left-1/2 z-10 min-w-full -translate-x-1/2 bg-black/50 p-1 text-center text-sm">
             {card.cardName}
           </h4>
-          <div className="absolute top-0 right-0 h-5 w-4 translate-x-[25px] sm:h-6 sm:w-5 sm:translate-x-[25px]">
+          <div className="absolute top-0 right-0 h-5 w-4 translate-x-[25px] sm:h-6 sm:w-5 sm:translate-x-[25px] sm:-translate-y-1">
             <Image
               src={item.imageUrl}
               alt={item.name}
@@ -62,6 +58,7 @@ export default function Effect({
           style={{
             fontWeight: 300,
             fontSize: "0.9rem",
+            lineHeight: "1.2rem",
           }}
           className={
             battleContext ? "" : card?.cardImage ? `indent-5 sm:indent-5` : ""
