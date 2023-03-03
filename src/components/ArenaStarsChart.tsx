@@ -67,7 +67,7 @@ export default function ArenaStarsChart({
         align="center"
         verticalAlign="top"
         iconSize={0}
-        wrapperStyle={{ paddingBottom: 24 }}
+        wrapperStyle={{ paddingBottom: 12 }}
         formatter={() => {
           return (
             <span>

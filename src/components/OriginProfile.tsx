@@ -72,7 +72,7 @@ export async function OriginProfile({ userID }: OriginProfileProps) {
     <>
       <div className="relative flex flex-col">
         <div
-          className={`mx-auto flex origin-bottom flex-col items-start justify-center rounded bg-[#2b1812eb] px-4 sm:w-[948px]`}
+          className={`mx-auto flex origin-bottom flex-col items-start justify-center rounded bg-[#2b1812eb] px-4 sm:w-[948px] sm:pb-8 sm:pt-4`}
         >
           <TwitchDetails
             live={Boolean(player?.channel?.live)}
