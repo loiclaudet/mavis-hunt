@@ -17,6 +17,7 @@ const config = {
       "axiecdn.axieinfinity.com",
       "assets.axieinfinity.com",
       "cdn.axieinfinity.com",
+      "res.cloudinary.com",
     ],
   },
 

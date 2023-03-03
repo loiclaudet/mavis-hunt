@@ -35,8 +35,10 @@ export function Axie({ axieId, axieType, width, heigth }: AxieProps) {
         <ImageWithFallback
           width={width}
           height={heigth}
-          src={`https://axiecdn.axieinfinity.com/axies/${axieId}/axie/axie-full-transparent.png`}
-          fallbackSrc={`https://assets.axieinfinity.com/axies/${axieId}/axie/axie-full-transparent.png`} // v2 assets
+          src={`https://res.cloudinary.com/${
+            process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME as string
+          }/image/fetch/q_auto:good,w_${width}/v1677840582/https://axiecdn.axieinfinity.com/axies/${axieId}/axie/axie-full-transparent.png`}
+          fallbackSrc={`https://axiecdn.axieinfinity.com/axies/${axieId}/axie/axie-full-transparent.png`} // original assets (not optimized)
           priority
         />
       </a>

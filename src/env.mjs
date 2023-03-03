@@ -19,7 +19,7 @@ const server = z.object({
  * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
 const client = z.object({
-  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+  NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: z.string().min(1),
 });
 
 /**
@@ -33,6 +33,8 @@ const processEnv = {
   TWITCH_CLIENT_ID: process.env.TWITCH_CLIENT_ID,
   TWITCH_ACCESS_TOKEN: process.env.TWITCH_ACCESS_TOKEN,
   SKYMAVIS_API_KEY: process.env.SKYMAVIS_API_KEY,
+  NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME:
+    process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 
