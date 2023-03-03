@@ -11,6 +11,13 @@ const config = {
   reactStrictMode: true,
   experimental: {
     appDir: true,
+    // prevent API rate limiting during build
+    // https://github.com/vercel/next.js/discussions/18550#discussioncomment-3284668
+
+    // When enabled, it allows parallel threads
+    // with nextjs automatic static generation
+    workerThreads: false,
+    cpus: 1,
   },
   images: {
     domains: [
