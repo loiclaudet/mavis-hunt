@@ -8,6 +8,7 @@ import {
   getRunes,
   getStreamerChannel,
 } from "lib/api";
+import type { Player } from "lib/createPlayer";
 import { createPlayer } from "lib/createPlayer";
 import {
   LEADERBOARD_PLAYER_BATTLES,
@@ -31,7 +32,7 @@ export default async function OriginsLeaderboardPage() {
 
   // limit the number of requests to the origin API to 10 per second
   const originAPILimiter = new Bottleneck({
-    minTime: 1000 / ORIGIN_RATE_LIMIT_PER_SEC + 100 * ORIGIN_RATE_LIMIT_PER_SEC, // add 10ms per request to safely avoid to reach rate limit
+    minTime: 1000 / ORIGIN_RATE_LIMIT_PER_SEC + 10 * ORIGIN_RATE_LIMIT_PER_SEC, // add 10ms per request to safely avoid to reach rate limit
     maxConcurrent: ORIGIN_RATE_LIMIT_PER_SEC,
   });
   const wrappedGetLeaderboard = originAPILimiter.wrap(getLeaderBoard);
@@ -57,8 +58,27 @@ export default async function OriginsLeaderboardPage() {
     getCharms(),
   ]);
 
-  const runes = runesResponse._items.map((el) => el.item);
-  const charms = charmsResponse._items.map((el) => el.item);
+  const runes = runesResponse?._items.map((el) => el.item);
+  const charms = charmsResponse?._items.map((el) => el.item);
+
+  if (!runes) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center ">
+        <p className="text-lg font-bold sm:text-4xl">
+          Ooops! Error when retrieving runes data, please refresh the page!
+        </p>
+      </div>
+    );
+  }
+  if (!charms) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center ">
+        <p className="text-lg font-bold sm:text-4xl">
+          Ooops! Error when retrieving charms data, please refresh the page!
+        </p>
+      </div>
+    );
+  }
   // leaderboard API limit is reached earlier than battles, so we need to
   // chunk the requests based on ORIGIN_RATE_LIMIT_PER_SEC rate limit
   const usersBattlesPromisesChunked = chunk(
@@ -105,9 +125,9 @@ export default async function OriginsLeaderboardPage() {
 }
 
 interface PlayerListProps {
-  leaderboardPromise: Promise<Leaderboard>[];
-  usersBattlesPromises: Promise<Battles>[];
-  streamersChannelsPromises: Promise<StreamerChannel>[];
+  leaderboardPromise: Promise<Leaderboard | undefined>[];
+  usersBattlesPromises: Promise<Battles | undefined>[];
+  streamersChannelsPromises: Promise<StreamerChannel | undefined>[];
   runes: Rune[];
   charms: Charm[];
 }
@@ -121,30 +141,48 @@ async function PlayerList({
 }: PlayerListProps) {
   const [usersResponse, usersBattlesResponse, streamersChannelsResponse] =
     await Promise.all([
-      Promise.all(leaderboardPromise),
-      Promise.all(usersBattlesPromises),
-      Promise.all(streamersChannelsPromises),
+      Promise.allSettled(leaderboardPromise),
+      Promise.allSettled(usersBattlesPromises),
+      Promise.allSettled(streamersChannelsPromises),
     ]);
 
   const userBattles = usersBattlesResponse.map((response) => {
-    return response?.battles ?? [];
+    if (response.status === "rejected") {
+      return [];
+    }
+    return response.value?.battles ?? [];
   });
 
-  const users = usersResponse.map((user) => user._items[0] as User);
+  const channels = streamersChannelsResponse.map((response) => {
+    if (response.status === "rejected") {
+      return undefined;
+    }
+    return response.value;
+  });
 
-  const players = users
-    .map((user, index) => {
-      return createPlayer({
-        battles: userBattles[index] as Battle[],
-        user,
-        runes,
-        charms,
-        ...(streamersChannelsResponse[index]
-          ? { channel: streamersChannelsResponse[index] }
-          : {}),
-      });
-    })
-    .sort((a, b) => a.topRank - b.topRank);
+  const users = usersResponse.map((userResponse) => {
+    if (userResponse.status === "rejected") {
+      return undefined;
+    }
+    return userResponse.value?._items[0];
+  });
+
+  const players = (
+    users
+      .map((user, index) => {
+        if (!user) {
+          return undefined;
+        }
+        return createPlayer({
+          battles: userBattles[index] as Battle[],
+          user: users[index] as User,
+          runes,
+          charms,
+          ...(channels[index] ? { channel: channels[index] } : {}),
+        });
+      })
+      .filter(Boolean) as Player[]
+  ).sort((a, b) => a.topRank - b.topRank);
   return (
     <>
       {players.map((_player) => (

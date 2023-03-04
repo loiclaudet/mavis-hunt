@@ -16,12 +16,12 @@ export function getLeaderBoard({
   userID,
   offset = 0,
   limit = LEADERBOARD_LIMIT,
-}: UseLeaderboardProps): Promise<Leaderboard> {
+}: UseLeaderboardProps): Promise<Leaderboard | undefined> {
   const userIDQuery = userID ? `&userID=${userID}` : "";
 
   return fetcher(
     `https://api-gateway.skymavis.com/origin/v2/leaderboards?limit=${limit}&offset=${offset}${userIDQuery}`
-  ) as Promise<Leaderboard>;
+  ) as Promise<Leaderboard | undefined>;
 }
 
 // Battles
@@ -41,25 +41,25 @@ export function getBattles({
   page = 1, // the API will return the battles from the limit * (page - 1) to the limit * page
   esport = false,
   type = "pvp",
-}: UseBattlesProps): Promise<Battles> {
+}: UseBattlesProps): Promise<Battles | undefined> {
   return fetcher(
     `https://api-gateway.skymavis.com/x/origin${
       esport ? "-esport" : ""
     }/battle-history?type=${type}&client_id=${userID}&limit=${limit}&page=${page}`
-  ) as Promise<Battles>;
+  ) as Promise<Battles | undefined>;
 }
 
 // Charms
-export function getCharms(): Promise<Items> {
+export function getCharms(): Promise<Items | undefined> {
   return fetcher(
     "https://api-gateway.skymavis.com/origin/v2/community/charms"
-  ) as Promise<Items>;
+  ) as Promise<Items | undefined>;
 }
 // Runes
-export function getRunes(): Promise<Items> {
+export function getRunes(): Promise<Items | undefined> {
   return fetcher(
     "https://api-gateway.skymavis.com/origin/v2/community/runes"
-  ) as Promise<Items>;
+  ) as Promise<Items | undefined>;
 }
 
 export interface StreamerChannel {

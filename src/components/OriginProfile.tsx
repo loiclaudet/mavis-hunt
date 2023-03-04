@@ -23,30 +23,31 @@ interface getProfileDataProps {
 interface ProfileData {
   user?: User;
   battles: Battle[];
-  runes: Rune[];
-  charms: Charm[];
+  runes?: Rune[];
+  charms?: Charm[];
 }
 
 async function getProfileData({
   userID,
 }: getProfileDataProps): Promise<ProfileData> {
-  const [
-    { _items: users },
-    { battles: battles },
-    { _items: charms },
-    { _items: runes },
-  ] = await Promise.all([
-    getLeaderBoard({ userID, limit: 1 }),
-    getBattles({ userID }),
-    getCharms(),
-    getRunes(),
-  ]);
+  const [usersResponse, usersBattlesResponse, charmsResponse, runesResponse] =
+    await Promise.all([
+      getLeaderBoard({ userID, limit: 1 }),
+      getBattles({ userID }),
+      getCharms(),
+      getRunes(),
+    ]);
+
+  const runes = runesResponse?._items.map((el) => el.item);
+  const charms = charmsResponse?._items.map((el) => el.item);
+  const battles = usersBattlesResponse?.battles ?? [];
+  const users = usersResponse?._items ?? [];
 
   return {
     user: users[0],
     battles,
-    runes: runes.map((rune) => rune.item),
-    charms: charms.map((charm) => charm.item),
+    runes,
+    charms,
   };
 }
 export async function OriginProfile({ userID }: OriginProfileProps) {
@@ -61,6 +62,25 @@ export async function OriginProfile({ userID }: OriginProfileProps) {
       </p>
     );
   }
+  if (!runes) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center ">
+        <p className="text-lg font-bold sm:text-4xl">
+          Ooops! Error when retrieving runes data, please refresh the page!
+        </p>
+      </div>
+    );
+  }
+  if (!charms) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center ">
+        <p className="text-lg font-bold sm:text-4xl">
+          Ooops! Error when retrieving charms data, please refresh the page!
+        </p>
+      </div>
+    );
+  }
+
   const player = createPlayer({
     battles,
     user,

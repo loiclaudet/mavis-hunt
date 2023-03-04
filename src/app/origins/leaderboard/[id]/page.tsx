@@ -26,12 +26,46 @@ export default async function OriginsLeaderboardPage({
   const pageID = Number(params.id);
   const offset = pageID * LEADERBOARD_LIMIT - LEADERBOARD_LIMIT;
 
-  const [{ _items: runes }, { _items: charms }, { _items: users }] =
-    await Promise.all([
-      getRunes(),
-      getCharms(),
-      getLeaderBoard({ offset, limit: LEADERBOARD_LIMIT }),
-    ]);
+  const [runesResponse, charmsResponse, usersResponse] = await Promise.all([
+    getRunes(),
+    getCharms(),
+    getLeaderBoard({ offset, limit: LEADERBOARD_LIMIT }),
+  ]);
+
+  const runes = runesResponse?._items.map((el) => el.item);
+  const charms = charmsResponse?._items.map((el) => el.item);
+
+  if (!runes) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        <p className="text-lg font-bold sm:text-4xl">
+          Ooops! Error when retrieving runes data, please refresh the page!
+        </p>
+      </div>
+    );
+  }
+  if (!charms) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        <p className="text-lg font-bold sm:text-4xl">
+          Ooops! Error when retrieving charms data, please refresh the page!
+        </p>
+      </div>
+    );
+  }
+
+  const users = usersResponse?._items;
+
+  if (!users) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center ">
+        <p className="text-lg font-bold sm:text-4xl">
+          Ooops! Error when retrieving leaderboard data, please refresh the
+          page!
+        </p>
+      </div>
+    );
+  }
 
   // limit the number of requests to the API to 10 per second
   const limiter = new Bottleneck({
@@ -39,7 +73,6 @@ export default async function OriginsLeaderboardPage({
     maxConcurrent: X_RATE_LIMIT_PER_SEC,
   });
   const wrappedGetBattles = limiter.wrap(getBattles);
-  runes;
   const usersBattlesPromises = users.map(({ userID }) =>
     wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
   );
@@ -62,8 +95,8 @@ export default async function OriginsLeaderboardPage({
                   index * X_RATE_LIMIT_PER_SEC,
                   (index + 1) * X_RATE_LIMIT_PER_SEC
                 )}
-                runes={runes.map((rune) => rune.item)}
-                charms={charms.map((charm) => charm.item)}
+                runes={runes}
+                charms={charms}
               />
             </Suspense>
           );
@@ -74,7 +107,7 @@ export default async function OriginsLeaderboardPage({
 }
 
 interface PlayerListProps {
-  userBattlesPromises: Promise<Battles>[];
+  userBattlesPromises: Promise<Battles | undefined>[];
   users: User[];
   runes: Rune[];
   charms: Charm[];
