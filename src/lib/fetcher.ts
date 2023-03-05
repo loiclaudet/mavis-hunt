@@ -13,7 +13,9 @@ export default async function fetcher<K extends string | number | symbol, T>(
       method: body ? "POST" : "GET",
       headers,
       ...(body ? { body: JSON.stringify(body) } : {}),
-      ...(revalidate ? { next: { revalidate } } : {}),
+      next: {
+        revalidate: revalidate ?? 60,
+      },
     });
     const data = (await response.json()) as T | undefined;
     if (response.ok) {

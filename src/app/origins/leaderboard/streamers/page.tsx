@@ -32,7 +32,7 @@ export default async function OriginsLeaderboardPage() {
 
   // limit the number of requests to the origin API to 10 per second
   const originAPILimiter = new Bottleneck({
-    minTime: 1000 / ORIGIN_RATE_LIMIT_PER_SEC + 10 * ORIGIN_RATE_LIMIT_PER_SEC, // add 10ms per request to safely avoid to reach rate limit
+    minTime: 1000 / ORIGIN_RATE_LIMIT_PER_SEC + 50 * ORIGIN_RATE_LIMIT_PER_SEC, // add 50ms per request to safely avoid to reach rate limit
     maxConcurrent: ORIGIN_RATE_LIMIT_PER_SEC,
   });
   const wrappedGetLeaderboard = originAPILimiter.wrap(getLeaderBoard);
@@ -164,7 +164,7 @@ async function PlayerList({
     if (userResponse.status === "rejected") {
       return undefined;
     }
-    return userResponse.value?._items[0];
+    return userResponse.value?._items?.[0];
   });
 
   const players = (
