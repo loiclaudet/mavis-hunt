@@ -67,6 +67,7 @@ function Username({ isProfile, name, userID }: UsernameProps) {
         <Link
           className="group-hover:underline"
           href={`origins/profile/${userID}`}
+          prefetch={false}
         >
           <span>{name}</span>
         </Link>

@@ -26,6 +26,7 @@ export default function TwitchDetails({
         rel="noopener noreferrer"
         title="Go to Twitch channel"
         className="relative mr-2 h-5 w-5 cursor-pointer self-end transition-transform hover:scale-110"
+        prefetch={false}
       >
         <Image
           src={`/twitch.png`}
@@ -50,6 +51,7 @@ export default function TwitchDetails({
           rel="noopener noreferrer"
           title="Go to Twitch channel"
           className="mr-2 cursor-pointer"
+          prefetch={false}
         >
           <div
             style={{

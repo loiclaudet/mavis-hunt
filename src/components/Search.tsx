@@ -172,6 +172,7 @@ export default function Search() {
               <Link
                 href={`origins/profile/${player.userID}`}
                 className="flex w-full items-center bg-none py-2 px-0 shadow-none"
+                prefetch={false}
               >
                 <p
                   style={{

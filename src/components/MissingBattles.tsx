@@ -21,6 +21,7 @@ export function MissingBattles({ userID }: MissingBattlesProps) {
             <Link
               href={`/origins/profile/${userID}`}
               className="text-blue-500 underline"
+              prefetch={false}
             >
               profile page
             </Link>

@@ -108,7 +108,11 @@ function Button({
         inactive ? "pointer-events-none cursor-not-allowed grayscale" : ""
       }`}
     >
-      <Link href={url} className={`${inactive ? "" : "group-hover:underline"}`}>
+      <Link
+        href={url}
+        className={`${inactive ? "" : "group-hover:underline"}`}
+        prefetch={false}
+      >
         <div className="flex items-center py-2 sm:py-4">
           <div className={`relative mr-3 h-[25px] w-[25px] rounded`}>
             {isActivePage && (
