@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import type { UserID } from "lib/validators";
-import OriginProfile from "components/OriginProfile";
+import { OriginProfile } from "components/OriginProfile";
 import { OriginProfileSkeleton } from "components/OriginProfileSkeleton";
 
 interface ProfilePageProps {

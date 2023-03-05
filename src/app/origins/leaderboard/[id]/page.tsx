@@ -25,57 +25,19 @@ export default async function OriginsLeaderboardPage({
 }: OriginsLeaderboardPageProps) {
   const pageID = Number(params.id);
   const offset = pageID * LEADERBOARD_LIMIT - LEADERBOARD_LIMIT;
-
-  const [runesResponse, charmsResponse, usersResponse] = await Promise.all([
-    getRunes(),
-    getCharms(),
-    getLeaderBoard({ offset, limit: LEADERBOARD_LIMIT }),
-  ]);
-
-  const runes = runesResponse?._items.map((el) => el.item);
-  const charms = charmsResponse?._items.map((el) => el.item);
-
-  if (!runes) {
-    return (
-      <div className="flex h-screen w-full items-center justify-center">
-        <p className="text-lg font-bold sm:text-4xl">
-          Ooops! Error when retrieving runes data, please refresh the page!
-        </p>
-      </div>
-    );
-  }
-  if (!charms) {
-    return (
-      <div className="flex h-screen w-full items-center justify-center">
-        <p className="text-lg font-bold sm:text-4xl">
-          Ooops! Error when retrieving charms data, please refresh the page!
-        </p>
-      </div>
-    );
-  }
-
-  const users = usersResponse?._items;
-
-  if (!users) {
-    return (
-      <div className="flex h-screen w-full items-center justify-center ">
-        <p className="text-lg font-bold sm:text-4xl">
-          Ooops! Error when retrieving leaderboard data, please refresh the
-          page!
-        </p>
-      </div>
-    );
-  }
-
-  // limit the number of requests to the API to 10 per second
-  const limiter = new Bottleneck({
-    minTime: 1000 / X_RATE_LIMIT_PER_SEC + 10 * X_RATE_LIMIT_PER_SEC, // add 10ms per request to safely avoid to reach rate limit
-    maxConcurrent: X_RATE_LIMIT_PER_SEC,
+  const { runes, charms, users, usersBattlesPromises } = await getData({
+    offset,
   });
-  const wrappedGetBattles = limiter.wrap(getBattles);
-  const usersBattlesPromises = users.map(({ userID }) =>
-    wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
-  );
+
+  if (!runes || !charms || !users) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        <p className="text-lg font-bold sm:text-2xl">
+          Ooops! Error when retrieving data, please refresh the page!
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex max-w-full flex-col items-center overflow-hidden">
@@ -143,4 +105,32 @@ async function PlayerList({
       ))}
     </>
   );
+}
+
+async function getData({ offset }: { offset: number }) {
+  const [runesResponse, charmsResponse, usersResponse] = await Promise.all([
+    getRunes(),
+    getCharms(),
+    getLeaderBoard({ offset, limit: LEADERBOARD_LIMIT }),
+  ]);
+  const runes = runesResponse?._items.map((el) => el.item);
+  const charms = charmsResponse?._items.map((el) => el.item);
+  const users = usersResponse?._items;
+
+  // limit the number of requests to the API to 10 per second
+  const limiter = new Bottleneck({
+    minTime: 1000 / X_RATE_LIMIT_PER_SEC + 10 * X_RATE_LIMIT_PER_SEC, // add 10ms per request to safely avoid to reach rate limit
+    maxConcurrent: X_RATE_LIMIT_PER_SEC,
+  });
+  const wrappedGetBattles = limiter.wrap(getBattles);
+  const usersBattlesPromises = (users ?? []).map(({ userID }) =>
+    wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
+  );
+
+  return {
+    runes,
+    charms,
+    users,
+    usersBattlesPromises,
+  };
 }

@@ -24,63 +24,26 @@ import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
 
 export default async function OriginsLeaderboardPage() {
-  const twitchUsersIDs = Array.from(userIdToTwitchChannelMap.keys());
-  const usersChannelNames = Array.from(userIdToTwitchChannelMap.values());
-  const streamersChannelsPromises = usersChannelNames.map((channel) =>
-    getStreamerChannel(channel)
-  );
+  const {
+    runes,
+    charms,
+    streamersChannelsPromises,
+    leaderboardPromise,
+    usersBattlesPromises,
+  } = await getData();
 
-  // limit the number of requests to the origin API to 10 per second
-  const originAPILimiter = new Bottleneck({
-    minTime: 1000 / ORIGIN_RATE_LIMIT_PER_SEC + 50 * ORIGIN_RATE_LIMIT_PER_SEC, // add 50ms per request to safely avoid to reach rate limit
-    maxConcurrent: ORIGIN_RATE_LIMIT_PER_SEC,
-  });
-  const wrappedGetLeaderboard = originAPILimiter.wrap(getLeaderBoard);
-
-  const leaderboardPromise = twitchUsersIDs.map((userID) =>
-    wrappedGetLeaderboard({ userID, limit: 1 })
-  );
-
-  // limit the number of requests to the x API to 10 per second
-  const xAPILimiter = new Bottleneck({
-    minTime: 1000 / X_RATE_LIMIT_PER_SEC + 10 * X_RATE_LIMIT_PER_SEC, // add 10ms per request to safely avoid to reach rate limit
-    maxConcurrent: X_RATE_LIMIT_PER_SEC,
-  });
-  const wrappedGetBattles = xAPILimiter.wrap(getBattles);
-
-  const usersBattlesPromises = twitchUsersIDs.map((userID) =>
-    wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
-  );
-
-  // TODO: use parallel requests
-  const [runesResponse, charmsResponse] = await Promise.all([
-    getRunes(),
-    getCharms(),
-  ]);
-
-  const runes = runesResponse?._items.map((el) => el.item);
-  const charms = charmsResponse?._items.map((el) => el.item);
-
-  if (!runes) {
+  if (!runes || !charms) {
     return (
-      <div className="flex h-screen w-full items-center justify-center ">
-        <p className="text-lg font-bold sm:text-4xl">
-          Ooops! Error when retrieving runes data, please refresh the page!
+      <div className="flex h-screen w-full items-center justify-center">
+        <p className="text-lg font-bold sm:text-2xl">
+          Ooops! Error when retrieving data, please refresh the page!
         </p>
       </div>
     );
   }
-  if (!charms) {
-    return (
-      <div className="flex h-screen w-full items-center justify-center ">
-        <p className="text-lg font-bold sm:text-4xl">
-          Ooops! Error when retrieving charms data, please refresh the page!
-        </p>
-      </div>
-    );
-  }
-  // leaderboard API limit is reached earlier than battles, so we need to
-  // chunk the requests based on ORIGIN_RATE_LIMIT_PER_SEC rate limit
+
+  // leaderboard API rate limit is 5/sec for users (origin endpoints), while battles is 10/sec.
+  // Thus we need to chunk the other requests based on ORIGIN_RATE_LIMIT_PER_SEC rate limit
   const usersBattlesPromisesChunked = chunk(
     usersBattlesPromises,
     ORIGIN_RATE_LIMIT_PER_SEC
@@ -195,4 +158,51 @@ async function PlayerList({
       ))}
     </>
   );
+}
+
+async function getData() {
+  // TODO: fetch all data in parallel.
+  // We need to limit the number of requests to the x API to 10 per second.
+  const [runesResponse, charmsResponse] = await Promise.all([
+    getRunes(),
+    getCharms(),
+  ]);
+  const runes = runesResponse?._items.map((el) => el.item);
+  const charms = charmsResponse?._items.map((el) => el.item);
+
+  const twitchUsersIDs = Array.from(userIdToTwitchChannelMap.keys());
+  const usersChannelNames = Array.from(userIdToTwitchChannelMap.values());
+  const streamersChannelsPromises = usersChannelNames.map((channel) =>
+    getStreamerChannel(channel)
+  );
+
+  // limit the number of requests to the origin API to 10 per second
+  const originAPILimiter = new Bottleneck({
+    minTime: 1000 / ORIGIN_RATE_LIMIT_PER_SEC + 50 * ORIGIN_RATE_LIMIT_PER_SEC, // add 50ms per request to safely avoid to reach rate limit
+    maxConcurrent: ORIGIN_RATE_LIMIT_PER_SEC,
+  });
+  const wrappedGetLeaderboard = originAPILimiter.wrap(getLeaderBoard);
+
+  const leaderboardPromise = twitchUsersIDs.map((userID) =>
+    wrappedGetLeaderboard({ userID, limit: 1 })
+  );
+
+  // limit the number of requests to the x API to 10 per second
+  const xAPILimiter = new Bottleneck({
+    minTime: 1000 / X_RATE_LIMIT_PER_SEC + 10 * X_RATE_LIMIT_PER_SEC, // add 10ms per request to safely avoid to reach rate limit
+    maxConcurrent: X_RATE_LIMIT_PER_SEC,
+  });
+  const wrappedGetBattles = xAPILimiter.wrap(getBattles);
+
+  const usersBattlesPromises = twitchUsersIDs.map((userID) =>
+    wrappedGetBattles({ userID, limit: LEADERBOARD_PLAYER_BATTLES })
+  );
+
+  return {
+    runes,
+    charms,
+    streamersChannelsPromises,
+    leaderboardPromise,
+    usersBattlesPromises,
+  };
 }

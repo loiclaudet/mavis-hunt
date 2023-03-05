@@ -65,7 +65,7 @@ export async function OriginProfile({ userID }: OriginProfileProps) {
   if (!runes) {
     return (
       <div className="flex h-screen w-full items-center justify-center ">
-        <p className="text-lg font-bold sm:text-4xl">
+        <p className="text-lg font-bold sm:text-2xl">
           Ooops! Error when retrieving runes data, please refresh the page!
         </p>
       </div>
@@ -74,7 +74,7 @@ export async function OriginProfile({ userID }: OriginProfileProps) {
   if (!charms) {
     return (
       <div className="flex h-screen w-full items-center justify-center ">
-        <p className="text-lg font-bold sm:text-4xl">
+        <p className="text-lg font-bold sm:text-2xl">
           Ooops! Error when retrieving charms data, please refresh the page!
         </p>
       </div>
@@ -171,7 +171,3 @@ export async function OriginProfile({ userID }: OriginProfileProps) {
     </>
   );
 }
-
-OriginProfile.displayName = "Player";
-
-export default OriginProfile;
