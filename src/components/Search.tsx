@@ -27,7 +27,7 @@ export default function Search() {
   const getPlayersFromQuery = useCallback(
     (query: string): Promise<RoninLeaderBoardPlayer[]> => {
       const url = `/api/search`;
-      return fetcher(url, query) as Promise<RoninLeaderBoardPlayer[]>;
+      return fetcher(url, { body: query }) as Promise<RoninLeaderBoardPlayer[]>;
     },
     []
   );

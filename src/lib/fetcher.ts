@@ -1,7 +1,12 @@
-export default async function fetcher<K extends string | number | symbol, T>(
+type FetcherOptions<K, T> = {
+  body?: string | Record<K extends string | number | symbol ? K : never, T>;
+  revalidate?: number;
+  cache?: RequestCache;
+};
+
+export default async function fetcher<K, T>(
   url: string,
-  body?: string | Record<K, T>,
-  revalidate?: number
+  { body, revalidate, cache }: FetcherOptions<K, T> = {}
 ): Promise<unknown> {
   const headers = new Headers();
   headers.append("Accept", "application/json");
@@ -14,8 +19,9 @@ export default async function fetcher<K extends string | number | symbol, T>(
       headers,
       ...(body ? { body: JSON.stringify(body) } : {}),
       next: {
-        revalidate: revalidate ?? 60,
+        ...(revalidate ? { revalidate } : {}),
       },
+      cache: cache || "default",
     });
     const data = (await response.json()) as T | undefined;
     if (response.ok) {
