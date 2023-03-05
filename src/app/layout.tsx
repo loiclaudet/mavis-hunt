@@ -1,4 +1,4 @@
-import { Work_Sans } from "@next/font/google";
+import { Work_Sans } from "next/font/google";
 import "styles/globals.css"; // These styles apply to every route in the application
 import Head from "app/head";
 import Switch from "components/Switch";
