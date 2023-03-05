@@ -20,7 +20,8 @@ export function getLeaderBoard({
   const userIDQuery = userID ? `&userID=${userID}` : "";
 
   return fetcher(
-    `https://api-gateway.skymavis.com/origin/v2/leaderboards?limit=${limit}&offset=${offset}${userIDQuery}`
+    `https://api-gateway.skymavis.com/origin/v2/leaderboards?limit=${limit}&offset=${offset}${userIDQuery}`,
+    { revalidate: 180 }
   ) as Promise<Leaderboard | undefined>;
 }
 
@@ -45,7 +46,8 @@ export function getBattles({
   return fetcher(
     `https://api-gateway.skymavis.com/x/origin${
       esport ? "-esport" : ""
-    }/battle-history?type=${type}&client_id=${userID}&limit=${limit}&page=${page}`
+    }/battle-history?type=${type}&client_id=${userID}&limit=${limit}&page=${page}`,
+    { revalidate: 180 }
   ) as Promise<Battles | undefined>;
 }
 
