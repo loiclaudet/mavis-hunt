@@ -4,6 +4,7 @@ import Head from "app/head";
 import Switch from "components/Switch";
 import Social from "components/Social";
 import Menu from "components/Menu";
+import { Analytics } from "@vercel/analytics/react";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
@@ -25,6 +26,7 @@ export default function RootLayout({
           <Switch />
           {children}
           <Social />
+          <Analytics />
         </main>
       </body>
     </html>

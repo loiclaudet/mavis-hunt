@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@vercel/analytics": "^0.1.9",
+    "@vercel/analytics": "^0.1.11",
     "agp-npm": "^1.0.11",
     "bottleneck": "^2.19.5",
     "debounce": "^1.2.1",
