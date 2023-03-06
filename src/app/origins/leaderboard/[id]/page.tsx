@@ -14,10 +14,21 @@ import OriginPlayer from "components/OriginPlayer";
 import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
 import { PlayerListSkeleton } from "components/PlayerListSkeleton";
+import type { Metadata } from "next";
 
 interface OriginsLeaderboardPageProps {
   params: {
     id: string;
+  };
+}
+
+export function generateMetadata({
+  params,
+}: OriginsLeaderboardPageProps): Metadata {
+  const pageID = Number(params.id);
+  return {
+    title: `🍷 Top ${pageID * LEADERBOARD_LIMIT} | Origins leaderboard`,
+    description: `🍷 Top ${pageID * LEADERBOARD_LIMIT} | Origins leaderboard`,
   };
 }
 

@@ -23,7 +23,12 @@ import chunk from "lib/chunk";
 import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
 
-export default async function OriginsLeaderboardPage() {
+export const metadata = {
+  title: "🍷 Origins Streamers",
+  description: "🍷 Origins Streamers",
+};
+
+export default async function OriginsStreamersPage() {
   const {
     runes,
     charms,
