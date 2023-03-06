@@ -109,7 +109,7 @@ function Button({
       }`}
     >
       <Link
-        href={url}
+        href={{ pathname: url }}
         className={`${inactive ? "" : "group-hover:underline"}`}
         prefetch={false}
       >

@@ -18,7 +18,7 @@ export function Header({ pageID }: { pageID: number }) {
           const isActivePage = pageID === i + 1;
           return (
             <Link
-              href={`origins/leaderboard/${i + 1}`}
+              href={`/origins/leaderboard/${i + 1}`}
               key={i}
               prefetch={false}
             >

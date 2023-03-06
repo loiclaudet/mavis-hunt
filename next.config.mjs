@@ -11,6 +11,7 @@ const config = {
   reactStrictMode: true,
   experimental: {
     appDir: true,
+    typedRoutes: true,
     // prevent API rate limiting during build
     // https://github.com/vercel/next.js/discussions/18550#discussioncomment-3284668
 

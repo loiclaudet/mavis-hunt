@@ -1,5 +1,4 @@
 import { userIdToTwitchChannelMap } from "data/players";
-import Link from "next/link";
 import Image from "next/image";
 import type { UserID } from "lib/validators";
 
@@ -20,13 +19,12 @@ export default function TwitchDetails({
 
   return (
     <div className="absolute left-auto right-0 top-2 z-10 flex items-center sm:left-2 sm:right-auto">
-      <Link
+      <a
         href={`https://www.twitch.tv/${twitchChannel}`}
         target="_blank"
         rel="noopener noreferrer"
         title="Go to Twitch channel"
         className="relative mr-2 h-5 w-5 cursor-pointer self-end transition-transform hover:scale-110"
-        prefetch={false}
       >
         <Image
           src={`/twitch.png`}
@@ -34,7 +32,7 @@ export default function TwitchDetails({
           fill={true}
           unoptimized
         />
-      </Link>
+      </a>
       {typeof leaderboardIndex === "number" && (
         <span
           className="mr-2"
@@ -45,13 +43,12 @@ export default function TwitchDetails({
       )}
 
       {live && (
-        <Link
+        <a
           href={`https://www.twitch.tv/${twitchChannel}`}
           target="_blank"
           rel="noopener noreferrer"
           title="Go to Twitch channel"
           className="mr-2 cursor-pointer"
-          prefetch={false}
         >
           <div
             style={{
@@ -68,7 +65,7 @@ export default function TwitchDetails({
               }}
             ></div>
           </div>
-        </Link>
+        </a>
       )}
     </div>
   );
