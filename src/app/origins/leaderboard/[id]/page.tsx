@@ -9,6 +9,7 @@ import {
 } from "lib/consts";
 import { Suspense } from "react";
 import chunk from "lib/chunk";
+import { Header } from "components/Header";
 import OriginPlayer from "components/OriginPlayer";
 import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
@@ -40,31 +41,34 @@ export default async function OriginsLeaderboardPage({
   }
 
   return (
-    <div className="flex max-w-full flex-col items-center overflow-hidden">
-      {chunk(usersBattlesPromises, X_RATE_LIMIT_PER_SEC).map(
-        (promises, index) => {
-          return (
-            <Suspense
-              fallback={
-                <PlayerListSkeleton playersQuantity={promises.length} />
-              }
-              key={index}
-            >
-              {/* @ts-expect-error Server Component*/}
-              <PlayerList
-                userBattlesPromises={promises}
-                users={users.slice(
-                  index * X_RATE_LIMIT_PER_SEC,
-                  (index + 1) * X_RATE_LIMIT_PER_SEC
-                )}
-                runes={runes}
-                charms={charms}
-              />
-            </Suspense>
-          );
-        }
-      )}
-    </div>
+    <>
+      <Header pageID={pageID} />
+      <div className="flex max-w-full flex-col items-center overflow-hidden">
+        {chunk(usersBattlesPromises, X_RATE_LIMIT_PER_SEC).map(
+          (promises, index) => {
+            return (
+              <Suspense
+                fallback={
+                  <PlayerListSkeleton playersQuantity={promises.length} />
+                }
+                key={index}
+              >
+                {/* @ts-expect-error Server Component*/}
+                <PlayerList
+                  userBattlesPromises={promises}
+                  users={users.slice(
+                    index * X_RATE_LIMIT_PER_SEC,
+                    (index + 1) * X_RATE_LIMIT_PER_SEC
+                  )}
+                  runes={runes}
+                  charms={charms}
+                />
+              </Suspense>
+            );
+          }
+        )}
+      </div>
+    </>
   );
 }
 

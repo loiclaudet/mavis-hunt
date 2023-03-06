@@ -11,6 +11,7 @@ const server = z.object({
   TWITCH_CLIENT_ID: z.string().min(1),
   TWITCH_ACCESS_TOKEN: z.string().min(1),
   SKYMAVIS_API_KEY: z.string().min(1),
+  ORIGIN_SEASON_PRIVATE_ENDPOINT: z.string().url(),
 });
 
 /**
@@ -35,6 +36,7 @@ const processEnv = {
   SKYMAVIS_API_KEY: process.env.SKYMAVIS_API_KEY,
   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME:
     process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+  ORIGIN_SEASON_PRIVATE_ENDPOINT: process.env.ORIGIN_SEASON_PRIVATE_ENDPOINT,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 

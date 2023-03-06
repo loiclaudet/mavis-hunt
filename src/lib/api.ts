@@ -112,3 +112,24 @@ export async function getStreamerChannel(
     };
   }
 }
+const SeasonValidator = z.object({
+  id: z.number(),
+  startedAt: z.number().min(0),
+  endedAt: z.number().min(0),
+  name: z.string(),
+  seasonPassID: z.string(),
+  description: z.string(),
+});
+
+const getSeasonsValidator = z.object({
+  _items: z.array(SeasonValidator),
+});
+
+export type Season = z.infer<typeof SeasonValidator>;
+type Seasons = z.infer<typeof getSeasonsValidator>;
+
+export function getSeasons(): Promise<Seasons | undefined> {
+  return fetcher(
+    process.env.ORIGIN_SEASON_PRIVATE_ENDPOINT as string
+  ) as Promise<Seasons | undefined>;
+}

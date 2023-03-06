@@ -19,7 +19,7 @@ export function MissingBattles({ userID }: MissingBattlesProps) {
           <div>
             <span>{`Look at player's `}</span>
             <Link
-              href={`/origins/profile/${userID}`}
+              href={`origins/profile/${userID}`}
               className="text-blue-500 underline"
               prefetch={false}
             >
