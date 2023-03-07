@@ -11,6 +11,7 @@ import { Effect } from "./Effect";
 import { getBattles, getCharms, getLeaderBoard, getRunes } from "lib/api";
 import { createPlayer } from "lib/createPlayer";
 import { ArenaStarsChart } from "components/ArenaStarsChart";
+import { OnlineStatus } from "./OnlineStatus";
 
 interface OriginProfileProps {
   userID: string;
@@ -94,6 +95,17 @@ export async function OriginProfile({ userID }: OriginProfileProps) {
         <div
           className={`mx-auto flex origin-bottom flex-col items-start justify-center rounded bg-[#2b1812eb] px-4 sm:w-[948px] sm:pb-8 sm:pt-4`}
         >
+          <div className="">
+            <OnlineStatus
+              player={player}
+              customStyle={{
+                left: "15px",
+                top: "41px",
+                height: "10px",
+                width: "10px",
+              }}
+            />
+          </div>
           <TwitchDetails
             live={Boolean(player?.channel?.live)}
             userId={player.userID}

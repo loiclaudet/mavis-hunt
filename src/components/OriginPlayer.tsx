@@ -10,6 +10,7 @@ import { CharmComponent } from "./Charm";
 import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
 import { Effect } from "./Effect";
+import { OnlineStatus } from "./OnlineStatus";
 interface OriginPlayerProps {
   player: Player;
   index?: number;
@@ -24,8 +25,10 @@ function OriginPlayer({ player, runes, charms, index }: OriginPlayerProps) {
       <p className="w-full text-center font-semibold">Missing player data 🫠</p>
     );
   }
+
   return (
     <div className="relative flex w-full flex-col">
+      <OnlineStatus player={player} />
       {rankEmoji && (
         <div className="absolute right-0 top-0 z-10 select-none text-4xl">
           {rankEmoji}
