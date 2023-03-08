@@ -27,8 +27,8 @@ export function generateMetadata({
 }: OriginsLeaderboardPageProps): Metadata {
   const pageID = Number(params.id);
   return {
-    title: `🍷 Top ${pageID * LEADERBOARD_LIMIT} | Origins leaderboard`,
-    description: `🍷 Top ${pageID * LEADERBOARD_LIMIT} | Origins leaderboard`,
+    title: `Top ${pageID * LEADERBOARD_LIMIT} | Origins leaderboard`,
+    description: `Top ${pageID * LEADERBOARD_LIMIT} | Origins leaderboard`,
   };
 }
 

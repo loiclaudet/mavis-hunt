@@ -24,8 +24,8 @@ import type { Rune } from "lib/runes";
 import type { Charm } from "lib/charms";
 
 export const metadata = {
-  title: "🍷 Origins Streamers",
-  description: "🍷 Origins Streamers",
+  title: "Origins Streamers",
+  description: "Origins Streamers",
 };
 
 export default async function OriginsStreamersPage() {

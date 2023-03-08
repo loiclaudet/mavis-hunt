@@ -2,8 +2,8 @@ import AnimatedWine from "components/AnimatedWine";
 import Search from "components/Search";
 
 export const metadata = {
-  title: "🍷 Axie.Wine | Search",
-  description: "🍷 Origins Search for Axie Infinity players",
+  title: "Axie.Wine | Search",
+  description: "Origins Search for Axie Infinity players",
 };
 
 export default function Home() {

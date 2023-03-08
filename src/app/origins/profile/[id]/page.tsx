@@ -17,10 +17,8 @@ export async function generateMetadata({ params }: ProfilePageProps) {
   const userName = user?.name;
 
   return {
-    title: `🍷 ${
-      userName ? `${userName} | Origins profile` : "Origins profile"
-    }`,
-    description: `🍷 Origins profile for ${userID}`,
+    title: `${userName ? `${userName} | Origins profile` : "Origins profile"}`,
+    description: `Origins profile for ${userID}`,
   };
 }
 
