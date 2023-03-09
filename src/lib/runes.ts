@@ -8,14 +8,7 @@ export function getRuneDataFromRuneID(
   runeId: RuneId,
   runes: Rune[]
 ): Rune | null {
-  return (
-    runes.find((rune) => {
-      // temporary fix for s3 runes
-      // TODO: remove this when s3 runes are added to the API call
-      const runeIdWithS3 = rune.id.replace(/s\d_/i, "s3_");
-      return runeIdWithS3.startsWith(runeId);
-    }) ?? null
-  );
+  return runes.find((rune) => rune.id.startsWith(runeId)) ?? null;
 }
 
 export function getRuneDataFromRuneImageUrl(
