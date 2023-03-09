@@ -3,7 +3,7 @@ import ContentLoader from "react-content-loader";
 export const PlayerDetailsLoader = () => (
   <ContentLoader
     animate={true}
-    speed={2}
+    speed={1.2}
     viewBox={`0 0 320 116`}
     backgroundColor="#362218"
     foregroundColor="#FDE5D2"
@@ -18,7 +18,7 @@ export const PlayerDetailsLoader = () => (
 export const ArenaStarsChartLoader = () => (
   <ContentLoader
     animate={true}
-    speed={2}
+    speed={1.2}
     viewBox={`0 0 948 500`}
     backgroundColor="#362218"
     foregroundColor="#FDE5D2"
@@ -31,7 +31,7 @@ export const ArenaStarsChartLoader = () => (
 export const AxieLoader = () => (
   <ContentLoader
     animate={true}
-    speed={2}
+    speed={1.2}
     viewBox={`0 0 100 100`}
     backgroundColor="#362218"
     foregroundColor="#FDE5D2"
@@ -39,5 +39,20 @@ export const AxieLoader = () => (
     foregroundOpacity={0.5}
   >
     <circle cx="50" cy="50" r="25" />
+  </ContentLoader>
+);
+export const SeasonLoader = () => (
+  <ContentLoader
+    animate={true}
+    speed={1.2}
+    viewBox={`0 0 480 80`}
+    backgroundColor="#362218"
+    foregroundColor="#FDE5D2"
+    backgroundOpacity={0.3}
+    foregroundOpacity={0.5}
+  >
+    <rect x="0" y="0" rx="5" ry="5" width={368} height={80} />
+    <rect x="380" y="40" rx="5" ry="5" width={112} height={30} />
+    <rect x="380" y="0" rx="5" ry="5" width={112} height={30} />
   </ContentLoader>
 );

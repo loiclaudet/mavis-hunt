@@ -2,6 +2,7 @@ import { LEADERBOARD_LIMIT, PAGINATION_COUNT } from "lib/consts";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Season } from "./Season";
+import { SeasonSkeleton } from "./SeasonSkeleton";
 export type SortOption = "rank" | "winstreak" | "winrate";
 
 export function Header({ pageID }: { pageID: number }) {
@@ -9,7 +10,7 @@ export function Header({ pageID }: { pageID: number }) {
     <header
       className={`sticky top-0 z-20 mx-auto mb-1 box-border flex w-[948px] max-w-full flex-col items-center justify-around bg-[#2b1812eb] pt-1 pb-2 text-center transition-transform sm:flex-row sm:p-3`}
     >
-      <Suspense fallback={<div>loading...</div>}>
+      <Suspense fallback={<SeasonSkeleton />}>
         {/* @ts-expect-error Server Component*/}
         <Season />
       </Suspense>
