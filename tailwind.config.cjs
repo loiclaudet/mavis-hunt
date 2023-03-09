@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         "light-brown": "#FDE5D2",
         "dark-brown": "#362218",
+        "era-rare": "#72900E",
+        "era-epic": "#0C9ECE",
+        "era-mystic": "#AD42FF",
       },
       animation: {
         bounce: "bounce 2s linear infinite",

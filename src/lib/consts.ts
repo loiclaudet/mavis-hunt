@@ -1,5 +1,5 @@
-export const PAGINATION_COUNT = 4;
-export const LEADERBOARD_LIMIT = 200 / PAGINATION_COUNT;
+export const PAGINATION_COUNT = 10;
+export const LEADERBOARD_LIMIT = 500 / PAGINATION_COUNT;
 export const DEFAULT_LIST_ELEMENT_SIZE = 161;
 export const BREAKPOINTS = {
   mobile: 640,

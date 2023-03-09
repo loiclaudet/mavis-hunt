@@ -27,7 +27,7 @@ function OriginPlayer({ player, runes, charms, index }: OriginPlayerProps) {
   }
 
   return (
-    <div className="relative flex w-full flex-col">
+    <div className="relative flex w-[948px] max-w-full flex-col">
       <OnlineStatus player={player} />
       {rankEmoji && (
         <div className="absolute right-0 top-0 z-10 select-none text-4xl">

@@ -1,7 +1,6 @@
 import { getSeasons } from "lib/api";
 import { SEASON_DURATION } from "lib/consts";
 import { DateTime } from "luxon";
-import { MilliAXSButton } from "./MilliAXSButton";
 import SeasonCountDown from "./SeasonCountdown";
 
 export async function Season() {
@@ -12,25 +11,21 @@ export async function Season() {
   const now = DateTime.now().toMillis();
   const periodDuration = season.endedAt * 1000 - now;
   const isOffSeason = periodDuration > SEASON_DURATION;
-  //   const isOffSeason = periodDuration < 0 || periodDuration > SEASON_DURATION;
   return (
-    <div className="flex flex-row justify-around sm:flex-col">
-      <div className="flex flex-col justify-center">
-        <h1 className={`text-2xl sm:text-4xl`}>
-          {isOffSeason ? "Off-season" : `🔥 ${season.name} 🔥`}
-        </h1>
-        <div className="mb-3 flex items-center self-center sm:mb-0">
-          <MilliAXSButton />
-          {season.endedAt && (
-            <SeasonCountDown
-              endDate={Number(
-                isOffSeason
-                  ? now + (periodDuration - SEASON_DURATION)
-                  : season.endedAt * 1000
-              )}
-            />
-          )}
-        </div>
+    <div className="mt-2 flex w-full justify-around sm:mt-auto sm:w-auto">
+      <h1 className={`text-4xl sm:p-4 sm:text-5xl`}>
+        {isOffSeason ? "Off-season" : `🔥 ${season.name} 🔥`}
+      </h1>
+      <div className="mb-3 flex items-center self-center sm:mb-0">
+        {season.endedAt && (
+          <SeasonCountDown
+            endDate={Number(
+              isOffSeason
+                ? now + (periodDuration - SEASON_DURATION)
+                : season.endedAt * 1000
+            )}
+          />
+        )}
       </div>
     </div>
   );

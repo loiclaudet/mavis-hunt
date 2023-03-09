@@ -7,7 +7,7 @@ export function MilliAXSButton() {
         clipPath:
           "polygon(48% 2%, 61% 23%, 75% 4%, 96% 30%, 87% 51%, 80% 61%, 91% 87%, 52% 96%, 5% 90%)",
       }}
-      className={`relative z-50 mr-1 h-6 w-8 overflow-hidden bg-white/5 bg-none shadow-none transition-transform hover:scale-105`}
+      className={`relative z-50 mr-1 h-4 w-5 overflow-hidden bg-white/5 bg-none shadow-none transition-transform hover:scale-105 sm:h-6 sm:w-8`}
     >
       <Image
         src={`/season-end-reward.png`}
