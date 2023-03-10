@@ -54,14 +54,15 @@ export function getBattles({
 // Charms
 export function getCharms(): Promise<Items | undefined> {
   return fetcher(
-    "https://api-gateway.skymavis.com/origin/v2/community/charms"
+    "https://api-gateway.skymavis.com/origin/v2/community/charms",
+    { revalidate: 3600 }
   ) as Promise<Items | undefined>;
 }
 // Runes
 export function getRunes(): Promise<Items | undefined> {
-  return fetcher(
-    "https://api-gateway.skymavis.com/origin/v2/community/runes"
-  ) as Promise<Items | undefined>;
+  return fetcher("https://api-gateway.skymavis.com/origin/v2/community/runes", {
+    revalidate: 3600,
+  }) as Promise<Items | undefined>;
 }
 
 export interface StreamerChannel {
