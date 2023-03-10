@@ -10,24 +10,3 @@ export function getRuneDataFromRuneID(
 ): Rune | null {
   return runes.find((rune) => rune.id.startsWith(runeId)) ?? null;
 }
-
-export function getRuneDataFromRuneImageUrl(
-  runeImageUrl: string,
-  runes: Rune[]
-): Rune | null {
-  const rune = runes.find((rune) => rune.imageUrl === runeImageUrl) ?? null;
-  return rune;
-}
-
-export function getRunesImagesFromRunesGameIds(
-  runeIds: RuneId[],
-  runes: Rune[]
-): (string | null)[] {
-  return runeIds.map((runeId) => {
-    const rune = getRuneDataFromRuneID(runeId, runes);
-    if (rune) {
-      return rune.imageUrl;
-    }
-    return null;
-  });
-}
